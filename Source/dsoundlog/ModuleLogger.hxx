@@ -1,0 +1,137 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct ModuleDirectSoundCaptureCreateMethodValue
+{
+    LPCGUID ID;
+    LPDIRECTSOUNDCAPTURE* Object;
+    LPUNKNOWN Unknown;
+} MODULEDIRECTSOUNDCAPTURECREATEMETHODVALUE, * LPMODULEDIRECTSOUNDCAPTURECREATEMETHODVALUE;
+
+typedef struct ModuleDirectSoundCaptureCreate8MethodValue
+{
+    LPCGUID ID;
+    LPDIRECTSOUNDCAPTURE8* Object;
+    LPUNKNOWN Unknown;
+} MODULEDIRECTSOUNDCAPTURECREATE8METHODVALUE, * LPMODULEDIRECTSOUNDCAPTURECREATE8METHODVALUE;
+
+typedef struct ModuleDirectSoundCaptureEnumerateAMethodValue
+{
+    LPDSENUMCALLBACKA Callback;
+    LPVOID Context;
+} MODULEDIRECTSOUNDCAPTUREENUMERATEAMETHODVALUE, * LPMODULEDIRECTSOUNDCAPTUREENUMERATEAMETHODVALUE;
+
+typedef struct ModuleDirectSoundCaptureEnumerateWMethodValue
+{
+    LPDSENUMCALLBACKW Callback;
+    LPVOID Context;
+} MODULEDIRECTSOUNDCAPTUREENUMERATEWMETHODVALUE, * LPMODULEDIRECTSOUNDCAPTUREENUMERATEWMETHODVALUE;
+
+typedef struct ModuleDirectSoundCreateMethodValue
+{
+    LPCGUID ID;
+    LPDIRECTSOUND* Object;
+    LPUNKNOWN Unknown;
+} MODULEDIRECTSOUNDCREATEMETHODVALUE, * LPMODULEDIRECTSOUNDCREATEMETHODVALUE;
+
+typedef struct ModuleDirectSoundCreate8MethodValue
+{
+    LPCGUID ID;
+    LPDIRECTSOUND8* Object;
+    LPUNKNOWN Unknown;
+} MODULEDIRECTSOUNDCREATE8METHODVALUE, * LPMODULEDIRECTSOUNDCREATE8METHODVALUE;
+
+typedef struct ModuleDirectSoundEnumerateAMethodValue
+{
+    LPDSENUMCALLBACKA Callback;
+    LPVOID Context;
+} MODULEDIRECTSOUNDENUMERATEAMETHODVALUE, * LPMODULEDIRECTSOUNDENUMERATEAMETHODVALUE;
+
+typedef struct ModuleDirectSoundEnumerateWMethodValue
+{
+    LPDSENUMCALLBACKW Callback;
+    LPVOID Context;
+} MODULEDIRECTSOUNDENUMERATEWMETHODVALUE, * LPMODULEDIRECTSOUNDENUMERATEWMETHODVALUE;
+
+typedef struct ModuleDirectSoundFullDuplexCreateMethodValue
+{
+    LPCGUID CaptureDevice;
+    LPCGUID RenderDevice;
+    LPCDSCBUFFERDESC CaptureDescriptor;
+    LPCDSBUFFERDESC RenderDescriptor;
+    HWND Window;
+    DWORD Level;
+    LPDIRECTSOUNDFULLDUPLEX* Object;
+    LPDIRECTSOUNDCAPTUREBUFFER8* CaptureBuffer;
+    LPDIRECTSOUNDBUFFER8* RenderBuffer;
+    LPUNKNOWN Unknown;
+} MODULEDIRECTSOUNDFULLDUPLEXCREATEMETHODVALUE, * LPMODULEDIRECTSOUNDFULLDUPLEXCREATEMETHODVALUE;
+
+typedef struct ModuleDllCanUnloadNowMethodValue
+{
+
+} MODULEDLLCANUNLOADNOWMETHODVALUE, * LPMODULEDLLCANUNLOADNOWMETHODVALUE;
+
+typedef struct ModuleDllGetClassObjectMethodValue
+{
+    GUID ID;
+    GUID IID;
+    LPVOID* Object;
+} MODULEDLLGETCLASSOBJECTMETHODVALUE, * LPMODULEDLLGETCLASSOBJECTMETHODVALUE;
+
+typedef struct ModuleGetDeviceIDMethodValue
+{
+    LPCGUID Source;
+    LPGUID Destination;
+} MODULEGETDEVICEIDMETHODVALUE, * LPMODULEGETDEVICEIDMETHODVALUE;
+
+typedef struct ModuleDirectSoundCaptureEnumerateAMethodCallbackValue
+{
+    LPGUID ID;
+    LPCSTR Description;
+    LPCSTR Module;
+} MODULEDIRECTSOUNDCAPTUREENUMERATEAMETHODCALLBACKVALUE, * LPMODULEDIRECTSOUNDCAPTUREENUMERATEAMETHODCALLBACKVALUE;
+
+typedef struct ModuleDirectSoundCaptureEnumerateWMethodCallbackValue
+{
+    LPGUID ID;
+    LPCWSTR Description;
+    LPCWSTR Module;
+} MODULEDIRECTSOUNDCAPTUREENUMERATEWMETHODCALLBACKVALUE, * LPMODULEDIRECTSOUNDCAPTUREENUMERATEWMETHODCALLBACKVALUE;
+
+typedef struct ModuleDirectSoundEnumerateAMethodCallbackValue
+{
+    LPGUID ID;
+    LPCSTR Description;
+    LPCSTR Module;
+} MODULEDIRECTSOUNDENUMERATEAMETHODCALLBACKVALUE, * LPMODULEDIRECTSOUNDENUMERATEAMETHODCALLBACKVALUE;
+
+typedef struct ModuleDirectSoundEnumerateWMethodCallbackValue
+{
+    LPGUID ID;
+    LPCWSTR Description;
+    LPCWSTR Module;
+} MODULEDIRECTSOUNDENUMERATEWMETHODCALLBACKVALUE, * LPMODULEDIRECTSOUNDENUMERATEWMETHODCALLBACKVALUE;

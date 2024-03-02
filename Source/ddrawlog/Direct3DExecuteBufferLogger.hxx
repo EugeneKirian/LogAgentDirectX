@@ -1,0 +1,86 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct Direct3DExecuteBufferQueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECT3DEXECUTEBUFFERQUERYINTERFACEMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERQUERYINTERFACEMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferAddRefMethodValue
+{
+
+} DIRECT3DEXECUTEBUFFERADDREFMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERADDREFMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferReleaseMethodValue
+{
+
+} DIRECT3DEXECUTEBUFFERRELEASEMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERRELEASEMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferInitializeMethodValue
+{
+    LPDIRECT3DDEVICE Device;
+    LPD3DEXECUTEBUFFERDESC Descriptor;
+} DIRECT3DEXECUTEBUFFERINITIALIZEMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERINITIALIZEMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferLockMethodValue
+{
+    LPD3DEXECUTEBUFFERDESC Descriptor;
+} DIRECT3DEXECUTEBUFFERLOCKMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERLOCKMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferUnlockMethodValue
+{
+
+} DIRECT3DEXECUTEBUFFERUNLOCKMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERUNLOCKMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferSetExecuteDataMethodValue
+{
+    LPD3DEXECUTEDATA Value;
+} DIRECT3DEXECUTEBUFFERSETEXECUTEDATAMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERSETEXECUTEDATAMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferGetExecuteDataMethodValue
+{
+    LPD3DEXECUTEDATA Value;
+} DIRECT3DEXECUTEBUFFERGETEXECUTEDATAMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERGETEXECUTEDATAMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferValidateMethodValue
+{
+    LPDWORD Offset;
+    LPD3DVALIDATECALLBACK Callback;
+    LPVOID Context;
+    DWORD Reserved;
+} DIRECT3DEXECUTEBUFFERVALIDATEMETHODVALUE, * LPDIRECT3DEXECUTEBUFFERVALIDATEMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferOptimizeMethodValue
+{
+    DWORD Options;
+} DIRECT3DEXECUTEBUFFEROPTIMIZEMETHODVALUE, * LPDIRECT3DEXECUTEBUFFEROPTIMIZEMETHODVALUE;
+
+typedef struct Direct3DExecuteBufferValidateMethodCallbackValue
+{
+    LPVOID Object;
+    DWORD Offset;
+} DIRECT3DEXECUTEBUFFERVALIDATEMETHODCALLBACKVALUE, * LPDIRECT3DEXECUTEBUFFERVALIDATEMETHODCALLBACKVALUE;

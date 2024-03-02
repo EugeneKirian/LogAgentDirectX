@@ -1,0 +1,174 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct DirectDrawQueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECTDRAWQUERYINTERFACEMETHODVALUE, * LPDIRECTDRAWQUERYINTERFACEMETHODVALUE;
+
+typedef struct DirectDrawAddRefMethodValue
+{
+
+} DIRECTDRAWADDREFMETHODVALUE, * LPDIRECTDRAWADDREFMETHODVALUE;
+
+typedef struct DirectDrawReleaseMethodValue
+{
+
+} DIRECTDRAWRELEASEMETHODVALUE, * LPDIRECTDRAWRELEASEMETHODVALUE;
+
+typedef struct DirectDrawCompactMethodValue
+{
+
+} DIRECTDRAWCOMPACTMETHODVALUE, * LPDIRECTDRAWCOMPACTMETHODVALUE;
+
+typedef struct DirectDrawCreateClipperMethodValue
+{
+    DWORD Options;
+    LPDIRECTDRAWCLIPPER* Object;
+    LPUNKNOWN Unknown;
+} DIRECTDRAWCREATECLIPPERMETHODVALUE, * LPDIRECTDRAWCREATECLIPPERMETHODVALUE;
+
+typedef struct DirectDrawCreatePaletteMethodValue
+{
+    DWORD Options;
+    LPPALETTEENTRY Colors;
+    LPDIRECTDRAWPALETTE* Object;
+    LPUNKNOWN Unknown;
+} DIRECTDRAWCREATEPALETTEMETHODVALUE, * LPDIRECTDRAWCREATEPALETTEMETHODVALUE;
+
+typedef struct DirectDrawCreateSurfaceMethodValue
+{
+    LPDDSURFACEDESC Descriptor;
+    LPDIRECTDRAWSURFACE* Object;
+    LPUNKNOWN Unknown;
+} DIRECTDRAWCREATESURFACEMETHODVALUE, * LPDIRECTDRAWCREATESURFACEMETHODVALUE;
+
+typedef struct DirectDrawDuplicateSurfaceMethodValue
+{
+    LPDIRECTDRAWSURFACE Object;
+    LPDIRECTDRAWSURFACE* Duplicate;
+} DIRECTDRAWDUPLICATESURFACEMETHODVALUE, * LPDIRECTDRAWDUPLICATESURFACEMETHODVALUE;
+
+typedef struct DirectDrawEnumDisplayModesMethodValue
+{
+    DWORD Options;
+    LPDDSURFACEDESC Descriptor;
+    LPVOID Context;
+    LPDDENUMMODESCALLBACK EnumModesCallback;
+} DIRECTDRAWENUMDISPLAYMODESMETHODVALUE, * LPDIRECTDRAWENUMDISPLAYMODESMETHODVALUE;
+
+typedef struct DirectDrawEnumSurfacesMethodValue
+{
+    DWORD Options;
+    LPDDSURFACEDESC Descriptor;
+    LPVOID Context;
+    LPDDENUMSURFACESCALLBACK EnumSurfacesCallback;
+} DIRECTDRAWENUMSURFACESMETHODVALUE, * LPDIRECTDRAWENUMSURFACESMETHODVALUE;
+
+typedef struct DirectDrawFlipToGDISurfaceMethodValue
+{
+
+} DIRECTDRAWFLIPTOGDISURFACEMETHODVALUE, * LPDIRECTDRAWFLIPTOGDISURFACEMETHODVALUE;
+
+typedef struct DirectDrawGetCapsMethodValue
+{
+    LPDDCAPS AccelerationDriverCaps;
+    LPDDCAPS EmulationDricerCaps;
+} DIRECTDRAWGETCAPSMETHODVALUE, * LPDIRECTDRAWGETCAPSMETHODVALUE;
+
+typedef struct DirectDrawGetDisplayModeMethodValue
+{
+    LPDDSURFACEDESC Descriptor;
+} DIRECTDRAWGETDISPLAYMODEMETHODVALUE, * LPDIRECTDRAWGETDISPLAYMODEMETHODVALUE;
+
+typedef struct DirectDrawGetFourCCCodesMethodValue
+{
+    LPDWORD Count;
+    LPDWORD Codes;
+} DIRECTDRAWGETFOURCCCODESMETHODVALUE, * LPDIRECTDRAWGETFOURCCCODESMETHODVALUE;
+
+typedef struct DirectDrawGetGDISurfaceMethodValue
+{
+    LPDIRECTDRAWSURFACE* Surface;
+} DIRECTDRAWGETGDISURFACEMETHODVALUE, * LPDIRECTDRAWGETGDISURFACEMETHODVALUE;
+
+typedef struct DirectDrawGetMonitorFrequencyMethodValue
+{
+    LPDWORD Frequency;
+} DIRECTDRAWGETMONITORFREQUENCYMETHODVALUE, * LPDIRECTDRAWGETMONITORFREQUENCYMETHODVALUE;
+
+typedef struct DirectDrawGetScanLineMethodValue
+{
+    LPDWORD ScanLine;
+} DIRECTDRAWGETSCANLINEMETHODVALUE, * LPDIRECTDRAWGETSCANLINEMETHODVALUE;
+
+typedef struct DirectDrawGetVerticalBlankStatusMethodValue
+{
+    LPBOOL IsInVerticalBlank;
+} DIRECTDRAWGETVERTICALBLANKSTATUSMETHODVALUE, * LPDIRECTDRAWGETVERTICALBLANKSTATUSMETHODVALUE;
+
+typedef struct DirectDrawInitializeMethodValue
+{
+    LPGUID ID;
+} DIRECTDRAWINITIALIZEMETHODVALUE, * LPDIRECTDRAWINITIALIZEMETHODVALUE;
+
+typedef struct DirectDrawRestoreDisplayModeMethodValue
+{
+
+} DIRECTDRAWRESTOREDISPLAYMODEMETHODVALUE, * LPDIRECTDRAWRESTOREDISPLAYMODEMETHODVALUE;
+
+typedef struct DirectDrawSetCooperativeLevelMethodValue
+{
+    HWND Window;
+    DWORD Options;
+} DIRECTDRAWSETCOOPERATIVELEVELMETHODVALUE, * LPDIRECTDRAWSETCOOPERATIVELEVELMETHODVALUE;
+
+typedef struct DirectDrawSetDisplayModeMethodValue
+{
+    DWORD Width;
+    DWORD Height;
+    DWORD Bits;
+} DIRECTDRAWSETDISPLAYMODEMETHODVALUE, * LPDIRECTDRAWSETDISPLAYMODEMETHODVALUE;
+
+typedef struct DirectDrawWaitForVerticalBlankMethodValue
+{
+    DWORD Options;
+    HANDLE Event;
+} DIRECTDRAWWAITFORVERTICALBLANKMETHODVALUE, * LPDIRECTDRAWWAITFORVERTICALBLANKMETHODVALUE;
+
+typedef struct DirectDrawEnumDisplayModesMethodCallbackValue
+{
+    LPVOID Object;
+    LPDDSURFACEDESC Descriptor;
+} DIRECTDRAWENUMDISPLAYMODESMETHODCALLBACKVALUE, * LPDIRECTDRAWENUMDISPLAYMODESMETHODCALLBACKVALUE;
+
+typedef struct DirectDrawEnumSurfacesMethodCallbackValue
+{
+    LPVOID Object;
+    LPDIRECTDRAWSURFACE Surface;
+    LPDDSURFACEDESC Descriptor;
+} DIRECTDRAWENUMSURFACESMETHODCALLBACKVALUE, * LPDIRECTDRAWENUMSURFACESMETHODCALLBACKVALUE;

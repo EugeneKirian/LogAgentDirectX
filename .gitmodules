@@ -1,0 +1,3 @@
+[submodule "SDK/DXGUID"]
+	path = SDK/DXGUID
+	url = https://github.com/EugeneKirian/DXGUID.git

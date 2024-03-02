@@ -1,0 +1,113 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct DirectSoundCaptureBuffer8QueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECTSOUNDCAPTUREBUFFER8QUERYINTERFACEMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8QUERYINTERFACEMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8AddRefMethodValue
+{
+
+} DIRECTSOUNDCAPTUREBUFFER8ADDREFMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8ADDREFMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8ReleaseMethodValue
+{
+
+} DIRECTSOUNDCAPTUREBUFFER8RELEASEMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8RELEASEMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetCapsMethodValue
+{
+    LPDSCBCAPS Caps;
+} DIRECTSOUNDCAPTUREBUFFER8GETCAPSMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETCAPSMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetCurrentPositionMethodValue
+{
+    LPDWORD CapturePosition;
+    LPDWORD ReadPosition;
+} DIRECTSOUNDCAPTUREBUFFER8GETCURRENTPOSITIONMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETCURRENTPOSITIONMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetFormatMethodValue
+{
+    LPWAVEFORMATEX Format;
+    DWORD SizeAllocated;
+    LPDWORD SizeWritten;
+} DIRECTSOUNDCAPTUREBUFFER8GETFORMATMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETFORMATMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetStatusMethodValue
+{
+    LPDWORD Status;
+} DIRECTSOUNDCAPTUREBUFFER8GETSTATUSMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETSTATUSMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8InitializeMethodValue
+{
+    LPDIRECTSOUNDCAPTURE Object;
+    LPCDSCBUFFERDESC Descriptor;
+} DIRECTSOUNDCAPTUREBUFFER8INITIALIZEMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8INITIALIZEMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8LockMethodValue
+{
+    DWORD Offset;
+    DWORD Bytes;
+    LPVOID* Audio1;
+    LPDWORD AudioBytes1;
+    LPVOID* Audio2;
+    LPDWORD AudioBytes2;
+    DWORD Options;
+} DIRECTSOUNDCAPTUREBUFFER8LOCKMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8LOCKMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8StartMethodValue
+{
+    DWORD Options;
+} DIRECTSOUNDCAPTUREBUFFER8STARTMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8STARTMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8StopMethodValue
+{
+
+} DIRECTSOUNDCAPTUREBUFFER8STOPMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8STOPMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8UnlockMethodValue
+{
+    LPVOID Audio1;
+    DWORD AudioBytes1;
+    LPVOID Audio2;
+    DWORD AudioBytes2;
+} DIRECTSOUNDCAPTUREBUFFER8UNLOCKMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8UNLOCKMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetObjectInPathMethodValue
+{
+    GUID ID;
+    DWORD Index;
+    GUID IID;
+    LPVOID* Object;
+} DIRECTSOUNDCAPTUREBUFFER8GETOBJECTINPATHMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETOBJECTINPATHMETHODVALUE;
+
+typedef struct DirectSoundCaptureBuffer8GetFXStatusMethodValue
+{
+    DWORD Count;
+    LPDWORD Status;
+} DIRECTSOUNDCAPTUREBUFFER8GETFXSTATUSMETHODVALUE, * LPDIRECTSOUNDCAPTUREBUFFER8GETFXSTATUSMETHODVALUE;

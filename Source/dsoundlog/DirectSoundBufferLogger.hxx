@@ -1,0 +1,146 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct DirectSoundBufferQueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECTSOUNDBUFFERQUERYINTERFACEMETHODVALUE, * LPDIRECTSOUNDBUFFERQUERYINTERFACEMETHODVALUE;
+
+typedef struct DirectSoundBufferAddRefMethodValue
+{
+
+} DIRECTSOUNDBUFFERADDREFMETHODVALUE, * LPDIRECTSOUNDBUFFERADDREFMETHODVALUE;
+
+typedef struct DirectSoundBufferReleaseMethodValue
+{
+
+} DIRECTSOUNDBUFFERRELEASEMETHODVALUE, * LPDIRECTSOUNDBUFFERRELEASEMETHODVALUE;
+
+typedef struct DirectSoundBufferGetCapsMethodValue
+{
+    LPDSBCAPS Caps;
+} DIRECTSOUNDBUFFERGETCAPSMETHODVALUE, * LPDIRECTSOUNDBUFFERGETCAPSMETHODVALUE;
+
+typedef struct DirectSoundBufferGetCurrentPositionMethodValue
+{
+    LPDWORD PlayPosition;
+    LPDWORD WritePosition;
+} DIRECTSOUNDBUFFERGETCURRENTPOSITIONMETHODVALUE, * LPDIRECTSOUNDBUFFERGETCURRENTPOSITIONMETHODVALUE;
+
+typedef struct DirectSoundBufferGetFormatMethodValue
+{
+    LPWAVEFORMATEX Format;
+    DWORD SizeAllocated;
+    LPDWORD SizeWritten;
+} DIRECTSOUNDBUFFERGETFORMATMETHODVALUE, * LPDIRECTSOUNDBUFFERGETFORMATMETHODVALUE;
+
+typedef struct DirectSoundBufferGetVolumeMethodValue
+{
+    LPLONG Volume;
+} DIRECTSOUNDBUFFERGETVOLUMEMETHODVALUE, * LPDIRECTSOUNDBUFFERGETVOLUMEMETHODVALUE;
+
+typedef struct DirectSoundBufferGetPanMethodValue
+{
+    LPLONG Pan;
+} DIRECTSOUNDBUFFERGETPANMETHODVALUE, * LPDIRECTSOUNDBUFFERGETPANMETHODVALUE;
+
+typedef struct DirectSoundBufferGetFrequencyMethodValue
+{
+    LPDWORD Frequency;
+} DIRECTSOUNDBUFFERGETFREQUENCYMETHODVALUE, * LPDIRECTSOUNDBUFFERGETFREQUENCYMETHODVALUE;
+
+typedef struct DirectSoundBufferGetStatusMethodValue
+{
+    LPDWORD Status;
+} DIRECTSOUNDBUFFERGETSTATUSMETHODVALUE, * LPDIRECTSOUNDBUFFERGETSTATUSMETHODVALUE;
+
+typedef struct DirectSoundBufferInitializeMethodValue
+{
+    LPDIRECTSOUND Object;
+    LPCDSBUFFERDESC Descriptor;
+} DIRECTSOUNDBUFFERINITIALIZEMETHODVALUE, * LPDIRECTSOUNDBUFFERINITIALIZEMETHODVALUE;
+
+typedef struct DirectSoundBufferLockMethodValue
+{
+    DWORD Offset;
+    DWORD Bytes;
+    LPVOID* Audio1;
+    LPDWORD AudioBytes1;
+    LPVOID* Audio2;
+    LPDWORD AudioBytes2;
+    DWORD Options;
+} DIRECTSOUNDBUFFERLOCKMETHODVALUE, * LPDIRECTSOUNDBUFFERLOCKMETHODVALUE;
+
+typedef struct DirectSoundBufferPlayMethodValue
+{
+    DWORD Reserved;
+    DWORD Priority;
+    DWORD Options;
+} DIRECTSOUNDBUFFERPLAYMETHODVALUE, * LPDIRECTSOUNDBUFFERPLAYMETHODVALUE;
+
+typedef struct DirectSoundBufferSetCurrentPositionMethodValue
+{
+    DWORD Position;
+} DIRECTSOUNDBUFFERSETCURRENTPOSITIONMETHODVALUE, * LPDIRECTSOUNDBUFFERSETCURRENTPOSITIONMETHODVALUE;
+
+typedef struct DirectSoundBufferSetFormatMethodValue
+{
+    LPCWAVEFORMATEX Format;
+} DIRECTSOUNDBUFFERSETFORMATMETHODVALUE, * LPDIRECTSOUNDBUFFERSETFORMATMETHODVALUE;
+
+typedef struct DirectSoundBufferSetVolumeMethodValue
+{
+    LONG Volume;
+} DIRECTSOUNDBUFFERSETVOLUMEMETHODVALUE, * LPDIRECTSOUNDBUFFERSETVOLUMEMETHODVALUE;
+
+typedef struct DirectSoundBufferSetPanMethodValue
+{
+    LONG Pan;
+} DIRECTSOUNDBUFFERSETPANMETHODVALUE, * LPDIRECTSOUNDBUFFERSETPANMETHODVALUE;
+
+typedef struct DirectSoundBufferSetFrequencyMethodValue
+{
+    DWORD Frequency;
+} DIRECTSOUNDBUFFERSETFREQUENCYMETHODVALUE, * LPDIRECTSOUNDBUFFERSETFREQUENCYMETHODVALUE;
+
+typedef struct DirectSoundBufferStopMethodValue
+{
+
+} DIRECTSOUNDBUFFERSTOPMETHODVALUE, * LPDIRECTSOUNDBUFFERSTOPMETHODVALUE;
+
+typedef struct DirectSoundBufferUnlockMethodValue
+{
+    LPVOID Audio1;
+    DWORD AudioBytes1;
+    LPVOID Audio2;
+    DWORD AudioBytes2;
+} DIRECTSOUNDBUFFERUNLOCKMETHODVALUE, * LPDIRECTSOUNDBUFFERUNLOCKMETHODVALUE;
+
+typedef struct DirectSoundBufferRestoreMethodValue
+{
+
+} DIRECTSOUNDBUFFERRESTOREMETHODVALUE, * LPDIRECTSOUNDBUFFERRESTOREMETHODVALUE;

@@ -1,0 +1,71 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct DirectSoundFXI3DL2ReverbQueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECTSOUNDFXI3DL2REVERBQUERYINTERFACEMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBQUERYINTERFACEMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbAddRefMethodValue
+{
+
+} DIRECTSOUNDFXI3DL2REVERBADDREFMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBADDREFMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbReleaseMethodValue
+{
+
+} DIRECTSOUNDFXI3DL2REVERBRELEASEMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBRELEASEMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbSetAllParametersMethodValue
+{
+    LPCDSFXI3DL2Reverb Descriptor;
+} DIRECTSOUNDFXI3DL2REVERBSETALLPARAMETERSMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBSETALLPARAMETERSMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbGetAllParametersMethodValue
+{
+    LPDSFXI3DL2Reverb Descriptor;
+} DIRECTSOUNDFXI3DL2REVERBGETALLPARAMETERSMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBGETALLPARAMETERSMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbSetPresetMethodValue
+{
+    DWORD Preset;
+} DIRECTSOUNDFXI3DL2REVERBSETPRESETMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBSETPRESETMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbGetPresetMethodValue
+{
+    LPDWORD Preset;
+} DIRECTSOUNDFXI3DL2REVERBGETPRESETMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBGETPRESETMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbSetQualityMethodValue
+{
+    LONG Quality;
+} DIRECTSOUNDFXI3DL2REVERBSETQUALITYMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBSETQUALITYMETHODVALUE;
+
+typedef struct DirectSoundFXI3DL2ReverbGetQualityMethodValue
+{
+    LPLONG Quality;
+} DIRECTSOUNDFXI3DL2REVERBGETQUALITYMETHODVALUE, * LPDIRECTSOUNDFXI3DL2REVERBGETQUALITYMETHODVALUE;

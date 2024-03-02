@@ -1,0 +1,115 @@
+/*
+Copyright (c) 2024 Eugene Kirian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#pragma once
+
+#include "Base.hxx"
+
+typedef struct Direct3D3QueryInterfaceMethodValue
+{
+    GUID ID;
+    LPVOID* Object;
+} DIRECT3D3QUERYINTERFACEMETHODVALUE, * LPDIRECT3D3QUERYINTERFACEMETHODVALUE;
+
+typedef struct Direct3D3AddRefMethodValue
+{
+
+} DIRECT3D3ADDREFMETHODVALUE, * LPDIRECT3D3ADDREFMETHODVALUE;
+
+typedef struct Direct3D3ReleaseMethodValue
+{
+
+} DIRECT3D3RELEASEMETHODVALUE, * LPDIRECT3D3RELEASEMETHODVALUE;
+
+typedef struct Direct3D3EnumDevicesMethodValue
+{
+    LPD3DENUMDEVICESCALLBACK Callback;
+    LPVOID Context;
+} DIRECT3D3ENUMDEVICESMETHODVALUE, * LPDIRECT3D3ENUMDEVICESMETHODVALUE;
+
+typedef struct Direct3D3CreateLightMethodValue
+{
+    LPDIRECT3DLIGHT* Light;
+    LPUNKNOWN Unknown;
+} DIRECT3D3CREATELIGHTMETHODVALUE, * LPDIRECT3D3CREATELIGHTMETHODVALUE;
+
+typedef struct Direct3D3CreateMaterialMethodValue
+{
+    LPDIRECT3DMATERIAL3* Material;
+    LPUNKNOWN Unknown;
+} DIRECT3D3CREATEMATERIALMETHODVALUE, * LPDIRECT3D3CREATEMATERIALMETHODVALUE;
+
+typedef struct Direct3D3CreateViewportMethodValue
+{
+    LPDIRECT3DVIEWPORT3* ViewPort;
+    LPUNKNOWN Unknown;
+} DIRECT3D3CREATEVIEWPORTMETHODVALUE, * LPDIRECT3D3CREATEVIEWPORTMETHODVALUE;
+
+typedef struct Direct3D3FindDeviceMethodValue
+{
+    LPD3DFINDDEVICESEARCH Search;
+    LPD3DFINDDEVICERESULT Result;
+} DIRECT3D3FINDDEVICEMETHODVALUE, * LPDIRECT3D3FINDDEVICEMETHODVALUE;
+
+typedef struct Direct3D3CreateDeviceMethodValue
+{
+    GUID ID;
+    LPDIRECTDRAWSURFACE4 Surface;
+    LPDIRECT3DDEVICE3* Device;
+    LPUNKNOWN Unknown;
+} DIRECT3D3CREATEDEVICEMETHODVALUE, * LPDIRECT3D3CREATEDEVICEMETHODVALUE;
+
+typedef struct Direct3D3CreateVertexBufferMethodValue
+{
+    LPD3DVERTEXBUFFERDESC Descriptor;
+    LPDIRECT3DVERTEXBUFFER* Buffer;
+    DWORD Options;
+    LPUNKNOWN Unknown;
+} DIRECT3D3CREATEVERTEXBUFFERMETHODVALUE, * LPDIRECT3D3CREATEVERTEXBUFFERMETHODVALUE;
+
+typedef struct Direct3D3EnumZBufferFormatsMethodValue
+{
+    GUID ID;
+    LPD3DENUMPIXELFORMATSCALLBACK Callback;
+    LPVOID Context;
+} DIRECT3D3ENUMZBUFFERFORMATSMETHODVALUE, * LPDIRECT3D3ENUMZBUFFERFORMATSMETHODVALUE;
+
+typedef struct Direct3D3EvictManagedTexturesMethodValue
+{
+
+} DIRECT3D3EVICTMANAGEDTEXTURESMETHODVALUE, * LPDIRECT3D3EVICTMANAGEDTEXTURESMETHODVALUE;
+
+typedef struct Direct3D3EnumDevicesMethodCallbackValue
+{
+    LPVOID Object;
+    LPGUID ID;
+    LPSTR Description;
+    LPSTR Name;
+    LPD3DDEVICEDESC HardwareDescriptor;
+    LPD3DDEVICEDESC EmulationDescriptor;
+} DIRECT3D3ENUMDEVICESMETHODCALLBACKVALUE, * LPDIRECT3D3ENUMDEVICESMETHODCALLBACKVALUE;
+
+typedef struct Direct3D3EnumZBufferFormatsMethodCallbackValue
+{
+    LPVOID Object;
+    LPDDPIXELFORMAT Format;
+} DIRECT3D3ENUMZBUFFERFORMATSMETHODCALLBACKVALUE, * LPDIRECT3D3ENUMZBUFFERFORMATSMETHODCALLBACKVALUE;

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{bed088dc-6aa7-461d-a28c-93073d3b720b}</ProjectGuid>
+    <RootNamespace>ddrawfmt</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Bin\x64\$(MSBuildProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\x64\$(MSBuildProjectName)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\common;..\..\SDK\DX70\Include;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Bin\x64\$(MSBuildProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\x64\$(MSBuildProjectName)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\common;..\..\SDK\DX70\Include;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Bin\x32\$(MSBuildProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\x32\$(MSBuildProjectName)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\common;..\..\SDK\DX70\Include;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Bin\x32\$(MSBuildProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\x32\$(MSBuildProjectName)\$(Configuration)\</IntDir>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\common;..\..\SDK\DX70\Include;</ExternalIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\common.vcxproj">
+      <Project>{a2412060-91f8-4338-9ad1-937b7eeabdde}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dxguid\dxguid.vcxproj">
+      <Project>{6fef3366-146d-4fcf-addb-88618b774b74}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Agent.hxx" />
+    <ClInclude Include="AgentLogger.hxx" />
+    <ClInclude Include="Base.hxx" />
+    <ClInclude Include="BinaryLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3D2Logger.hxx" />
+    <ClInclude Include="Direct3D2TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3D3Logger.hxx" />
+    <ClInclude Include="Direct3D3TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3D7Logger.hxx" />
+    <ClInclude Include="Direct3D7TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DDevice2Logger.hxx" />
+    <ClInclude Include="Direct3DDevice2TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DDevice3Logger.hxx" />
+    <ClInclude Include="Direct3DDevice3TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DDevice7Logger.hxx" />
+    <ClInclude Include="Direct3DDevice7TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DDeviceLogger.hxx" />
+    <ClInclude Include="Direct3DDeviceTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DExecuteBufferLogger.hxx" />
+    <ClInclude Include="Direct3DExecuteBufferTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DLightLogger.hxx" />
+    <ClInclude Include="Direct3DLightTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DLogger.hxx" />
+    <ClInclude Include="Direct3DMaterial2Logger.hxx" />
+    <ClInclude Include="Direct3DMaterial2TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DMaterial3Logger.hxx" />
+    <ClInclude Include="Direct3DMaterial3TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DMaterialLogger.hxx" />
+    <ClInclude Include="Direct3DMaterialTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DTexture2Logger.hxx" />
+    <ClInclude Include="Direct3DTexture2TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DTextureLogger.hxx" />
+    <ClInclude Include="Direct3DTextureTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DVertexBuffer7Logger.hxx" />
+    <ClInclude Include="Direct3DVertexBuffer7TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DVertexBufferLogger.hxx" />
+    <ClInclude Include="Direct3DVertexBufferTextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DViewport2Logger.hxx" />
+    <ClInclude Include="Direct3DViewport2TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DViewport3Logger.hxx" />
+    <ClInclude Include="Direct3DViewport3TextLoggerSerializer.hxx" />
+    <ClInclude Include="Direct3DViewportLogger.hxx" />
+    <ClInclude Include="Direct3DViewportTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDraw2Logger.hxx" />
+    <ClInclude Include="DirectDraw2TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDraw4Logger.hxx" />
+    <ClInclude Include="DirectDraw4TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDraw7Logger.hxx" />
+    <ClInclude Include="DirectDraw7TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawClipperLogger.hxx" />
+    <ClInclude Include="DirectDrawClipperTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawColorControlLogger.hxx" />
+    <ClInclude Include="DirectDrawColorControlTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawGammaControlLogger.hxx" />
+    <ClInclude Include="DirectDrawGammaControlTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawLogger.hxx" />
+    <ClInclude Include="DirectDrawPaletteLogger.hxx" />
+    <ClInclude Include="DirectDrawPaletteTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawSurface2Logger.hxx" />
+    <ClInclude Include="DirectDrawSurface2TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawSurface3Logger.hxx" />
+    <ClInclude Include="DirectDrawSurface3TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawSurface4Logger.hxx" />
+    <ClInclude Include="DirectDrawSurface4TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawSurface7Logger.hxx" />
+    <ClInclude Include="DirectDrawSurface7TextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawSurfaceLogger.hxx" />
+    <ClInclude Include="DirectDrawSurfaceTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawVideoPortContainerLogger.hxx" />
+    <ClInclude Include="DirectDrawVideoPortContainerTextLoggerSerializer.hxx" />
+    <ClInclude Include="DirectDrawVideoPortLogger.hxx" />
+    <ClInclude Include="DirectDrawVideoPortTextLoggerSerializer.hxx" />
+    <ClInclude Include="ModuleLogger.hxx" />
+    <ClInclude Include="ModuleTextLoggerSerializer.hxx" />
+    <ClInclude Include="TextLoggerSerializer.hxx" />
+    <ClInclude Include="UnknownLogger.hxx" />
+    <ClInclude Include="UnknownTextLoggerSerializer.hxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BinaryLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3D2TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3D3TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3D7TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DDevice2TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DDevice3TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DDevice7TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DDeviceTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DExecuteBufferTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DLightTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DMaterial2TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DMaterial3TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DMaterialTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DTexture2TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DTextureTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DVertexBuffer7TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DVertexBufferTextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DViewport2TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DViewport3TextLoggerSerializer.cxx" />
+    <ClCompile Include="Direct3DViewportTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDraw2TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDraw4TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDraw7TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawClipperTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawColorControlLogger.cxx" />
+    <ClCompile Include="DirectDrawGammaControlTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawPaletteTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawSurface2TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawSurface3TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawSurface4TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawSurface7TextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawSurfaceTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawVideoPortContainerTextLoggerSerializer.cxx" />
+    <ClCompile Include="DirectDrawVideoPortTextLoggerSerializer.cxx" />
+    <ClCompile Include="ModuleTextLoggerSerializer.cxx" />
+    <ClCompile Include="TextLoggerSerializer.cxx" />
+    <ClCompile Include="UnknownTextLoggerSerializer.cxx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
