@@ -62,11 +62,11 @@ static HRESULT CALLBACK EnumAttachedSurfacesCallback(LPDIRECTDRAWSURFACE7 lpDDSu
 {
     LPENUMATTACHEDSURFACESCALLBACKCONTEXT context = (LPENUMATTACHEDSURFACESCALLBACKCONTEXT)lpContext;
 
-    DirectDrawSurface7LogMethodCallbackValue(DEBUG, EnumAttachedSurfaces, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodCallbackValue(TRACEDEBUG, EnumAttachedSurfaces, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
 
     CONST HRESULT result = context->EnumSurfacesCallback(lpDDSurface, lpDDSurfaceDesc, context->Context);
 
-    DirectDrawSurface7LogMethodCallbackResultValue(DEBUGINFO, EnumAttachedSurfaces, result, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodCallbackResultValue(TRACEDEBUGINFO, EnumAttachedSurfaces, result, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
 }
 
 typedef struct EnumOverlayZOrdersCallbackContext
@@ -81,28 +81,28 @@ static HRESULT CALLBACK EnumOverlayZOrdersCallback(LPDIRECTDRAWSURFACE7 lpDDSurf
 {
     LPENUMOVERLAYZORDERSCALLBACKCONTEXT context = (LPENUMOVERLAYZORDERSCALLBACKCONTEXT)lpContext;
 
-    DirectDrawSurface7LogMethodCallbackValue(DEBUG, EnumOverlayZOrders, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodCallbackValue(TRACEDEBUG, EnumOverlayZOrders, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
 
     CONST HRESULT result = context->Callback(lpDDSurface, lpDDSurfaceDesc, context->Context);
 
-    DirectDrawSurface7LogMethodCallbackResultValue(DEBUGINFO, EnumOverlayZOrders, result, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodCallbackResultValue(TRACEDEBUGINFO, EnumOverlayZOrders, result, 3, (context->Self, lpDDSurface, lpDDSurfaceDesc));
 }
 
 DirectDrawSurface7::DirectDrawSurface7(AgentConstructorParameters(DirectDrawSurface7))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectDrawSurface7);
+    AgentLogConstructor(TRACE, DirectDrawSurface7);
 }
 
 DirectDrawSurface7::~DirectDrawSurface7()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectDrawSurface7);
+    AgentLogDestructor(TRACE, DirectDrawSurface7);
 }
 
 HRESULT DirectDrawSurface7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectDrawSurface7LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -123,7 +123,7 @@ HRESULT DirectDrawSurface7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectDrawSurface7::AddRef()
@@ -141,30 +141,30 @@ ULONG DirectDrawSurface7::Release()
 // Attaches the specified z-buffer surface to this surface.
 HRESULT DirectDrawSurface7::AddAttachedSurface(LPDIRECTDRAWSURFACE7 lpDDSAttachedSurface)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, AddAttachedSurface, 1, (lpDDSAttachedSurface));
+    DirectDrawSurface7LogMethodValue(TRACE, AddAttachedSurface, 1, (lpDDSAttachedSurface));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSAttachedSurface);
 
     CONST HRESULT result = this->State.Self->AddAttachedSurface(lpDDSAttachedSurface);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, AddAttachedSurface, result, 1, (ActivateAgent(DirectDrawSurface7, lpDDSAttachedSurface)));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, AddAttachedSurface, result, 1, (ActivateAgent(DirectDrawSurface7, lpDDSAttachedSurface)));
 }
 
 // This method is not currently implemented.
 HRESULT DirectDrawSurface7::AddOverlayDirtyRect(LPRECT lpRect)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, AddOverlayDirtyRect, 1, (lpRect));
+    DirectDrawSurface7LogMethodValue(TRACE, AddOverlayDirtyRect, 1, (lpRect));
 
     CONST HRESULT result = this->State.Self->AddOverlayDirtyRect(lpRect);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, AddOverlayDirtyRect, result, 1, (lpRect));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, AddOverlayDirtyRect, result, 1, (lpRect));
 }
 
 // Performs a bit block transfer (bitblt).
 // This method does not support z-buffering or alpha blending during bitblt operations.
 HRESULT DirectDrawSurface7::Blt(LPRECT lpDestRect, LPDIRECTDRAWSURFACE7 lpDDSrcSurface, LPRECT lpSrcRect, DWORD dwFlags, LPDDBLTFX lpDDBltFx)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, Blt, 5, (lpDestRect, lpDDSrcSurface, lpSrcRect, dwFlags, lpDDBltFx));
+    DirectDrawSurface7LogMethodValue(TRACE, Blt, 5, (lpDestRect, lpDDSrcSurface, lpSrcRect, dwFlags, lpDDBltFx));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSrcSurface);
 
@@ -196,7 +196,7 @@ HRESULT DirectDrawSurface7::Blt(LPRECT lpDestRect, LPDIRECTDRAWSURFACE7 lpDDSrcS
         if (dwFlags & DDBLT_PRIVATE_ALIASPATTERN) { lpDDBltFx->lpDDSPattern = ActivateAgent(DirectDrawSurface, lpDDBltFx->lpDDSPattern); }
     }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, Blt, result, 5, (lpDestRect, ActivateAgent(DirectDrawSurface7, lpDDSrcSurface), lpSrcRect, dwFlags, lpDDBltFx));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, Blt, result, 5, (lpDestRect, ActivateAgent(DirectDrawSurface7, lpDDSrcSurface), lpSrcRect, dwFlags, lpDDBltFx));
 }
 
 // This method is not currently implemented.
@@ -204,37 +204,37 @@ HRESULT DirectDrawSurface7::BltBatch(LPDDBLTBATCH lpDDBltBatch, DWORD dwCount, D
 {
     if (lpDDBltBatch != NULL) { AttemptAccessAgentValue(DirectDrawSurface, lpDDBltBatch->lpDDSSrc); }
 
-    DirectDrawSurface7LogMethodValue(DEBUG, BltBatch, 3, (lpDDBltBatch, dwCount, dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, BltBatch, 3, (lpDDBltBatch, dwCount, dwFlags));
 
     CONST HRESULT result = this->State.Self->BltBatch(lpDDBltBatch, dwCount, dwFlags);
 
     if (lpDDBltBatch != NULL) { lpDDBltBatch->lpDDSSrc = ActivateAgent(DirectDrawSurface, lpDDBltBatch->lpDDSSrc); }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, BltBatch, result, 3, (lpDDBltBatch, dwCount, dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, BltBatch, result, 3, (lpDDBltBatch, dwCount, dwFlags));
 }
 
 // Performs a source copy bitblt or transparent bitblt by using a source color key or destination color key.
 HRESULT DirectDrawSurface7::BltFast(DWORD dwX, DWORD dwY, LPDIRECTDRAWSURFACE7 lpDDSrcSurface, LPRECT lpSrcRect, DWORD dwTrans)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, BltFast, 5, (dwX, dwY, lpDDSrcSurface, lpSrcRect, dwTrans));
+    DirectDrawSurface7LogMethodValue(TRACE, BltFast, 5, (dwX, dwY, lpDDSrcSurface, lpSrcRect, dwTrans));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSrcSurface);
 
     CONST HRESULT result = this->State.Self->BltFast(dwX, dwY, lpDDSrcSurface, lpSrcRect, dwTrans);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, BltFast, result, 5, (dwX, dwY, ActivateAgent(DirectDrawSurface7, lpDDSrcSurface), lpSrcRect, dwTrans));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, BltFast, result, 5, (dwX, dwY, ActivateAgent(DirectDrawSurface7, lpDDSrcSurface), lpSrcRect, dwTrans));
 }
 
 // Detaches one or more attached surfaces.
 HRESULT DirectDrawSurface7::DeleteAttachedSurface(DWORD dwFlags, LPDIRECTDRAWSURFACE7 lpDDSAttachedSurface)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, DeleteAttachedSurface, 2, (dwFlags, lpDDSAttachedSurface));
+    DirectDrawSurface7LogMethodValue(TRACE, DeleteAttachedSurface, 2, (dwFlags, lpDDSAttachedSurface));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSAttachedSurface);
 
     CONST HRESULT result = this->State.Self->DeleteAttachedSurface(dwFlags, lpDDSAttachedSurface);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, DeleteAttachedSurface, result, 2, (dwFlags, ActivateAgent(DirectDrawSurface7, lpDDSAttachedSurface)));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, DeleteAttachedSurface, result, 2, (dwFlags, ActivateAgent(DirectDrawSurface7, lpDDSAttachedSurface)));
 }
 
 // Enumerates all the surfaces that are attached to this surface.
@@ -242,7 +242,7 @@ HRESULT DirectDrawSurface7::EnumAttachedSurfaces(LPVOID lpContext, LPDDENUMSURFA
 {
     DirectDrawSurface7LogMethodValue(DEBUGINFO, EnumAttachedSurfaces, 2, (lpContext, lpEnumSurfacesCallback));
 
-    if (lpEnumSurfacesCallback == NULL) { DirectDrawSurface7LogMethodResultValue(DEBUGINFO, EnumAttachedSurfaces, DDERR_INVALIDPARAMS, 2, (lpContext, lpEnumSurfacesCallback)); }
+    if (lpEnumSurfacesCallback == NULL) { DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, EnumAttachedSurfaces, DDERR_INVALIDPARAMS, 2, (lpContext, lpEnumSurfacesCallback)); }
 
     ENUMATTACHEDSURFACESCALLBACKCONTEXT context;
 
@@ -253,7 +253,7 @@ HRESULT DirectDrawSurface7::EnumAttachedSurfaces(LPVOID lpContext, LPDDENUMSURFA
 
     CONST HRESULT result = this->State.Self->EnumAttachedSurfaces(&context, EnumAttachedSurfacesCallback);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, EnumAttachedSurfaces, result, 2, (lpContext, lpEnumSurfacesCallback));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, EnumAttachedSurfaces, result, 2, (lpContext, lpEnumSurfacesCallback));
 }
 
 // Enumerates the overlay surfaces on the specified destination.
@@ -262,7 +262,7 @@ HRESULT DirectDrawSurface7::EnumOverlayZOrders(DWORD dwFlags, LPVOID lpContext, 
 {
     DirectDrawSurface7LogMethodValue(DEBUGINFO, EnumOverlayZOrders, 3, (dwFlags, lpContext, lpfnCallback));
 
-    if (lpfnCallback == NULL) { DirectDrawSurface7LogMethodResultValue(DEBUGINFO, EnumOverlayZOrders, DDERR_INVALIDPARAMS, 3, (dwFlags, lpContext, lpfnCallback)); }
+    if (lpfnCallback == NULL) { DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, EnumOverlayZOrders, DDERR_INVALIDPARAMS, 3, (dwFlags, lpContext, lpfnCallback)); }
 
     ENUMOVERLAYZORDERSCALLBACKCONTEXT context;
 
@@ -273,96 +273,96 @@ HRESULT DirectDrawSurface7::EnumOverlayZOrders(DWORD dwFlags, LPVOID lpContext, 
 
     CONST HRESULT result = this->State.Self->EnumOverlayZOrders(dwFlags, &context, EnumOverlayZOrdersCallback);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, EnumOverlayZOrders, result, 3, (dwFlags, lpContext, lpfnCallback));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, EnumOverlayZOrders, result, 3, (dwFlags, lpContext, lpfnCallback));
 }
 
 // Makes the surface memory that is associated with the DDSCAPS_BACKBUFFER surface become associated with the front-buffer surface.
 HRESULT DirectDrawSurface7::Flip(LPDIRECTDRAWSURFACE7 lpDDSurfaceTargetOverride, DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, Flip, 2, (lpDDSurfaceTargetOverride, dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, Flip, 2, (lpDDSurfaceTargetOverride, dwFlags));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSurfaceTargetOverride);
 
     CONST HRESULT result = this->State.Self->Flip(lpDDSurfaceTargetOverride, dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, Flip, result, 2, (ActivateAgent(DirectDrawSurface7, lpDDSurfaceTargetOverride), dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, Flip, result, 2, (ActivateAgent(DirectDrawSurface7, lpDDSurfaceTargetOverride), dwFlags));
 }
 
 // Obtains the attached surface that has the specified capabilities,
 // and increments the reference count of the retrieved interface.
 HRESULT DirectDrawSurface7::GetAttachedSurface(LPDDSCAPS2 lpDDSCaps, LPDIRECTDRAWSURFACE7 FAR* lplpDDAttachedSurface)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetAttachedSurface, 2, (lpDDSCaps, lplpDDAttachedSurface));
+    DirectDrawSurface7LogMethodValue(TRACE, GetAttachedSurface, 2, (lpDDSCaps, lplpDDAttachedSurface));
 
     CONST HRESULT result = this->State.Self->GetAttachedSurface(lpDDSCaps, lplpDDAttachedSurface);
 
     if (SUCCEEDED(result)) { *lplpDDAttachedSurface = ActivateAgentDelegate(DirectDrawSurface7, *lplpDDAttachedSurface); }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetAttachedSurface, result, 2, (lpDDSCaps, lplpDDAttachedSurface));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetAttachedSurface, result, 2, (lpDDSCaps, lplpDDAttachedSurface));
 }
 
 // Obtains status about a bit block transfer (bitblt) operation.
 HRESULT DirectDrawSurface7::GetBltStatus(DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetBltStatus, 1, (dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, GetBltStatus, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->GetBltStatus(dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetBltStatus, result, 1, (dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetBltStatus, result, 1, (dwFlags));
 }
 
 // Retrieves the capabilities of this surface.
 // These capabilities are not necessarily related to the capabilities of the display device.
 HRESULT DirectDrawSurface7::GetCaps(LPDDSCAPS2 lpDDSCaps)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetCaps, 1, (lpDDSCaps));
+    DirectDrawSurface7LogMethodValue(TRACE, GetCaps, 1, (lpDDSCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(lpDDSCaps);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (lpDDSCaps));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (lpDDSCaps));
 }
 
 // Retrieves the DirectDrawClipper object that is associated with this surface,
 // and increments the reference count of the returned clipper.
 HRESULT DirectDrawSurface7::GetClipper(LPDIRECTDRAWCLIPPER FAR* lplpDDClipper)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetClipper, 1, (lplpDDClipper));
+    DirectDrawSurface7LogMethodValue(TRACE, GetClipper, 1, (lplpDDClipper));
 
     CONST HRESULT result = this->State.Self->GetClipper(lplpDDClipper);
 
     if (SUCCEEDED(result)) { *lplpDDClipper = ActivateAgentDelegate(DirectDrawClipper, *lplpDDClipper); }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetClipper, result, 1, (lplpDDClipper));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetClipper, result, 1, (lplpDDClipper));
 }
 
 // Retrieves the color key value for this surface.
 HRESULT DirectDrawSurface7::GetColorKey(DWORD dwFlags, LPDDCOLORKEY lpDDColorKey)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetColorKey, 2, (dwFlags, lpDDColorKey));
+    DirectDrawSurface7LogMethodValue(TRACE, GetColorKey, 2, (dwFlags, lpDDColorKey));
 
     CONST HRESULT result = this->State.Self->GetColorKey(dwFlags, lpDDColorKey);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetColorKey, result, 2, (dwFlags, lpDDColorKey));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetColorKey, result, 2, (dwFlags, lpDDColorKey));
 }
 
 // Creates a GDI-compatible handle of a device context for this surface.
 HRESULT DirectDrawSurface7::GetDC(HDC FAR* lphDC)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetDC, 1, (lphDC));
+    DirectDrawSurface7LogMethodValue(TRACE, GetDC, 1, (lphDC));
 
     CONST HRESULT result = this->State.Self->GetDC(lphDC);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetDC, result, 1, (lphDC));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetDC, result, 1, (lphDC));
 }
 
 // Retrieves status about whether this surface has finished its flipping process.
 HRESULT DirectDrawSurface7::GetFlipStatus(DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetFlipStatus, 1, (dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, GetFlipStatus, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->GetFlipStatus(dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetFlipStatus, result, 1, (dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetFlipStatus, result, 1, (dwFlags));
 }
 
 // Retrieves the display coordinates of this surface.
@@ -370,56 +370,56 @@ HRESULT DirectDrawSurface7::GetFlipStatus(DWORD dwFlags)
 // (that is, a surface that has the DDSCAPS_OVERLAY flag set).
 HRESULT DirectDrawSurface7::GetOverlayPosition(LPLONG lplX, LPLONG lplY)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetOverlayPosition, 2, (lplX, lplY));
+    DirectDrawSurface7LogMethodValue(TRACE, GetOverlayPosition, 2, (lplX, lplY));
 
     CONST HRESULT result = this->State.Self->GetOverlayPosition(lplX, lplY);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetOverlayPosition, result, 2, (lplX, lplY));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetOverlayPosition, result, 2, (lplX, lplY));
 }
 
 // Retrieves the DirectDrawPalette object that is associated with this surface,
 // and increments the reference count of the returned palette.
 HRESULT DirectDrawSurface7::GetPalette(LPDIRECTDRAWPALETTE FAR* lplpDDPalette)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetPalette, 1, (lplpDDPalette));
+    DirectDrawSurface7LogMethodValue(TRACE, GetPalette, 1, (lplpDDPalette));
 
     CONST HRESULT result = this->State.Self->GetPalette(lplpDDPalette);
 
     if (SUCCEEDED(result)) { *lplpDDPalette = ActivateAgentDelegate(DirectDrawPalette, *lplpDDPalette); }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetPalette, result, 1, (lplpDDPalette));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetPalette, result, 1, (lplpDDPalette));
 }
 
 // Retrieves the color and pixel format of this surface.
 HRESULT DirectDrawSurface7::GetPixelFormat(LPDDPIXELFORMAT lpDDPixelFormat)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetPixelFormat, 1, (lpDDPixelFormat));
+    DirectDrawSurface7LogMethodValue(TRACE, GetPixelFormat, 1, (lpDDPixelFormat));
 
     CONST HRESULT result = this->State.Self->GetPixelFormat(lpDDPixelFormat);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetPixelFormat, result, 1, (lpDDPixelFormat));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetPixelFormat, result, 1, (lpDDPixelFormat));
 }
 
 // Retrieves a description of this surface in its current condition.
 HRESULT DirectDrawSurface7::GetSurfaceDesc(LPDDSURFACEDESC2 lpDDSurfaceDesc)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetSurfaceDesc, 1, (lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodValue(TRACE, GetSurfaceDesc, 1, (lpDDSurfaceDesc));
 
     CONST HRESULT result = this->State.Self->GetSurfaceDesc(lpDDSurfaceDesc);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetSurfaceDesc, result, 1, (lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetSurfaceDesc, result, 1, (lpDDSurfaceDesc));
 }
 
 // Initializes a DirectDrawSurface7 object.
 HRESULT DirectDrawSurface7::Initialize(LPDIRECTDRAW lpDD, LPDDSURFACEDESC2 lpDDSurfaceDesc)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, Initialize, 2, (lpDD, lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodValue(TRACE, Initialize, 2, (lpDD, lpDDSurfaceDesc));
 
     AttemptAccessAgentValue(DirectDraw, lpDD);
 
     CONST HRESULT result = this->State.Self->Initialize(lpDD, lpDDSurfaceDesc);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectDraw, lpDD), lpDDSurfaceDesc));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectDraw, lpDD), lpDDSurfaceDesc));
 }
 
 // Determines whether the surface memory that is associated with a DirectDrawSurface7 object has been freed.
@@ -435,21 +435,21 @@ HRESULT DirectDrawSurface7::IsLost()
 // Obtains a pointer to the surface memory.
 HRESULT DirectDrawSurface7::Lock(LPRECT lpDestRect, LPDDSURFACEDESC2 lpDDSurfaceDesc, DWORD dwFlags, HANDLE hEvent)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, Lock, 4, (lpDestRect, lpDDSurfaceDesc, dwFlags, hEvent));
+    DirectDrawSurface7LogMethodValue(TRACE, Lock, 4, (lpDestRect, lpDDSurfaceDesc, dwFlags, hEvent));
 
     CONST HRESULT result = this->State.Self->Lock(lpDestRect, lpDDSurfaceDesc, dwFlags, hEvent);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, Lock, result, 4, (lpDestRect, lpDDSurfaceDesc, dwFlags, hEvent));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, Lock, result, 4, (lpDestRect, lpDDSurfaceDesc, dwFlags, hEvent));
 }
 
 // Releases the handle of a device context that was previously obtained by using the IDirectDrawSurface7::GetDC method.
 HRESULT DirectDrawSurface7::ReleaseDC(HDC hDC)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, ReleaseDC, 1, (hDC));
+    DirectDrawSurface7LogMethodValue(TRACE, ReleaseDC, 1, (hDC));
 
     CONST HRESULT result = this->State.Self->ReleaseDC(hDC);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, ReleaseDC, result, 1, (hDC));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, ReleaseDC, result, 1, (hDC));
 }
 
 // Restores a surface that has been lost.
@@ -466,33 +466,33 @@ HRESULT DirectDrawSurface7::Restore()
 // Attaches a clipper object to, or deletes one from, this surface.
 HRESULT DirectDrawSurface7::SetClipper(LPDIRECTDRAWCLIPPER lpDDClipper)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetClipper, 1, (lpDDClipper));
+    DirectDrawSurface7LogMethodValue(TRACE, SetClipper, 1, (lpDDClipper));
 
     AttemptAccessAgentValue(DirectDrawClipper, lpDDClipper);
 
     CONST HRESULT result = this->State.Self->SetClipper(lpDDClipper);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetClipper, result, 1, (ActivateAgent(DirectDrawClipper, lpDDClipper)));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetClipper, result, 1, (ActivateAgent(DirectDrawClipper, lpDDClipper)));
 }
 
 // Sets the color key value for the DirectDrawSurface7 object if the hardware supports color keys on a per-surface basis.
 HRESULT DirectDrawSurface7::SetColorKey(DWORD dwFlags, LPDDCOLORKEY lpDDColorKey)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetColorKey, 2, (dwFlags, lpDDColorKey));
+    DirectDrawSurface7LogMethodValue(TRACE, SetColorKey, 2, (dwFlags, lpDDColorKey));
 
     CONST HRESULT result = this->State.Self->SetColorKey(dwFlags, lpDDColorKey);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetColorKey, result, 2, (dwFlags, lpDDColorKey));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetColorKey, result, 2, (dwFlags, lpDDColorKey));
 }
 
 // Changes the display coordinates of an overlay surface.
 HRESULT DirectDrawSurface7::SetOverlayPosition(LONG lX, LONG lY)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetOverlayPosition, 2, (lX, lY));
+    DirectDrawSurface7LogMethodValue(TRACE, SetOverlayPosition, 2, (lX, lY));
 
     CONST HRESULT result = this->State.Self->SetOverlayPosition(lX, lY);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetOverlayPosition, result, 2, (lX, lY));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetOverlayPosition, result, 2, (lX, lY));
 }
 
 // Attaches a palette object to (or detaches one from) a surface.
@@ -500,30 +500,30 @@ HRESULT DirectDrawSurface7::SetOverlayPosition(LONG lX, LONG lY)
 // The palette change takes place immediately, without regard to refresh timing.
 HRESULT DirectDrawSurface7::SetPalette(LPDIRECTDRAWPALETTE lpDDPalette)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetPalette, 1, (lpDDPalette));
+    DirectDrawSurface7LogMethodValue(TRACE, SetPalette, 1, (lpDDPalette));
 
     AttemptAccessAgentValue(DirectDrawPalette, lpDDPalette);
 
     CONST HRESULT result = this->State.Self->SetPalette(lpDDPalette);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetPalette, result, 1, (ActivateAgent(DirectDrawPalette, lpDDPalette)));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetPalette, result, 1, (ActivateAgent(DirectDrawPalette, lpDDPalette)));
 }
 
 // Notifies DirectDraw that the direct surface manipulations are complete.
 HRESULT DirectDrawSurface7::Unlock(LPRECT lpRect)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, Unlock, 1, (lpRect));
+    DirectDrawSurface7LogMethodValue(TRACE, Unlock, 1, (lpRect));
 
     CONST HRESULT result = this->State.Self->Unlock(lpRect);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, Unlock, result, 1, (lpRect));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, Unlock, result, 1, (lpRect));
 }
 
 // Repositions or modifies the visual attributes of an overlay surface.
 // These surfaces must have the DDSCAPS_OVERLAY flag set.
 HRESULT DirectDrawSurface7::UpdateOverlay(LPRECT lpSrcRect, LPDIRECTDRAWSURFACE7 lpDDDestSurface, LPRECT lpDestRect, DWORD dwFlags, LPDDOVERLAYFX lpDDOverlayFx)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, UpdateOverlay, 5, (lpSrcRect, lpDDDestSurface, lpDestRect, dwFlags, lpDDOverlayFx));
+    DirectDrawSurface7LogMethodValue(TRACE, UpdateOverlay, 5, (lpSrcRect, lpDDDestSurface, lpDestRect, dwFlags, lpDDOverlayFx));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDDestSurface);
 
@@ -543,113 +543,113 @@ HRESULT DirectDrawSurface7::UpdateOverlay(LPRECT lpSrcRect, LPDIRECTDRAWSURFACE7
         if (dwFlags & DDOVER_ALPHASRCSURFACEOVERRIDE) { lpDDOverlayFx->lpDDSAlphaSrc = ActivateAgent(DirectDrawSurface, lpDDOverlayFx->lpDDSAlphaSrc); }
     }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, UpdateOverlay, result, 5, (lpSrcRect, ActivateAgent(DirectDrawSurface7, lpDDDestSurface), lpDestRect, dwFlags, lpDDOverlayFx));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, UpdateOverlay, result, 5, (lpSrcRect, ActivateAgent(DirectDrawSurface7, lpDDDestSurface), lpDestRect, dwFlags, lpDDOverlayFx));
 }
 
 // This method is not currently implemented.
 HRESULT DirectDrawSurface7::UpdateOverlayDisplay(DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, UpdateOverlayDisplay, 1, (dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, UpdateOverlayDisplay, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->UpdateOverlayDisplay(dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, UpdateOverlayDisplay, result, 1, (dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, UpdateOverlayDisplay, result, 1, (dwFlags));
 }
 
 // Sets the z-order of an overlay.
 HRESULT DirectDrawSurface7::UpdateOverlayZOrder(DWORD dwFlags, LPDIRECTDRAWSURFACE7 lpDDSReference)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, UpdateOverlayZOrder, 2, (dwFlags, lpDDSReference));
+    DirectDrawSurface7LogMethodValue(TRACE, UpdateOverlayZOrder, 2, (dwFlags, lpDDSReference));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDSReference);
 
     CONST HRESULT result = this->State.Self->UpdateOverlayZOrder(dwFlags, lpDDSReference);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, UpdateOverlayZOrder, result, 2, (dwFlags, ActivateAgent(DirectDrawSurface7, lpDDSReference)));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, UpdateOverlayZOrder, result, 2, (dwFlags, ActivateAgent(DirectDrawSurface7, lpDDSReference)));
 }
 
 // Retrieves an interface to the DirectDraw object that was used to create this surface.
 HRESULT DirectDrawSurface7::GetDDInterface(LPVOID FAR* lplpDD)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetDDInterface, 1, (lplpDD));
+    DirectDrawSurface7LogMethodValue(TRACE, GetDDInterface, 1, (lplpDD));
 
     CONST HRESULT result = this->State.Self->GetDDInterface(lplpDD);
 
     if (SUCCEEDED(result)) { *lplpDD = ActivateAgentDelegate(DirectDraw7, *lplpDD); }
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetDDInterface, result, 1, (lplpDD));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetDDInterface, result, 1, (lplpDD));
 }
 
 // Prevents a system-memory surface from being paged out while a bit block transfer (bitblt) operation
 // that uses direct memory access (DMA) transfers to or from system memory is in progress.
 HRESULT DirectDrawSurface7::PageLock(DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, PageLock, 1, (dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, PageLock, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->PageLock(dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, PageLock, result, 1, (dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, PageLock, result, 1, (dwFlags));
 }
 
 // Unlocks a system-memory surface, which then allows it to be paged out.
 HRESULT DirectDrawSurface7::PageUnlock(DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, PageUnlock, 1, (dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, PageUnlock, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->PageUnlock(dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, PageUnlock, result, 1, (dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, PageUnlock, result, 1, (dwFlags));
 }
 
 // Sets the characteristics of an existing surface.
 HRESULT DirectDrawSurface7::SetSurfaceDesc(LPDDSURFACEDESC2 lpDDSurfaceDesc, DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetSurfaceDesc, 2, (lpDDSurfaceDesc, dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, SetSurfaceDesc, 2, (lpDDSurfaceDesc, dwFlags));
 
     CONST HRESULT result = this->State.Self->SetSurfaceDesc(lpDDSurfaceDesc, dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetSurfaceDesc, result, 2, (lpDDSurfaceDesc, dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetSurfaceDesc, result, 2, (lpDDSurfaceDesc, dwFlags));
 }
 
 // Associates data with the surface that is intended for use by the application, not by DirectDraw.
 // Data is passed by value, and multiple sets of data can be associated with a single surface.
 HRESULT DirectDrawSurface7::SetPrivateData(REFGUID riid, LPVOID lpData, DWORD dwDataSize, DWORD dwFlags)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetPrivateData, 4, (riid, lpData, dwDataSize, dwFlags));
+    DirectDrawSurface7LogMethodValue(TRACE, SetPrivateData, 4, (riid, lpData, dwDataSize, dwFlags));
 
     CONST HRESULT result = this->State.Self->SetPrivateData(riid, lpData, dwDataSize, dwFlags);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetPrivateData, result, 4, (riid, lpData, dwDataSize, dwFlags));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetPrivateData, result, 4, (riid, lpData, dwDataSize, dwFlags));
 }
 
 // Copies the private data that is associated with this surface to a provided buffer.
 HRESULT DirectDrawSurface7::GetPrivateData(REFGUID riid, LPVOID lpBuffer, LPDWORD lpdwBufferSize)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetPrivateData, 3, (riid, lpBuffer, lpdwBufferSize));
+    DirectDrawSurface7LogMethodValue(TRACE, GetPrivateData, 3, (riid, lpBuffer, lpdwBufferSize));
 
     CONST HRESULT result = this->State.Self->GetPrivateData(riid, lpBuffer, lpdwBufferSize);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetPrivateData, result, 3, (riid, lpBuffer, lpdwBufferSize));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetPrivateData, result, 3, (riid, lpBuffer, lpdwBufferSize));
 }
 
 // Frees the specified private data that is associated with this surface.
 HRESULT DirectDrawSurface7::FreePrivateData(REFGUID riid)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, FreePrivateData, 1, (riid));
+    DirectDrawSurface7LogMethodValue(TRACE, FreePrivateData, 1, (riid));
 
     CONST HRESULT result = this->State.Self->FreePrivateData(riid);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, FreePrivateData, result, 1, (riid));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, FreePrivateData, result, 1, (riid));
 }
 
 // Retrieves the current uniqueness value for this surface.
 HRESULT DirectDrawSurface7::GetUniquenessValue(LPDWORD lpdwValue)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetUniquenessValue, 1, (lpdwValue));
+    DirectDrawSurface7LogMethodValue(TRACE, GetUniquenessValue, 1, (lpdwValue));
 
     CONST HRESULT result = this->State.Self->GetUniquenessValue(lpdwValue);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetUniquenessValue, result, 1, (lpdwValue));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetUniquenessValue, result, 1, (lpdwValue));
 }
 
 // Manually updates the uniqueness value for this surface.
@@ -665,39 +665,39 @@ HRESULT DirectDrawSurface7::ChangeUniquenessValue()
 // Assigns the texture-management priority for this texture. This method succeeds only on managed textures.
 HRESULT DirectDrawSurface7::SetPriority(DWORD dwPriority)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetPriority, 1, (dwPriority));
+    DirectDrawSurface7LogMethodValue(TRACE, SetPriority, 1, (dwPriority));
 
     CONST HRESULT result = this->State.Self->SetPriority(dwPriority);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetPriority, result, 1, (dwPriority));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetPriority, result, 1, (dwPriority));
 }
 
 // Retrieves the texture-management priority for this texture. This method succeeds only on managed textures.
 HRESULT DirectDrawSurface7::GetPriority(LPDWORD lpdwPriority)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetPriority, 1, (lpdwPriority));
+    DirectDrawSurface7LogMethodValue(TRACE, GetPriority, 1, (lpdwPriority));
 
     CONST HRESULT result = this->State.Self->GetPriority(lpdwPriority);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetPriority, result, 1, (lpdwPriority));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetPriority, result, 1, (lpdwPriority));
 }
 
 // Sets the maximum level of detail (LOD) for a managed mipmap surface. This method succeeds only on managed textures.
 HRESULT DirectDrawSurface7::SetLOD(DWORD dwMaxLOD)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, SetLOD, 1, (dwMaxLOD));
+    DirectDrawSurface7LogMethodValue(TRACE, SetLOD, 1, (dwMaxLOD));
 
     CONST HRESULT result = this->State.Self->SetLOD(dwMaxLOD);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, SetLOD, result, 1, (dwMaxLOD));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, SetLOD, result, 1, (dwMaxLOD));
 }
 
 // Retrieves the maximum level of detail (LOD) currently set for a managed mipmap surface. This method succeeds only on managed textures.
 HRESULT DirectDrawSurface7::GetLOD(LPDWORD lpdwMaxLOD)
 {
-    DirectDrawSurface7LogMethodValue(DEBUG, GetLOD, 1, (lpdwMaxLOD));
+    DirectDrawSurface7LogMethodValue(TRACE, GetLOD, 1, (lpdwMaxLOD));
 
     CONST HRESULT result = this->State.Self->GetLOD(lpdwMaxLOD);
 
-    DirectDrawSurface7LogMethodResultValue(DEBUGINFO, GetLOD, result, 1, (lpdwMaxLOD));
+    DirectDrawSurface7LogMethodResultValue(TRACEDEBUGINFO, GetLOD, result, 1, (lpdwMaxLOD));
 }

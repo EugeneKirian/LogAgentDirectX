@@ -59,8 +59,8 @@ BOOL APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID)
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH: { Initialize(); break; }
-    case DLL_THREAD_ATTACH: { if (Module.Initialized) { LogAttachThread(Module.Logger, LOGGER_LEVEL_DEBUG); } break; }
-    case DLL_THREAD_DETACH: { if (Module.Initialized) { LogDetachThread(Module.Logger, LOGGER_LEVEL_DEBUG); } break; }
+    case DLL_THREAD_ATTACH: { if (Module.Initialized) { LogAttachThread(Module.Logger, LOGGER_LEVEL_TRACE); } break; }
+    case DLL_THREAD_DETACH: { if (Module.Initialized) { LogDetachThread(Module.Logger, LOGGER_LEVEL_TRACE); } break; }
     case DLL_PROCESS_DETACH: { Release(); break; }
     }
 

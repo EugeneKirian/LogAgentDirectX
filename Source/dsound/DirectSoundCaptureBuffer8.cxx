@@ -51,18 +51,18 @@ SOFTWARE.
 DirectSoundCaptureBuffer8::DirectSoundCaptureBuffer8(AgentConstructorParameters(DirectSoundCaptureBuffer8))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundCaptureBuffer8);
+    AgentLogConstructor(TRACE, DirectSoundCaptureBuffer8);
 }
 
 DirectSoundCaptureBuffer8::~DirectSoundCaptureBuffer8()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundCaptureBuffer8);
+    AgentLogDestructor(TRACE, DirectSoundCaptureBuffer8);
 }
 
 HRESULT DirectSoundCaptureBuffer8::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -78,7 +78,7 @@ HRESULT DirectSoundCaptureBuffer8::QueryInterface(REFIID riid, LPVOID FAR* ppvOb
         }
     }
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundCaptureBuffer8::AddRef()
@@ -96,11 +96,11 @@ ULONG DirectSoundCaptureBuffer8::Release()
 // Retrieves the capabilities of the buffer.
 HRESULT DirectSoundCaptureBuffer8::GetCaps(LPDSCBCAPS pDSCBCaps)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetCaps, 1, (pDSCBCaps));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetCaps, 1, (pDSCBCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(pDSCBCaps);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (pDSCBCaps));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (pDSCBCaps));
 }
 
 // Retrieves the capture and read cursors in the buffer.
@@ -108,31 +108,31 @@ HRESULT DirectSoundCaptureBuffer8::GetCaps(LPDSCBCAPS pDSCBCaps)
 // The data after the read position up to and including the capture position is not necessarily valid data.
 HRESULT DirectSoundCaptureBuffer8::GetCurrentPosition(LPDWORD pdwCapturePosition, LPDWORD pdwReadPosition)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetCurrentPosition, 2, (pdwCapturePosition, pdwReadPosition));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetCurrentPosition, 2, (pdwCapturePosition, pdwReadPosition));
 
     CONST HRESULT result = this->State.Self->GetCurrentPosition(pdwCapturePosition, pdwReadPosition);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetCurrentPosition, result, 2, (pdwCapturePosition, pdwReadPosition));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetCurrentPosition, result, 2, (pdwCapturePosition, pdwReadPosition));
 }
 
 // Retrieves the format of the capture buffer.
 HRESULT DirectSoundCaptureBuffer8::GetFormat(LPWAVEFORMATEX pwfxFormat, DWORD dwSizeAllocated, LPDWORD pdwSizeWritten)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetFormat, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetFormat, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
 
     CONST HRESULT result = this->State.Self->GetFormat(pwfxFormat, dwSizeAllocated, pdwSizeWritten);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetFormat, result, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetFormat, result, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
 }
 
 // Retrieves the status of the capture buffer.
 HRESULT DirectSoundCaptureBuffer8::GetStatus(LPDWORD pdwStatus)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetStatus, 1, (pdwStatus));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetStatus, 1, (pdwStatus));
 
     CONST HRESULT result = this->State.Self->GetStatus(pdwStatus);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetStatus, result, 1, (pdwStatus));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetStatus, result, 1, (pdwStatus));
 }
 
 // Initializes a capture buffer object.
@@ -141,35 +141,35 @@ HRESULT DirectSoundCaptureBuffer8::GetStatus(LPDWORD pdwStatus)
 // It is provided for future extensibility.
 HRESULT DirectSoundCaptureBuffer8::Initialize(LPDIRECTSOUNDCAPTURE pDirectSoundCapture, LPCDSCBUFFERDESC pcDSCBufferDesc)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, Initialize, 2, (pDirectSoundCapture, pcDSCBufferDesc));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, Initialize, 2, (pDirectSoundCapture, pcDSCBufferDesc));
 
     AttemptAccessAgentValue(DirectSoundCapture, pDirectSoundCapture);
 
     CONST HRESULT result = this->State.Self->Initialize(pDirectSoundCapture, pcDSCBufferDesc);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectSoundCapture, pDirectSoundCapture), pcDSCBufferDesc));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectSoundCapture, pDirectSoundCapture), pcDSCBufferDesc));
 }
 
 // Locks a portion of the buffer.
 // Locking the buffer returns pointers into the buffer, allowing the application to read or write audio data into memory.
 HRESULT DirectSoundCaptureBuffer8::Lock(DWORD dwOffset, DWORD dwBytes, LPVOID* ppvAudioPtr1, LPDWORD pdwAudioBytes1, LPVOID* ppvAudioPtr2, LPDWORD pdwAudioBytes2, DWORD dwFlags)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, Lock, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, Lock, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
 
     CONST HRESULT result = this->State.Self->Lock(dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, Lock, result, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, Lock, result, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
 }
 
 // Begins capturing data into the buffer.
 // If the buffer is already capturing, the method has no effect.
 HRESULT DirectSoundCaptureBuffer8::Start(DWORD dwFlags)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, Start, 1, (dwFlags));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, Start, 1, (dwFlags));
 
     CONST HRESULT result = this->State.Self->Start(dwFlags);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, Start, result, 1, (dwFlags));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, Start, result, 1, (dwFlags));
 }
 
 // Stops the buffer so that it is no longer capturing data.
@@ -186,17 +186,17 @@ HRESULT DirectSoundCaptureBuffer8::Stop()
 // Unlocks the buffer.
 HRESULT DirectSoundCaptureBuffer8::Unlock(LPVOID pvAudioPtr1, DWORD dwAudioBytes1, LPVOID pvAudioPtr2, DWORD dwAudioBytes2)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, Unlock, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, Unlock, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
 
     CONST HRESULT result = this->State.Self->Unlock(pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, Unlock, result, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, Unlock, result, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
 }
 
 // Retrieves an interface to an effect object associated with the buffer.
 HRESULT DirectSoundCaptureBuffer8::GetObjectInPath(REFGUID rguidObject, DWORD dwIndex, REFGUID rguidInterface, LPVOID* ppObject)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetObjectInPath, 4, (rguidObject, dwIndex, rguidInterface, ppObject));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetObjectInPath, 4, (rguidObject, dwIndex, rguidInterface, ppObject));
 
     CONST HRESULT result = this->State.Self->GetObjectInPath(rguidObject, dwIndex, rguidInterface, ppObject);
 
@@ -220,15 +220,15 @@ HRESULT DirectSoundCaptureBuffer8::GetObjectInPath(REFGUID rguidObject, DWORD dw
         }
     }
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetObjectInPath, result, 4, (rguidObject, dwIndex, rguidInterface, ppObject));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetObjectInPath, result, 4, (rguidObject, dwIndex, rguidInterface, ppObject));
 }
 
 // Retrieves the status of capture effects.
 HRESULT DirectSoundCaptureBuffer8::GetFXStatus(DWORD dwEffectsCount, LPDWORD pdwFXStatus)
 {
-    DirectSoundCaptureBuffer8LogMethodValue(DEBUG, GetFXStatus, 2, (dwEffectsCount, pdwFXStatus));
+    DirectSoundCaptureBuffer8LogMethodValue(TRACE, GetFXStatus, 2, (dwEffectsCount, pdwFXStatus));
 
     CONST HRESULT result = this->State.Self->GetFXStatus(dwEffectsCount, pdwFXStatus);
 
-    DirectSoundCaptureBuffer8LogMethodResultValue(DEBUGINFO, GetFXStatus, result, 2, (dwEffectsCount, pdwFXStatus));
+    DirectSoundCaptureBuffer8LogMethodResultValue(TRACEDEBUGINFO, GetFXStatus, result, 2, (dwEffectsCount, pdwFXStatus));
 }

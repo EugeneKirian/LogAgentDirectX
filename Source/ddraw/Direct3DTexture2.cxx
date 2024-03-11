@@ -45,18 +45,18 @@ SOFTWARE.
 Direct3DTexture2::Direct3DTexture2(AgentConstructorParameters(Direct3DTexture2))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3DTexture2);
+    AgentLogConstructor(TRACE, Direct3DTexture2);
 }
 
 Direct3DTexture2::~Direct3DTexture2()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3DTexture2);
+    AgentLogDestructor(TRACE, Direct3DTexture2);
 }
 
 HRESULT Direct3DTexture2::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DTexture2LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DTexture2LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -76,7 +76,7 @@ HRESULT Direct3DTexture2::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DTexture2LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DTexture2LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3DTexture2::AddRef()
@@ -94,34 +94,34 @@ ULONG Direct3DTexture2::Release()
 // Obtains the texture handle to be used when rendering with the IDirect3DDevice2 or IDirect3DDevice interfaces.
 HRESULT Direct3DTexture2::GetHandle(LPDIRECT3DDEVICE2 lpDirect3DDevice, LPD3DTEXTUREHANDLE lpHandle)
 {
-    Direct3DTexture2LogMethodValue(DEBUG, GetHandle, 2, (lpDirect3DDevice, lpHandle));
+    Direct3DTexture2LogMethodValue(TRACE, GetHandle, 2, (lpDirect3DDevice, lpHandle));
 
     AttemptAccessAgentValue(Direct3DDevice2, lpDirect3DDevice);
 
     CONST HRESULT result = this->State.Self->GetHandle(lpDirect3DDevice, lpHandle);
 
-    Direct3DTexture2LogMethodResultValue(DEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice2, lpDirect3DDevice), lpHandle));
+    Direct3DTexture2LogMethodResultValue(TRACEDEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice2, lpDirect3DDevice), lpHandle));
 }
 
 // Informs the driver that the palette has changed on a texture surface. 
 HRESULT Direct3DTexture2::PaletteChanged(DWORD dwStart, DWORD dwCount)
 {
-    Direct3DTexture2LogMethodValue(DEBUG, PaletteChanged, 2, (dwStart, dwCount));
+    Direct3DTexture2LogMethodValue(TRACE, PaletteChanged, 2, (dwStart, dwCount));
 
     CONST HRESULT result = this->State.Self->PaletteChanged(dwStart, dwCount);
 
-    Direct3DTexture2LogMethodResultValue(DEBUGINFO, PaletteChanged, result, 2, (dwStart, dwCount));
+    Direct3DTexture2LogMethodResultValue(TRACEDEBUGINFO, PaletteChanged, result, 2, (dwStart, dwCount));
 }
 
 // loads a texture that was created with the DDSCAPS_ALLOCONLOAD flag,
 // which indicates that memory for the DirectDraw surface is not allocated until this method loads the surface.
 HRESULT Direct3DTexture2::Load(LPDIRECT3DTEXTURE2 lpD3DTexture)
 {
-    Direct3DTexture2LogMethodValue(DEBUG, Load, 1, (lpD3DTexture));
+    Direct3DTexture2LogMethodValue(TRACE, Load, 1, (lpD3DTexture));
 
     AttemptAccessAgentValue(Direct3DTexture2, lpD3DTexture);
 
     CONST HRESULT result = this->State.Self->Load(lpD3DTexture);
 
-    Direct3DTexture2LogMethodResultValue(DEBUGINFO, Load, result, 1, (ActivateAgent(Direct3DTexture2, lpD3DTexture)));
+    Direct3DTexture2LogMethodResultValue(TRACEDEBUGINFO, Load, result, 1, (ActivateAgent(Direct3DTexture2, lpD3DTexture)));
 }

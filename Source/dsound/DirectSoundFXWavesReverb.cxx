@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXWavesReverb::DirectSoundFXWavesReverb(AgentConstructorParameters(DirectSoundFXWavesReverb))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXWavesReverb);
+    AgentLogConstructor(TRACE, DirectSoundFXWavesReverb);
 }
 
 DirectSoundFXWavesReverb::~DirectSoundFXWavesReverb()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXWavesReverb);
+    AgentLogDestructor(TRACE, DirectSoundFXWavesReverb);
 }
 
 HRESULT DirectSoundFXWavesReverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXWavesReverbLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXWavesReverbLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXWavesReverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj
         }
     }
 
-    DirectSoundFXWavesReverbLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXWavesReverbLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXWavesReverb::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXWavesReverb::Release()
 // Sets the music reverberation parameters of a buffer.
 HRESULT DirectSoundFXWavesReverb::SetAllParameters(LPCDSFXWavesReverb pcDsFXWavesReverb)
 {
-    DirectSoundFXWavesReverbLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFXWavesReverb));
+    DirectSoundFXWavesReverbLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFXWavesReverb));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFXWavesReverb);
 
-    DirectSoundFXWavesReverbLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFXWavesReverb));
+    DirectSoundFXWavesReverbLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFXWavesReverb));
 }
 
 // Retrieves the music reverberation parameters of a buffer.
 HRESULT DirectSoundFXWavesReverb::GetAllParameters(LPDSFXWavesReverb pDsFXWavesReverb)
 {
-    DirectSoundFXWavesReverbLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFXWavesReverb));
+    DirectSoundFXWavesReverbLogMethodValue(TRACE, GetAllParameters, 1, (pDsFXWavesReverb));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFXWavesReverb);
 
-    DirectSoundFXWavesReverbLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFXWavesReverb));
+    DirectSoundFXWavesReverbLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFXWavesReverb));
 }

@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXParamEq::DirectSoundFXParamEq(AgentConstructorParameters(DirectSoundFXParamEq))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXParamEq);
+    AgentLogConstructor(TRACE, DirectSoundFXParamEq);
 }
 
 DirectSoundFXParamEq::~DirectSoundFXParamEq()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXParamEq);
+    AgentLogDestructor(TRACE, DirectSoundFXParamEq);
 }
 
 HRESULT DirectSoundFXParamEq::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXParamEqLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXParamEqLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXParamEq::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXParamEqLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXParamEqLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXParamEq::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXParamEq::Release()
 // Sets the parametric equalizer parameters of a buffer.
 HRESULT DirectSoundFXParamEq::SetAllParameters(LPCDSFXParamEq pcDsFxParamEq)
 {
-    DirectSoundFXParamEqLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxParamEq));
+    DirectSoundFXParamEqLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxParamEq));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxParamEq);
 
-    DirectSoundFXParamEqLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxParamEq));
+    DirectSoundFXParamEqLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxParamEq));
 }
 
 // Retrieves the parametric equalizer parameters of a buffer.
 HRESULT DirectSoundFXParamEq::GetAllParameters(LPDSFXParamEq pDsFxParamEq)
 {
-    DirectSoundFXParamEqLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxParamEq));
+    DirectSoundFXParamEqLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxParamEq));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxParamEq);
 
-    DirectSoundFXParamEqLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxParamEq));
+    DirectSoundFXParamEqLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxParamEq));
 }

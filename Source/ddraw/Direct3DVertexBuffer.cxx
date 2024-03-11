@@ -39,18 +39,18 @@ SOFTWARE.
 Direct3DVertexBuffer::Direct3DVertexBuffer(AgentConstructorParameters(Direct3DVertexBuffer))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3DVertexBuffer);
+    AgentLogConstructor(TRACE, Direct3DVertexBuffer);
 }
 
 Direct3DVertexBuffer::~Direct3DVertexBuffer()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3DVertexBuffer);
+    AgentLogDestructor(TRACE, Direct3DVertexBuffer);
 }
 
 HRESULT Direct3DVertexBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DVertexBufferLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DVertexBufferLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT Direct3DVertexBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DVertexBufferLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DVertexBufferLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3DVertexBuffer::AddRef()
@@ -81,11 +81,11 @@ ULONG Direct3DVertexBuffer::Release()
 // Locks a vertex buffer and obtains a pointer to the vertex buffer memory.
 HRESULT Direct3DVertexBuffer::Lock(DWORD dwFlags, LPVOID* lplpData, LPDWORD lpdwSize)
 {
-    Direct3DVertexBufferLogMethodValue(DEBUG, Lock, 3, (dwFlags, lplpData, lpdwSize));
+    Direct3DVertexBufferLogMethodValue(TRACE, Lock, 3, (dwFlags, lplpData, lpdwSize));
 
     CONST HRESULT result = this->State.Self->Lock(dwFlags, lplpData, lpdwSize);
 
-    Direct3DVertexBufferLogMethodResultValue(DEBUGINFO, Lock, result, 3, (dwFlags, lplpData, lpdwSize));
+    Direct3DVertexBufferLogMethodResultValue(TRACEDEBUGINFO, Lock, result, 3, (dwFlags, lplpData, lpdwSize));
 }
 
 // Unlocks a previously locked vertex buffer.
@@ -101,34 +101,34 @@ HRESULT Direct3DVertexBuffer::Unlock()
 // Processes untransformed vertices into a transformed or optimized vertex buffer.
 HRESULT Direct3DVertexBuffer::ProcessVertices(DWORD dwVertexOp, DWORD dwDestIndex, DWORD dwCount, LPDIRECT3DVERTEXBUFFER lpSrcBuffer, DWORD dwSrcIndex, LPDIRECT3DDEVICE3 lpD3DDevice, DWORD dwFlags)
 {
-    Direct3DVertexBufferLogMethodValue(DEBUG, ProcessVertices, 7, (dwVertexOp, dwDestIndex, dwCount, lpSrcBuffer, dwSrcIndex, lpD3DDevice, dwFlags));
+    Direct3DVertexBufferLogMethodValue(TRACE, ProcessVertices, 7, (dwVertexOp, dwDestIndex, dwCount, lpSrcBuffer, dwSrcIndex, lpD3DDevice, dwFlags));
 
     AttemptAccessAgentValue(Direct3DVertexBuffer, lpSrcBuffer);
     AttemptAccessAgentValue(Direct3DDevice3, lpD3DDevice);
 
     CONST HRESULT result = this->State.Self->ProcessVertices(dwVertexOp, dwDestIndex, dwCount, lpSrcBuffer, dwSrcIndex, lpD3DDevice, dwFlags);
 
-    Direct3DVertexBufferLogMethodResultValue(DEBUGINFO, ProcessVertices, result, 7, (dwVertexOp, dwDestIndex, dwCount, ActivateAgent(Direct3DVertexBuffer, lpSrcBuffer), dwSrcIndex, ActivateAgent(Direct3DDevice3, lpD3DDevice), dwFlags));
+    Direct3DVertexBufferLogMethodResultValue(TRACEDEBUGINFO, ProcessVertices, result, 7, (dwVertexOp, dwDestIndex, dwCount, ActivateAgent(Direct3DVertexBuffer, lpSrcBuffer), dwSrcIndex, ActivateAgent(Direct3DDevice3, lpD3DDevice), dwFlags));
 }
 
 // Retrieves a description of the vertex buffer.
 HRESULT Direct3DVertexBuffer::GetVertexBufferDesc(LPD3DVERTEXBUFFERDESC lpVBDesc)
 {
-    Direct3DVertexBufferLogMethodValue(DEBUG, GetVertexBufferDesc, 1, (lpVBDesc));
+    Direct3DVertexBufferLogMethodValue(TRACE, GetVertexBufferDesc, 1, (lpVBDesc));
 
     CONST HRESULT result = this->State.Self->GetVertexBufferDesc(lpVBDesc);
 
-    Direct3DVertexBufferLogMethodResultValue(DEBUGINFO, GetVertexBufferDesc, result, 1, (lpVBDesc));
+    Direct3DVertexBufferLogMethodResultValue(TRACEDEBUGINFO, GetVertexBufferDesc, result, 1, (lpVBDesc));
 }
 
 // Converts an unoptimized vertex buffer into an optimized vertex buffer.
 HRESULT Direct3DVertexBuffer::Optimize(LPDIRECT3DDEVICE3 lpD3DDevice, DWORD dwFlags)
 {
-    Direct3DVertexBufferLogMethodValue(DEBUG, Optimize, 2, (lpD3DDevice, dwFlags));
+    Direct3DVertexBufferLogMethodValue(TRACE, Optimize, 2, (lpD3DDevice, dwFlags));
 
     AttemptAccessAgentValue(Direct3DDevice3, lpD3DDevice);
 
     CONST HRESULT result = this->State.Self->Optimize(lpD3DDevice, dwFlags);
 
-    Direct3DVertexBufferLogMethodResultValue(DEBUGINFO, Optimize, result, 2, (ActivateAgent(Direct3DDevice3, lpD3DDevice), dwFlags));
+    Direct3DVertexBufferLogMethodResultValue(TRACEDEBUGINFO, Optimize, result, 2, (ActivateAgent(Direct3DDevice3, lpD3DDevice), dwFlags));
 }

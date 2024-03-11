@@ -44,18 +44,18 @@ SOFTWARE.
 DirectSoundBuffer::DirectSoundBuffer(AgentConstructorParameters(DirectSoundBuffer))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundBuffer);
+    AgentLogConstructor(TRACE, DirectSoundBuffer);
 }
 
 DirectSoundBuffer::~DirectSoundBuffer()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundBuffer);
+    AgentLogDestructor(TRACE, DirectSoundBuffer);
 }
 
 HRESULT DirectSoundBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundBufferLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -74,7 +74,7 @@ HRESULT DirectSoundBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundBuffer::AddRef()
@@ -92,154 +92,154 @@ ULONG DirectSoundBuffer::Release()
 // Retrieves the capabilities of the DirectSoundBuffer object.
 HRESULT DirectSoundBuffer::GetCaps(LPDSBCAPS pDSBufferCaps)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetCaps, 1, (pDSBufferCaps));
+    DirectSoundBufferLogMethodValue(TRACE, GetCaps, 1, (pDSBufferCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(pDSBufferCaps);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (pDSBufferCaps));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (pDSBufferCaps));
 }
 
 // Retrieves the current position of the play and write cursors in the sound buffer.
 HRESULT DirectSoundBuffer::GetCurrentPosition(LPDWORD pdwCurrentPlayCursor, LPDWORD pdwCurrentWriteCursor)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetCurrentPosition, 2, (pdwCurrentPlayCursor, pdwCurrentWriteCursor));
+    DirectSoundBufferLogMethodValue(TRACE, GetCurrentPosition, 2, (pdwCurrentPlayCursor, pdwCurrentWriteCursor));
 
     CONST HRESULT result = this->State.Self->GetCurrentPosition(pdwCurrentPlayCursor, pdwCurrentWriteCursor);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetCurrentPosition, result, 2, (pdwCurrentPlayCursor, pdwCurrentWriteCursor));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetCurrentPosition, result, 2, (pdwCurrentPlayCursor, pdwCurrentWriteCursor));
 }
 
 // Retrieves a description of the format of the sound data in the buffer, or the buffer size needed to retrieve the format description.
 HRESULT DirectSoundBuffer::GetFormat(LPWAVEFORMATEX pwfxFormat, DWORD dwSizeAllocated, LPDWORD pdwSizeWritten)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetFormat, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
+    DirectSoundBufferLogMethodValue(TRACE, GetFormat, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
 
     CONST HRESULT result = this->State.Self->GetFormat(pwfxFormat, dwSizeAllocated, pdwSizeWritten);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetFormat, result, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetFormat, result, 3, (pwfxFormat, dwSizeAllocated, pdwSizeWritten));
 }
 
 // Retrieves the current volume for this sound buffer.
 HRESULT DirectSoundBuffer::GetVolume(LPLONG plVolume)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetVolume, 1, (plVolume));
+    DirectSoundBufferLogMethodValue(TRACE, GetVolume, 1, (plVolume));
 
     CONST HRESULT result = this->State.Self->GetVolume(plVolume);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetVolume, result, 1, (plVolume));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetVolume, result, 1, (plVolume));
 }
 
 // Retrieves a variable that represents the relative volume between the left and right audio channels.
 HRESULT DirectSoundBuffer::GetPan(LPLONG plPan)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetPan, 1, (plPan));
+    DirectSoundBufferLogMethodValue(TRACE, GetPan, 1, (plPan));
 
     CONST HRESULT result = this->State.Self->GetPan(plPan);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetPan, result, 1, (plPan));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetPan, result, 1, (plPan));
 }
 
 // Retrieves the frequency, in samples per second, at which the buffer is playing.
 HRESULT DirectSoundBuffer::GetFrequency(LPDWORD pdwFrequency)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetFrequency, 1, (pdwFrequency));
+    DirectSoundBufferLogMethodValue(TRACE, GetFrequency, 1, (pdwFrequency));
 
     CONST HRESULT result = this->State.Self->GetFrequency(pdwFrequency);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetFrequency, result, 1, (pdwFrequency));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetFrequency, result, 1, (pdwFrequency));
 }
 
 // Retrieves the current status of the sound buffer.
 HRESULT DirectSoundBuffer::GetStatus(LPDWORD pdwStatus)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, GetStatus, 1, (pdwStatus));
+    DirectSoundBufferLogMethodValue(TRACE, GetStatus, 1, (pdwStatus));
 
     CONST HRESULT result = this->State.Self->GetStatus(pdwStatus);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, GetStatus, result, 1, (pdwStatus));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, GetStatus, result, 1, (pdwStatus));
 }
 
 // Initializes a DirectSoundBuffer object if it has not yet been initialized.
 HRESULT DirectSoundBuffer::Initialize(LPDIRECTSOUND pDirectSound, LPCDSBUFFERDESC pcDSBufferDesc)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, Initialize, 2, (pDirectSound, pcDSBufferDesc));
+    DirectSoundBufferLogMethodValue(TRACE, Initialize, 2, (pDirectSound, pcDSBufferDesc));
 
     AttemptAccessAgentValue(DirectSound, pDirectSound);
 
     CONST HRESULT result = this->State.Self->Initialize(pDirectSound, pcDSBufferDesc);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectSound, pDirectSound), pcDSBufferDesc));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectSound, pDirectSound), pcDSBufferDesc));
 }
 
 // Obtains a valid write pointer to the sound buffer's audio data.
 HRESULT DirectSoundBuffer::Lock(DWORD dwOffset, DWORD dwBytes, LPVOID* ppvAudioPtr1, LPDWORD pdwAudioBytes1, LPVOID* ppvAudioPtr2, LPDWORD pdwAudioBytes2, DWORD dwFlags)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, Lock, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
+    DirectSoundBufferLogMethodValue(TRACE, Lock, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
 
     CONST HRESULT result = this->State.Self->Lock(dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, Lock, result, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, Lock, result, 7, (dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags));
 }
 
 // Causes the sound buffer to play from the current position.
 HRESULT DirectSoundBuffer::Play(DWORD dwReserved1, DWORD dwPriority, DWORD dwFlags)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, Play, 3, (dwReserved1, dwPriority, dwFlags));
+    DirectSoundBufferLogMethodValue(TRACE, Play, 3, (dwReserved1, dwPriority, dwFlags));
 
     CONST HRESULT result = this->State.Self->Play(dwReserved1, dwPriority, dwFlags);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, Play, result, 3, (dwReserved1, dwPriority, dwFlags));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, Play, result, 3, (dwReserved1, dwPriority, dwFlags));
 }
 
 // Moves the current play position for secondary sound buffers.
 HRESULT DirectSoundBuffer::SetCurrentPosition(DWORD dwNewPosition)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, SetCurrentPosition, 1, (dwNewPosition));
+    DirectSoundBufferLogMethodValue(TRACE, SetCurrentPosition, 1, (dwNewPosition));
 
     CONST HRESULT result = this->State.Self->SetCurrentPosition(dwNewPosition);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, SetCurrentPosition, result, 1, (dwNewPosition));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, SetCurrentPosition, result, 1, (dwNewPosition));
 }
 
 // Sets the format of the primary sound buffer for the application.
 // Whenever this application has the input focus, DirectSound will set the primary buffer to the specified format.
 HRESULT DirectSoundBuffer::SetFormat(LPCWAVEFORMATEX pcfxFormat)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, SetFormat, 1, (pcfxFormat));
+    DirectSoundBufferLogMethodValue(TRACE, SetFormat, 1, (pcfxFormat));
 
     CONST HRESULT result = this->State.Self->SetFormat(pcfxFormat);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, SetFormat, result, 1, (pcfxFormat));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, SetFormat, result, 1, (pcfxFormat));
 }
 
 // Changes the volume of a sound buffer.
 HRESULT DirectSoundBuffer::SetVolume(LONG lVolume)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, SetVolume, 1, (lVolume));
+    DirectSoundBufferLogMethodValue(TRACE, SetVolume, 1, (lVolume));
 
     CONST HRESULT result = this->State.Self->SetVolume(lVolume);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, SetVolume, result, 1, (lVolume));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, SetVolume, result, 1, (lVolume));
 }
 
 // Specifies the relative volume between the left and right channels.
 HRESULT DirectSoundBuffer::SetPan(LONG lPan)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, SetPan, 1, (lPan));
+    DirectSoundBufferLogMethodValue(TRACE, SetPan, 1, (lPan));
 
     CONST HRESULT result = this->State.Self->SetPan(lPan);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, SetPan, result, 1, (lPan));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, SetPan, result, 1, (lPan));
 }
 
 // Sets the frequency at which the audio samples are played.
 HRESULT DirectSoundBuffer::SetFrequency(DWORD dwFrequency)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, SetFrequency, 1, (dwFrequency));
+    DirectSoundBufferLogMethodValue(TRACE, SetFrequency, 1, (dwFrequency));
 
     CONST HRESULT result = this->State.Self->SetFrequency(dwFrequency);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, SetFrequency, result, 1, (dwFrequency));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, SetFrequency, result, 1, (dwFrequency));
 }
 
 // Causes the sound buffer to stop playing.
@@ -255,11 +255,11 @@ HRESULT DirectSoundBuffer::Stop()
 // Releases a locked sound buffer.
 HRESULT DirectSoundBuffer::Unlock(LPVOID pvAudioPtr1, DWORD dwAudioBytes1, LPVOID pvAudioPtr2, DWORD dwAudioBytes2)
 {
-    DirectSoundBufferLogMethodValue(DEBUG, Unlock, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
+    DirectSoundBufferLogMethodValue(TRACE, Unlock, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
 
     CONST HRESULT result = this->State.Self->Unlock(pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2);
 
-    DirectSoundBufferLogMethodResultValue(DEBUGINFO, Unlock, result, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
+    DirectSoundBufferLogMethodResultValue(TRACEDEBUGINFO, Unlock, result, 4, (pvAudioPtr1, dwAudioBytes1, pvAudioPtr2, dwAudioBytes2));
 }
 
 // Restores the memory allocation for a lost sound buffer for the specified DirectSoundBuffer object.

@@ -43,18 +43,18 @@ SOFTWARE.
 DirectSoundFullDuplex::DirectSoundFullDuplex(AgentConstructorParameters(DirectSoundFullDuplex))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFullDuplex);
+    AgentLogConstructor(TRACE, DirectSoundFullDuplex);
 }
 
 DirectSoundFullDuplex::~DirectSoundFullDuplex()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFullDuplex);
+    AgentLogDestructor(TRACE, DirectSoundFullDuplex);
 }
 
 HRESULT DirectSoundFullDuplex::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFullDuplexLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFullDuplexLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -70,7 +70,7 @@ HRESULT DirectSoundFullDuplex::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFullDuplexLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFullDuplexLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFullDuplex::AddRef()
@@ -87,7 +87,7 @@ ULONG DirectSoundFullDuplex::Release()
 
 HRESULT DirectSoundFullDuplex::Initialize(LPCGUID pCaptureGuid, LPCGUID pRenderGuid, LPCDSCBUFFERDESC lpDscBufferDesc, LPCDSBUFFERDESC lpDsBufferDesc, HWND hWnd, DWORD dwLevel, LPLPDIRECTSOUNDCAPTUREBUFFER8 lplpDirectSoundFullDuplexCaptureBuffer8, LPLPDIRECTSOUNDBUFFER8 lplpDirectSoundFullDuplexBuffer8)
 {
-    DirectSoundFullDuplexLogMethodValue(DEBUG, Initialize, 8, (pCaptureGuid, pRenderGuid, lpDscBufferDesc, lpDsBufferDesc, hWnd, dwLevel, lplpDirectSoundFullDuplexCaptureBuffer8, lplpDirectSoundFullDuplexBuffer8));
+    DirectSoundFullDuplexLogMethodValue(TRACE, Initialize, 8, (pCaptureGuid, pRenderGuid, lpDscBufferDesc, lpDsBufferDesc, hWnd, dwLevel, lplpDirectSoundFullDuplexCaptureBuffer8, lplpDirectSoundFullDuplexBuffer8));
 
     CONST HRESULT result = this->State.Self->Initialize(pCaptureGuid, pRenderGuid, lpDscBufferDesc, lpDsBufferDesc, hWnd, dwLevel, lplpDirectSoundFullDuplexCaptureBuffer8, lplpDirectSoundFullDuplexBuffer8);
 
@@ -97,5 +97,5 @@ HRESULT DirectSoundFullDuplex::Initialize(LPCGUID pCaptureGuid, LPCGUID pRenderG
         *lplpDirectSoundFullDuplexBuffer8 = ActivateAgentDelegate(DirectSoundBuffer8, *lplpDirectSoundFullDuplexBuffer8);
     }
 
-    DirectSoundFullDuplexLogMethodResultValue(DEBUGINFO, Initialize, result, 8, (pCaptureGuid, pRenderGuid, lpDscBufferDesc, lpDsBufferDesc, hWnd, dwLevel, lplpDirectSoundFullDuplexCaptureBuffer8, lplpDirectSoundFullDuplexBuffer8));
+    DirectSoundFullDuplexLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 8, (pCaptureGuid, pRenderGuid, lpDscBufferDesc, lpDsBufferDesc, hWnd, dwLevel, lplpDirectSoundFullDuplexCaptureBuffer8, lplpDirectSoundFullDuplexBuffer8));
 }

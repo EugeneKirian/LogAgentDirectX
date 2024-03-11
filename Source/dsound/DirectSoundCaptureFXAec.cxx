@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundCaptureFXAec::DirectSoundCaptureFXAec(AgentConstructorParameters(DirectSoundCaptureFXAec))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundCaptureFXAec);
+    AgentLogConstructor(TRACE, DirectSoundCaptureFXAec);
 }
 
 DirectSoundCaptureFXAec::~DirectSoundCaptureFXAec()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundCaptureFXAec);
+    AgentLogDestructor(TRACE, DirectSoundCaptureFXAec);
 }
 
 HRESULT DirectSoundCaptureFXAec::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundCaptureFXAecLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundCaptureFXAecLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundCaptureFXAec::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundCaptureFXAecLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundCaptureFXAecLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundCaptureFXAec::AddRef()
@@ -82,32 +82,32 @@ ULONG DirectSoundCaptureFXAec::Release()
 // This method requires Microsoft Windows XP Home Edition or Windows XP Professional.
 HRESULT DirectSoundCaptureFXAec::SetAllParameters(LPCDSCFXAec pDscFxAec)
 {
-    DirectSoundCaptureFXAecLogMethodValue(DEBUG, SetAllParameters, 1, (pDscFxAec));
+    DirectSoundCaptureFXAecLogMethodValue(TRACE, SetAllParameters, 1, (pDscFxAec));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pDscFxAec);
 
-    DirectSoundCaptureFXAecLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pDscFxAec));
+    DirectSoundCaptureFXAecLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pDscFxAec));
 }
 
 // Retrieves the acoustic echo cancellation parameters of a buffer.
 // This method requires Microsoft Windows XP Home Edition or Windows XP Professional.
 HRESULT DirectSoundCaptureFXAec::GetAllParameters(LPDSCFXAec pDscFxAec)
 {
-    DirectSoundCaptureFXAecLogMethodValue(DEBUG, GetAllParameters, 1, (pDscFxAec));
+    DirectSoundCaptureFXAecLogMethodValue(TRACE, GetAllParameters, 1, (pDscFxAec));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDscFxAec);
 
-    DirectSoundCaptureFXAecLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDscFxAec));
+    DirectSoundCaptureFXAecLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDscFxAec));
 }
 
 // Retrieves the status of the effect.
 HRESULT DirectSoundCaptureFXAec::GetStatus(LPDWORD pdwStatus)
 {
-    DirectSoundCaptureFXAecLogMethodValue(DEBUG, GetStatus, 1, (pdwStatus));
+    DirectSoundCaptureFXAecLogMethodValue(TRACE, GetStatus, 1, (pdwStatus));
 
     CONST HRESULT result = this->State.Self->GetStatus(pdwStatus);
 
-    DirectSoundCaptureFXAecLogMethodResultValue(DEBUGINFO, GetStatus, result, 1, (pdwStatus));
+    DirectSoundCaptureFXAecLogMethodResultValue(TRACEDEBUGINFO, GetStatus, result, 1, (pdwStatus));
 }
 
 // Resets the effect to its initial state.

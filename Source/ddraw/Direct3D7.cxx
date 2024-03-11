@@ -60,11 +60,11 @@ static HRESULT CALLBACK EnumDevicesCallback(LPSTR lpDeviceDescription, LPSTR lpD
 {
     LPENUMDEVICESCALLBACKCONTEXT context = (LPENUMDEVICESCALLBACKCONTEXT)lpContext;
 
-    Direct3D7LogMethodCallbackValue(DEBUG, EnumDevices, 4, (context->Self, lpDeviceDescription, lpDeviceName, lpD3DDeviceDesc));
+    Direct3D7LogMethodCallbackValue(TRACEDEBUG, EnumDevices, 4, (context->Self, lpDeviceDescription, lpDeviceName, lpD3DDeviceDesc));
 
     CONST HRESULT result = context->EnumDevicesCallback(lpDeviceDescription, lpDeviceName, lpD3DDeviceDesc, context->Context);
 
-    Direct3D7LogMethodCallbackResultValue(DEBUGINFO, EnumDevices, result, 4, (context->Self, lpDeviceDescription, lpDeviceName, lpD3DDeviceDesc));
+    Direct3D7LogMethodCallbackResultValue(TRACEDEBUGINFO, EnumDevices, result, 4, (context->Self, lpDeviceDescription, lpDeviceName, lpD3DDeviceDesc));
 }
 
 typedef struct EnumZBufferFormatsCallbackContext
@@ -79,28 +79,28 @@ static HRESULT CALLBACK EnumZBufferFormatsCallback(LPDDPIXELFORMAT lpDDPixFmt, L
 {
     LPENUMZBUFFERFORMATSCALLBACKCONTEXT context = (LPENUMZBUFFERFORMATSCALLBACKCONTEXT)lpContext;
 
-    Direct3D7LogMethodCallbackValue(DEBUG, EnumZBufferFormats, 2, (context->Self, lpDDPixFmt));
+    Direct3D7LogMethodCallbackValue(TRACEDEBUG, EnumZBufferFormats, 2, (context->Self, lpDDPixFmt));
 
     CONST HRESULT result = context->EnumCallback(lpDDPixFmt, context->Context);
 
-    Direct3D7LogMethodCallbackResultValue(DEBUGINFO, EnumZBufferFormats, result, 2, (context->Self, lpDDPixFmt));
+    Direct3D7LogMethodCallbackResultValue(TRACEDEBUGINFO, EnumZBufferFormats, result, 2, (context->Self, lpDDPixFmt));
 }
 
 Direct3D7::Direct3D7(AgentConstructorParameters(Direct3D7))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3D7);
+    AgentLogConstructor(TRACE, Direct3D7);
 }
 
 Direct3D7::~Direct3D7()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3D7);
+    AgentLogDestructor(TRACE, Direct3D7);
 }
 
 HRESULT Direct3D7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3D7LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3D7LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -117,7 +117,7 @@ HRESULT Direct3D7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3D7LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3D7LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3D7::AddRef()
@@ -137,7 +137,7 @@ HRESULT Direct3D7::EnumDevices(LPD3DENUMDEVICESCALLBACK7 lpEnumDevicesCallback, 
 {
     Direct3D7LogMethodValue(DEBUGINFO, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
 
-    if (lpEnumDevicesCallback == NULL) { Direct3D7LogMethodResultValue(DEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
+    if (lpEnumDevicesCallback == NULL) { Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
 
     ENUMDEVICESCALLBACKCONTEXT context;
 
@@ -148,13 +148,13 @@ HRESULT Direct3D7::EnumDevices(LPD3DENUMDEVICESCALLBACK7 lpEnumDevicesCallback, 
 
     CONST HRESULT result = this->State.Self->EnumDevices(EnumDevicesCallback, &context);
 
-    Direct3D7LogMethodResultValue(DEBUGINFO, EnumDevices, result, 2, (lpEnumDevicesCallback, lpContext));
+    Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumDevices, result, 2, (lpEnumDevicesCallback, lpContext));
 }
 
 // Creates a Direct3D device to be used with the DrawPrimitive methods.
 HRESULT Direct3D7::CreateDevice(REFCLSID rclsid, LPDIRECTDRAWSURFACE7 lpDDS, LPDIRECT3DDEVICE7* lplpD3DDevice)
 {
-    Direct3D7LogMethodValue(DEBUG, CreateDevice, 3, (rclsid, lpDDS, lplpD3DDevice));
+    Direct3D7LogMethodValue(TRACE, CreateDevice, 3, (rclsid, lpDDS, lplpD3DDevice));
 
     AttemptAccessAgentValue(DirectDrawSurface7, lpDDS);
 
@@ -162,19 +162,19 @@ HRESULT Direct3D7::CreateDevice(REFCLSID rclsid, LPDIRECTDRAWSURFACE7 lpDDS, LPD
 
     if (SUCCEEDED(result)) { *lplpD3DDevice = ActivateAgentDelegate(Direct3DDevice7, *lplpD3DDevice); }
 
-    Direct3D7LogMethodResultValue(DEBUGINFO, CreateDevice, result, 3, (rclsid, lpDDS, lplpD3DDevice));
+    Direct3D7LogMethodResultValue(TRACEDEBUGINFO, CreateDevice, result, 3, (rclsid, lpDDS, lplpD3DDevice));
 }
 
 // Creates a vertex buffer object.
 HRESULT Direct3D7::CreateVertexBuffer(LPD3DVERTEXBUFFERDESC lpVBDesc, LPDIRECT3DVERTEXBUFFER7* lplpD3DVertexBuffer, DWORD dwFlags)
 {
-    Direct3D7LogMethodValue(DEBUG, CreateVertexBuffer, 3, (lpVBDesc, lplpD3DVertexBuffer, dwFlags));
+    Direct3D7LogMethodValue(TRACE, CreateVertexBuffer, 3, (lpVBDesc, lplpD3DVertexBuffer, dwFlags));
 
     CONST HRESULT result = this->State.Self->CreateVertexBuffer(lpVBDesc, lplpD3DVertexBuffer, dwFlags);
 
     if (SUCCEEDED(result)) { *lplpD3DVertexBuffer = ActivateAgentDelegate(Direct3DVertexBuffer7, *lplpD3DVertexBuffer); }
 
-    Direct3D7LogMethodResultValue(DEBUGINFO, CreateVertexBuffer, result, 3, (lpVBDesc, lplpD3DVertexBuffer, dwFlags));
+    Direct3D7LogMethodResultValue(TRACEDEBUGINFO, CreateVertexBuffer, result, 3, (lpVBDesc, lplpD3DVertexBuffer, dwFlags));
 }
 
 // Enumerates the supported depth-buffer formats for a specified device.
@@ -182,7 +182,7 @@ HRESULT Direct3D7::EnumZBufferFormats(REFCLSID riidDevice, LPD3DENUMPIXELFORMATS
 {
     Direct3D7LogMethodValue(DEBUGINFO, EnumZBufferFormats, 3, (riidDevice, lpEnumCallback, lpContext));
 
-    if (lpEnumCallback == NULL) { Direct3D7LogMethodResultValue(DEBUGINFO, EnumZBufferFormats, DDERR_INVALIDPARAMS, 3, (riidDevice, lpEnumCallback, lpContext)); }
+    if (lpEnumCallback == NULL) { Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumZBufferFormats, DDERR_INVALIDPARAMS, 3, (riidDevice, lpEnumCallback, lpContext)); }
 
     ENUMZBUFFERFORMATSCALLBACKCONTEXT context;
 
@@ -193,7 +193,7 @@ HRESULT Direct3D7::EnumZBufferFormats(REFCLSID riidDevice, LPD3DENUMPIXELFORMATS
 
     CONST HRESULT result = this->State.Self->EnumZBufferFormats(riidDevice, EnumZBufferFormatsCallback, &context);
 
-    Direct3D7LogMethodResultValue(DEBUGINFO, EnumZBufferFormats, result, 3, (riidDevice, lpEnumCallback, lpContext));
+    Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumZBufferFormats, result, 3, (riidDevice, lpEnumCallback, lpContext));
 }
 
 // Evicts all managed textures from local or nonlocal video memory.

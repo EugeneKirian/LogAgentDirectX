@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXEcho::DirectSoundFXEcho(AgentConstructorParameters(DirectSoundFXEcho))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXEcho);
+    AgentLogConstructor(TRACE, DirectSoundFXEcho);
 }
 
 DirectSoundFXEcho::~DirectSoundFXEcho()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXEcho);
+    AgentLogDestructor(TRACE, DirectSoundFXEcho);
 }
 
 HRESULT DirectSoundFXEcho::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXEchoLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXEchoLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXEcho::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXEchoLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXEchoLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXEcho::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXEcho::Release()
 // Sets the echo parameters of a buffer.
 HRESULT DirectSoundFXEcho::SetAllParameters(LPCDSFXEcho pcDsFxEcho)
 {
-    DirectSoundFXEchoLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxEcho));
+    DirectSoundFXEchoLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxEcho));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxEcho);
 
-    DirectSoundFXEchoLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxEcho));
+    DirectSoundFXEchoLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxEcho));
 }
 
 // Retrieves the echo parameters of a buffer.
 HRESULT DirectSoundFXEcho::GetAllParameters(LPDSFXEcho pDsFxEcho)
 {
-    DirectSoundFXEchoLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxEcho));
+    DirectSoundFXEchoLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxEcho));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxEcho);
 
-    DirectSoundFXEchoLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxEcho));
+    DirectSoundFXEchoLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxEcho));
 }

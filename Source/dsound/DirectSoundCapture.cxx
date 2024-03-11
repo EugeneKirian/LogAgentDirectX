@@ -39,18 +39,18 @@ SOFTWARE.
 DirectSoundCapture::DirectSoundCapture(AgentConstructorParameters(DirectSoundCapture))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundCapture);
+    AgentLogConstructor(TRACE, DirectSoundCapture);
 }
 
 DirectSoundCapture::~DirectSoundCapture()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundCapture);
+    AgentLogDestructor(TRACE, DirectSoundCapture);
 }
 
 HRESULT DirectSoundCapture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundCaptureLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundCaptureLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -64,7 +64,7 @@ HRESULT DirectSoundCapture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundCaptureLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundCaptureLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundCapture::AddRef()
@@ -82,32 +82,32 @@ ULONG DirectSoundCapture::Release()
 // Creates a capture buffer.
 HRESULT DirectSoundCapture::CreateCaptureBuffer(LPCDSCBUFFERDESC pcDSCBufferDesc, LPDIRECTSOUNDCAPTUREBUFFER* ppDSCBuffer, LPUNKNOWN pUnkOuter)
 {
-    DirectSoundCaptureLogMethodValue(DEBUG, CreateCaptureBuffer, 3, (pcDSCBufferDesc, ppDSCBuffer, pUnkOuter));
+    DirectSoundCaptureLogMethodValue(TRACE, CreateCaptureBuffer, 3, (pcDSCBufferDesc, ppDSCBuffer, pUnkOuter));
 
     CONST HRESULT result = this->State.Self->CreateCaptureBuffer(pcDSCBufferDesc, ppDSCBuffer, pUnkOuter);
 
     if (SUCCEEDED(result)) { *ppDSCBuffer = ActivateAgentDelegate(DirectSoundCaptureBuffer8, *ppDSCBuffer); }
 
-    DirectSoundCaptureLogMethodResultValue(DEBUGINFO, CreateCaptureBuffer, result, 3, (pcDSCBufferDesc, ppDSCBuffer, pUnkOuter));
+    DirectSoundCaptureLogMethodResultValue(TRACEDEBUGINFO, CreateCaptureBuffer, result, 3, (pcDSCBufferDesc, ppDSCBuffer, pUnkOuter));
 }
 
 // Retrieves the capabilities of the capture device.
 HRESULT DirectSoundCapture::GetCaps(LPDSCCAPS pDSCCaps)
 {
-    DirectSoundCaptureLogMethodValue(DEBUG, GetCaps, 1, (pDSCCaps));
+    DirectSoundCaptureLogMethodValue(TRACE, GetCaps, 1, (pDSCCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(pDSCCaps);
 
-    DirectSoundCaptureLogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (pDSCCaps));
+    DirectSoundCaptureLogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (pDSCCaps));
 }
 
 // Initializes a DirectSoundCapture object created by using CoCreateInstance.
 // Calling this method is not required when the DirectSoundCaptureCreate8 or DirectSoundFullDuplexCreate8 function is used to create the object. 
 HRESULT DirectSoundCapture::Initialize(LPCGUID pcGuidDevice)
 {
-    DirectSoundCaptureLogMethodValue(DEBUG, Initialize, 1, (pcGuidDevice));
+    DirectSoundCaptureLogMethodValue(TRACE, Initialize, 1, (pcGuidDevice));
 
     CONST HRESULT result = this->State.Self->Initialize(pcGuidDevice);
 
-    DirectSoundCaptureLogMethodResultValue(DEBUGINFO, Initialize, result, 1, (pcGuidDevice));
+    DirectSoundCaptureLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 1, (pcGuidDevice));
 }

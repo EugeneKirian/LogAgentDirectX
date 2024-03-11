@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXCompressor::DirectSoundFXCompressor(AgentConstructorParameters(DirectSoundFXCompressor))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXCompressor);
+    AgentLogConstructor(TRACE, DirectSoundFXCompressor);
 }
 
 DirectSoundFXCompressor::~DirectSoundFXCompressor()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXCompressor);
+    AgentLogDestructor(TRACE, DirectSoundFXCompressor);
 }
 
 HRESULT DirectSoundFXCompressor::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXCompressorLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXCompressorLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXCompressor::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXCompressorLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXCompressorLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXCompressor::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXCompressor::Release()
 // Sets the compression parameters of a buffer.
 HRESULT DirectSoundFXCompressor::SetAllParameters(LPCDSFXCompressor pcDsFxCompressor)
 {
-    DirectSoundFXCompressorLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxCompressor));
+    DirectSoundFXCompressorLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxCompressor));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxCompressor);
 
-    DirectSoundFXCompressorLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxCompressor));
+    DirectSoundFXCompressorLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxCompressor));
 }
 
 // Retrieves the compression parameters of a buffer.
 HRESULT DirectSoundFXCompressor::GetAllParameters(LPDSFXCompressor pDsFxCompressor)
 {
-    DirectSoundFXCompressorLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxCompressor));
+    DirectSoundFXCompressorLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxCompressor));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxCompressor);
 
-    DirectSoundFXCompressorLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxCompressor));
+    DirectSoundFXCompressorLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxCompressor));
 }

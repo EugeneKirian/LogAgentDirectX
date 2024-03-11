@@ -64,6 +64,7 @@ static BOOL AcquireLoggerLevelValue(LPSTRINGBUILDER builder, CONST LOGGERLEVEL l
 {
     Array<LOGGERLEVEL> array;
 
+    if (level & LOGGER_LEVEL_TRACE) { if (!array.Contains(LOGGER_LEVEL_TRACE)) { array.Add(LOGGER_LEVEL_TRACE); } }
     if (level & LOGGER_LEVEL_DEBUG) { if (!array.Contains(LOGGER_LEVEL_DEBUG)) { array.Add(LOGGER_LEVEL_DEBUG); } }
     if (level & LOGGER_LEVEL_INFO) { if (!array.Contains(LOGGER_LEVEL_INFO)) { array.Add(LOGGER_LEVEL_INFO); } }
     if (level & LOGGER_LEVEL_ERROR) { if (!array.Contains(LOGGER_LEVEL_ERROR)) { array.Add(LOGGER_LEVEL_ERROR); } }
@@ -79,6 +80,7 @@ static BOOL AcquireLoggerLevelValue(LPSTRINGBUILDER builder, CONST LOGGERLEVEL l
         case LOGGER_LEVEL_ERROR: { FORMAT(builder, Append("ERROR")); break; }
         case LOGGER_LEVEL_INFO: { FORMAT(builder, Append("INFO")); break; }
         case LOGGER_LEVEL_DEBUG: { FORMAT(builder, Append("DEBUG")); break; }
+        case LOGGER_LEVEL_TRACE: { FORMAT(builder, Append("TRACE")); break; }
         }
     }
 
@@ -225,7 +227,7 @@ static CONST BOOL FormatLoggerActionMethod(LPSTRINGBUILDER builder, CONST LOGGER
         AcquireLoggerObjectName(action->ID), (ADDR)action->Object,
         AcquireLoggerObjectMethodName(action->ID, action->Method)));
 
-    if (level & LOGGER_LEVEL_DEBUG) { FORMATACTION(builder, AcquireLoggerObjectMethodValue(builder, action->ID, action->Method, action->Value)); }
+    if (level & (LOGGER_LEVEL_DEBUG | LOGGER_LEVEL_TRACE)) { FORMATACTION(builder, AcquireLoggerObjectMethodValue(builder, action->ID, action->Method, action->Value)); }
 
     return TRUE;
 }
@@ -236,7 +238,7 @@ static CONST BOOL FormatLoggerActionMethodResult(LPSTRINGBUILDER builder, CONST 
         AcquireLoggerObjectName(action->ID), (ADDR)action->Object,
         AcquireLoggerObjectMethodName(action->ID, action->Method), action->Result));
 
-    if (level & LOGGER_LEVEL_DEBUG) { FORMATACTION(builder, AcquireLoggerObjectMethodValue(builder, action->ID, action->Method, action->Value)); }
+    if (level & (LOGGER_LEVEL_DEBUG | LOGGER_LEVEL_TRACE)) { FORMATACTION(builder, AcquireLoggerObjectMethodValue(builder, action->ID, action->Method, action->Value)); }
 
     return TRUE;
 }
@@ -248,7 +250,7 @@ static CONST BOOL FormatLoggerActionMethodCallback(LPSTRINGBUILDER builder, CONS
         AcquireLoggerObjectMethodName(action->ID, action->Method),
         AcquireLoggerObjectMethodCallbackName(action->ID, action->Callback)));
 
-    if (level & LOGGER_LEVEL_DEBUG) { FORMATACTION(builder, AcquireLoggerObjectMethodCallbackValue(builder, action->ID, action->Callback, action->Value)); }
+    if (level & (LOGGER_LEVEL_DEBUG | LOGGER_LEVEL_TRACE)) { FORMATACTION(builder, AcquireLoggerObjectMethodCallbackValue(builder, action->ID, action->Callback, action->Value)); }
 
     return TRUE;
 }
@@ -260,7 +262,7 @@ static CONST BOOL FormatLoggerActionMethodCallbackResult(LPSTRINGBUILDER builder
         AcquireLoggerObjectMethodName(action->ID, action->Method),
         AcquireLoggerObjectMethodCallbackName(action->ID, action->Callback), action->Result));
 
-    if (level & LOGGER_LEVEL_DEBUG) { FORMATACTION(builder, AcquireLoggerObjectMethodCallbackValue(builder, action->ID, action->Callback, action->Value)); }
+    if (level & (LOGGER_LEVEL_DEBUG | LOGGER_LEVEL_TRACE)) { FORMATACTION(builder, AcquireLoggerObjectMethodCallbackValue(builder, action->ID, action->Callback, action->Value)); }
 
     return TRUE;
 }

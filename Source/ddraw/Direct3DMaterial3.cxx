@@ -41,18 +41,18 @@ SOFTWARE.
 Direct3DMaterial3::Direct3DMaterial3(AgentConstructorParameters(Direct3DMaterial3))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3DMaterial3);
+    AgentLogConstructor(TRACE, Direct3DMaterial3);
 }
 
 Direct3DMaterial3::~Direct3DMaterial3()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3DMaterial3);
+    AgentLogDestructor(TRACE, Direct3DMaterial3);
 }
 
 HRESULT Direct3DMaterial3::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DMaterial3LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DMaterial3LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -67,7 +67,7 @@ HRESULT Direct3DMaterial3::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DMaterial3LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DMaterial3LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3DMaterial3::AddRef()
@@ -85,21 +85,21 @@ ULONG Direct3DMaterial3::Release()
 // Sets the material data for a material object.
 HRESULT Direct3DMaterial3::SetMaterial(LPD3DMATERIAL lpMat)
 {
-    Direct3DMaterial3LogMethodValue(DEBUG, SetMaterial, 1, (lpMat));
+    Direct3DMaterial3LogMethodValue(TRACE, SetMaterial, 1, (lpMat));
 
     CONST HRESULT result = this->State.Self->SetMaterial(lpMat);
 
-    Direct3DMaterial3LogMethodResultValue(DEBUGINFO, SetMaterial, result, 1, (lpMat));
+    Direct3DMaterial3LogMethodResultValue(TRACEDEBUGINFO, SetMaterial, result, 1, (lpMat));
 }
 
 // Retrieves the material data for the Direct3DMaterial object.
 HRESULT Direct3DMaterial3::GetMaterial(LPD3DMATERIAL lpMat)
 {
-    Direct3DMaterial3LogMethodValue(DEBUG, GetMaterial, 1, (lpMat));
+    Direct3DMaterial3LogMethodValue(TRACE, GetMaterial, 1, (lpMat));
 
     CONST HRESULT result = this->State.Self->GetMaterial(lpMat);
 
-    Direct3DMaterial3LogMethodResultValue(DEBUGINFO, GetMaterial, result, 1, (lpMat));
+    Direct3DMaterial3LogMethodResultValue(TRACEDEBUGINFO, GetMaterial, result, 1, (lpMat));
 }
 
 // Binds a material to a device, retrieving a handle that represents the association between the two.
@@ -107,10 +107,10 @@ HRESULT Direct3DMaterial3::GetMaterial(LPD3DMATERIAL lpMat)
 // A material can be used by only one device at a time.
 HRESULT Direct3DMaterial3::GetHandle(LPDIRECT3DDEVICE3 lpDirect3DDevice, LPD3DMATERIALHANDLE lpHandle)
 {
-    Direct3DMaterial3LogMethodValue(DEBUG, GetHandle, 2, (lpDirect3DDevice, lpHandle));
+    Direct3DMaterial3LogMethodValue(TRACE, GetHandle, 2, (lpDirect3DDevice, lpHandle));
     AttemptAccessAgentValue(Direct3DDevice3, lpDirect3DDevice);
 
     CONST HRESULT result = this->State.Self->GetHandle(lpDirect3DDevice, lpHandle);
 
-    Direct3DMaterial3LogMethodResultValue(DEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice3, lpDirect3DDevice), lpHandle));
+    Direct3DMaterial3LogMethodResultValue(TRACEDEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice3, lpDirect3DDevice), lpHandle));
 }

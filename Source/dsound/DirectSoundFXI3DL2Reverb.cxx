@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXI3DL2Reverb::DirectSoundFXI3DL2Reverb(AgentConstructorParameters(DirectSoundFXI3DL2Reverb))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXI3DL2Reverb);
+    AgentLogConstructor(TRACE, DirectSoundFXI3DL2Reverb);
 }
 
 DirectSoundFXI3DL2Reverb::~DirectSoundFXI3DL2Reverb()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXI3DL2Reverb);
+    AgentLogDestructor(TRACE, DirectSoundFXI3DL2Reverb);
 }
 
 HRESULT DirectSoundFXI3DL2Reverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXI3DL2Reverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj
         }
     }
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXI3DL2Reverb::AddRef()
@@ -81,60 +81,60 @@ ULONG DirectSoundFXI3DL2Reverb::Release()
 // Sets the I3DL2 environmental reverberation parameters of a buffer.
 HRESULT DirectSoundFXI3DL2Reverb::SetAllParameters(LPCDSFXI3DL2Reverb pcDsFxI3DL2Reverb)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxI3DL2Reverb));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxI3DL2Reverb));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxI3DL2Reverb);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxI3DL2Reverb));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxI3DL2Reverb));
 }
 
 // Retrieves the I3DL2 environmental reverberation parameters of a buffer.
 HRESULT DirectSoundFXI3DL2Reverb::GetAllParameters(LPDSFXI3DL2Reverb pDsFxI3DL2Reverb)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxI3DL2Reverb));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxI3DL2Reverb));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxI3DL2Reverb);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxI3DL2Reverb));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxI3DL2Reverb));
 }
 
 // Sets standard reverberation parameters of a buffer.
 HRESULT DirectSoundFXI3DL2Reverb::SetPreset(DWORD dwPreset)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, SetPreset, 1, (dwPreset));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, SetPreset, 1, (dwPreset));
 
     CONST HRESULT result = this->State.Self->SetPreset(dwPreset);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, SetPreset, result, 1, (dwPreset));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, SetPreset, result, 1, (dwPreset));
 }
 
 // Retrieves an identifier for standard reverberation parameters of a buffer.
 HRESULT DirectSoundFXI3DL2Reverb::GetPreset(LPDWORD pdwPreset)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, GetPreset, 1, (pdwPreset));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, GetPreset, 1, (pdwPreset));
 
     CONST HRESULT result = this->State.Self->GetPreset(pdwPreset);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, GetPreset, result, 1, (pdwPreset));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, GetPreset, result, 1, (pdwPreset));
 }
 
 // Sets the quality of the environmental reverberation effect.
 // Higher values produce better quality at the expense of processing time. 
 HRESULT DirectSoundFXI3DL2Reverb::SetQuality(LONG lQuality)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, SetQuality, 1, (lQuality));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, SetQuality, 1, (lQuality));
 
     CONST HRESULT result = this->State.Self->SetQuality(lQuality);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, SetQuality, result, 1, (lQuality));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, SetQuality, result, 1, (lQuality));
 }
 
 // Retrieves the quality of the environmental reverberation effect.
 HRESULT DirectSoundFXI3DL2Reverb::GetQuality(LPLONG plQuality)
 {
-    DirectSoundFXI3DL2ReverbLogMethodValue(DEBUG, GetQuality, 1, (plQuality));
+    DirectSoundFXI3DL2ReverbLogMethodValue(TRACE, GetQuality, 1, (plQuality));
 
     CONST HRESULT result = this->State.Self->GetQuality(plQuality);
 
-    DirectSoundFXI3DL2ReverbLogMethodResultValue(DEBUGINFO, GetQuality, result, 1, (plQuality));
+    DirectSoundFXI3DL2ReverbLogMethodResultValue(TRACEDEBUGINFO, GetQuality, result, 1, (plQuality));
 }

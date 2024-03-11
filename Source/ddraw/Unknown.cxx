@@ -71,18 +71,18 @@ SOFTWARE.
 Unknown::Unknown(AgentConstructorParameters(Unknown))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Unknown);
+    AgentLogConstructor(TRACE, Unknown);
 }
 
 Unknown::~Unknown()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Unknown);
+    AgentLogDestructor(TRACE, Unknown);
 }
 
 HRESULT Unknown::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    UnknownLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    UnknownLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -130,7 +130,7 @@ HRESULT Unknown::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    UnknownLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    UnknownLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Unknown::AddRef()

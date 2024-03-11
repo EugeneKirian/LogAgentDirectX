@@ -37,18 +37,18 @@ SOFTWARE.
 DirectDrawClipper::DirectDrawClipper(AgentConstructorParameters(DirectDrawClipper))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectDrawClipper);
+    AgentLogConstructor(TRACE, DirectDrawClipper);
 }
 
 DirectDrawClipper::~DirectDrawClipper()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectDrawClipper);
+    AgentLogDestructor(TRACE, DirectDrawClipper);
 }
 
 HRESULT DirectDrawClipper::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectDrawClipperLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -61,7 +61,7 @@ HRESULT DirectDrawClipper::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectDrawClipper::AddRef()
@@ -80,62 +80,62 @@ ULONG DirectDrawClipper::Release()
 // To select a subset of the clip list, you can pass a rectangle that clips the clip list.
 HRESULT DirectDrawClipper::GetClipList(LPRECT lpRect, LPRGNDATA lpClipList, LPDWORD lpdwSize)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, GetClipList, 3, (lpRect, lpClipList, lpdwSize));
+    DirectDrawClipperLogMethodValue(TRACE, GetClipList, 3, (lpRect, lpClipList, lpdwSize));
 
     CONST HRESULT result = this->State.Self->GetClipList(lpRect, lpClipList, lpdwSize);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, GetClipList, result, 3, (lpRect, lpClipList, lpdwSize));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, GetClipList, result, 3, (lpRect, lpClipList, lpdwSize));
 }
 
 // Retrieves the window handle that was previously associated with this DirectDrawClipper object by the IDirectDrawClipper::SetHWnd method.
 HRESULT DirectDrawClipper::GetHWnd(HWND FAR* lphWnd)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, GetHWnd, 1, (lphWnd));
+    DirectDrawClipperLogMethodValue(TRACE, GetHWnd, 1, (lphWnd));
 
     CONST HRESULT result = this->State.Self->GetHWnd(lphWnd);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, GetHWnd, result, 1, (lphWnd));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, GetHWnd, result, 1, (lphWnd));
 }
 
 // Initializes a DirectDrawClipper object that was created by using the CoCreateInstance COM function.
 HRESULT DirectDrawClipper::Initialize(LPDIRECTDRAW lpDD, DWORD dwFlags)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, Initialize, 2, (lpDD, dwFlags));
+    DirectDrawClipperLogMethodValue(TRACE, Initialize, 2, (lpDD, dwFlags));
 
     AttemptAccessAgentValue(DirectDraw, lpDD);
 
     CONST HRESULT result = this->State.Self->Initialize(lpDD, dwFlags);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectDraw, lpDD), dwFlags));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 2, (ActivateAgent(DirectDraw, lpDD), dwFlags));
 }
 
 // Retrieves the status of the clip list if a window handle is associated with a DirectDrawClipper object.
 HRESULT DirectDrawClipper::IsClipListChanged(BOOL FAR* lpbChanged)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, IsClipListChanged, 1, (lpbChanged));
+    DirectDrawClipperLogMethodValue(TRACE, IsClipListChanged, 1, (lpbChanged));
 
     CONST HRESULT result = this->State.Self->IsClipListChanged(lpbChanged);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, IsClipListChanged, result, 1, (lpbChanged));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, IsClipListChanged, result, 1, (lpbChanged));
 }
 
 // Sets or deletes the clip list that is used by the IDirectDrawSurface7::Blt, IDirectDrawSurface7::BltBatch,
 // and IDirectDrawSurface7::UpdateOverlay methods on surfaces to which the parent DirectDrawClipper object is attached.
 HRESULT DirectDrawClipper::SetClipList(LPRGNDATA lpClipList, DWORD dwFlags)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, SetClipList, 2, (lpClipList, dwFlags));
+    DirectDrawClipperLogMethodValue(TRACE, SetClipList, 2, (lpClipList, dwFlags));
 
     CONST HRESULT result = this->State.Self->SetClipList(lpClipList, dwFlags);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, SetClipList, result, 2, (lpClipList, dwFlags));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, SetClipList, result, 2, (lpClipList, dwFlags));
 }
 
 // Sets the window handle that the clipper object uses to obtain clipping information.
 HRESULT DirectDrawClipper::SetHWnd(DWORD dwFlags, HWND hWnd)
 {
-    DirectDrawClipperLogMethodValue(DEBUG, SetHWnd, 2, (dwFlags, hWnd));
+    DirectDrawClipperLogMethodValue(TRACE, SetHWnd, 2, (dwFlags, hWnd));
 
     CONST HRESULT result = this->State.Self->SetHWnd(dwFlags, hWnd);
 
-    DirectDrawClipperLogMethodResultValue(DEBUGINFO, SetHWnd, result, 2, (dwFlags, hWnd));
+    DirectDrawClipperLogMethodResultValue(TRACEDEBUGINFO, SetHWnd, result, 2, (dwFlags, hWnd));
 }

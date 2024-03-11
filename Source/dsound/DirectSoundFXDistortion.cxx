@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXDistortion::DirectSoundFXDistortion(AgentConstructorParameters(DirectSoundFXDistortion))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXDistortion);
+    AgentLogConstructor(TRACE, DirectSoundFXDistortion);
 }
 
 DirectSoundFXDistortion::~DirectSoundFXDistortion()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXDistortion);
+    AgentLogDestructor(TRACE, DirectSoundFXDistortion);
 }
 
 HRESULT DirectSoundFXDistortion::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXDistortionLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXDistortionLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXDistortion::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXDistortionLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXDistortionLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXDistortion::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXDistortion::Release()
 // Sets the distortion parameters of a buffer.
 HRESULT DirectSoundFXDistortion::SetAllParameters(LPCDSFXDistortion pcDsFxDistortion)
 {
-    DirectSoundFXDistortionLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxDistortion));
+    DirectSoundFXDistortionLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxDistortion));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxDistortion);
 
-    DirectSoundFXDistortionLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxDistortion));
+    DirectSoundFXDistortionLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxDistortion));
 }
 
 // Retrieves the distortion parameters of a buffer.
 HRESULT DirectSoundFXDistortion::GetAllParameters(LPDSFXDistortion pDsFxDistortion)
 {
-    DirectSoundFXDistortionLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxDistortion));
+    DirectSoundFXDistortionLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxDistortion));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxDistortion);
 
-    DirectSoundFXDistortionLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxDistortion));
+    DirectSoundFXDistortionLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxDistortion));
 }

@@ -41,18 +41,18 @@ SOFTWARE.
 Direct3DLight::Direct3DLight(AgentConstructorParameters(Direct3DLight))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3DLight);
+    AgentLogConstructor(TRACE, Direct3DLight);
 }
 
 Direct3DLight::~Direct3DLight()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3DLight);
+    AgentLogDestructor(TRACE, Direct3DLight);
 }
 
 HRESULT Direct3DLight::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DLightLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DLightLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -65,7 +65,7 @@ HRESULT Direct3DLight::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DLightLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DLightLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3DLight::AddRef()
@@ -83,31 +83,31 @@ ULONG Direct3DLight::Release()
 // This method is not currently implemented.
 HRESULT Direct3DLight::Initialize(LPDIRECT3D lpDirect3D)
 {
-    Direct3DLightLogMethodValue(DEBUG, Initialize, 1, (lpDirect3D));
+    Direct3DLightLogMethodValue(TRACE, Initialize, 1, (lpDirect3D));
 
     AttemptAccessAgentValue(Direct3D, lpDirect3D);
 
     CONST HRESULT result = this->State.Self->Initialize(lpDirect3D);
 
-    Direct3DLightLogMethodResultValue(DEBUGINFO, Initialize, result, 1, (ActivateAgent(Direct3D, lpDirect3D)));
+    Direct3DLightLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 1, (ActivateAgent(Direct3D, lpDirect3D)));
 }
 
 // Sets the light information for the Direct3DLight object.
 HRESULT Direct3DLight::SetLight(LPD3DLIGHT lpLight)
 {
-    Direct3DLightLogMethodValue(DEBUG, SetLight, 1, (lpLight));
+    Direct3DLightLogMethodValue(TRACE, SetLight, 1, (lpLight));
 
     CONST HRESULT result = this->State.Self->SetLight(lpLight);
 
-    Direct3DLightLogMethodResultValue(DEBUGINFO, SetLight, result, 1, (lpLight));
+    Direct3DLightLogMethodResultValue(TRACEDEBUGINFO, SetLight, result, 1, (lpLight));
 }
 
 // Retrieves the light information for the Direct3DLight object.
 HRESULT Direct3DLight::GetLight(LPD3DLIGHT lpLight)
 {
-    Direct3DLightLogMethodValue(DEBUG, GetLight, 1, (lpLight));
+    Direct3DLightLogMethodValue(TRACE, GetLight, 1, (lpLight));
 
     CONST HRESULT result = this->State.Self->GetLight(lpLight);
 
-    Direct3DLightLogMethodResultValue(DEBUGINFO, GetLight, result, 1, (lpLight));
+    Direct3DLightLogMethodResultValue(TRACEDEBUGINFO, GetLight, result, 1, (lpLight));
 }

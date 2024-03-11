@@ -60,28 +60,28 @@ static HRESULT CALLBACK EnumDevicesCallback(GUID FAR* lpGuid, LPSTR lpDeviceDesc
 {
     LPENUMDEVICESCALLBACKCONTEXT context = (LPENUMDEVICESCALLBACKCONTEXT)lpContext;
 
-    Direct3DLogMethodCallbackValue(DEBUG, EnumDevices, 6, (context->Self, lpGuid, lpDeviceDescription, lpDeviceName, lpD3DHWDeviceDesc, lpD3DHELDeviceDesc));
+    Direct3DLogMethodCallbackValue(TRACEDEBUG, EnumDevices, 6, (context->Self, lpGuid, lpDeviceDescription, lpDeviceName, lpD3DHWDeviceDesc, lpD3DHELDeviceDesc));
 
     CONST HRESULT result = context->EnumDevicesCallback(lpGuid, lpDeviceDescription, lpDeviceName, lpD3DHWDeviceDesc, lpD3DHELDeviceDesc, context->Context);
 
-    Direct3DLogMethodCallbackResultValue(DEBUGINFO, EnumDevices, result, 6, (context->Self, lpGuid, lpDeviceDescription, lpDeviceName, lpD3DHWDeviceDesc, lpD3DHELDeviceDesc));
+    Direct3DLogMethodCallbackResultValue(TRACEDEBUGINFO, EnumDevices, result, 6, (context->Self, lpGuid, lpDeviceDescription, lpDeviceName, lpD3DHWDeviceDesc, lpD3DHELDeviceDesc));
 }
 
 Direct3D::Direct3D(AgentConstructorParameters(Direct3D))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3D);
+    AgentLogConstructor(TRACE, Direct3D);
 }
 
 Direct3D::~Direct3D()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3D);
+    AgentLogDestructor(TRACE, Direct3D);
 }
 
 HRESULT Direct3D::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -102,7 +102,7 @@ HRESULT Direct3D::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3D::AddRef()
@@ -120,11 +120,11 @@ ULONG Direct3D::Release()
 // This method is not currently implemented.
 HRESULT Direct3D::Initialize(REFCLSID rclsid)
 {
-    Direct3DLogMethodValue(DEBUG, Initialize, 1, (rclsid));
+    Direct3DLogMethodValue(TRACE, Initialize, 1, (rclsid));
 
     CONST HRESULT result = this->State.Self->Initialize(rclsid);
 
-    Direct3DLogMethodResultValue(DEBUGINFO, Initialize, result, 1, (rclsid));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 1, (rclsid));
 }
 
 // Enumerates all Direct3D device drivers installed on the system.
@@ -132,7 +132,7 @@ HRESULT Direct3D::EnumDevices(LPD3DENUMDEVICESCALLBACK lpEnumDevicesCallback, LP
 {
     Direct3DLogMethodValue(DEBUGINFO, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
 
-    if (lpEnumDevicesCallback == NULL) { Direct3DLogMethodResultValue(DEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
+    if (lpEnumDevicesCallback == NULL) { Direct3DLogMethodResultValue(TRACEDEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
 
     ENUMDEVICESCALLBACKCONTEXT context;
 
@@ -143,51 +143,51 @@ HRESULT Direct3D::EnumDevices(LPD3DENUMDEVICESCALLBACK lpEnumDevicesCallback, LP
 
     CONST HRESULT result = this->State.Self->EnumDevices(EnumDevicesCallback, &context);
 
-    Direct3DLogMethodResultValue(DEBUGINFO, EnumDevices, result, 2, (lpEnumDevicesCallback, lpContext));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, EnumDevices, result, 2, (lpEnumDevicesCallback, lpContext));
 }
 
 // Allocates a Direct3DLight object.
 HRESULT Direct3D::CreateLight(LPDIRECT3DLIGHT* lplpDirect3DLight, LPUNKNOWN pUnkOuter)
 {
-    Direct3DLogMethodValue(DEBUG, CreateLight, 2, (lplpDirect3DLight, pUnkOuter));
+    Direct3DLogMethodValue(TRACE, CreateLight, 2, (lplpDirect3DLight, pUnkOuter));
 
     CONST HRESULT result = this->State.Self->CreateLight(lplpDirect3DLight, pUnkOuter);
 
     if (SUCCEEDED(result)) { *lplpDirect3DLight = ActivateAgentDelegate(Direct3DLight, *lplpDirect3DLight); }
 
-    Direct3DLogMethodResultValue(DEBUGINFO, CreateLight, result, 2, (lplpDirect3DLight, pUnkOuter));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, CreateLight, result, 2, (lplpDirect3DLight, pUnkOuter));
 }
 
 // Allocates a Direct3DMaterial object.
 HRESULT Direct3D::CreateMaterial(LPDIRECT3DMATERIAL* lplpDirect3DMaterial, LPUNKNOWN pUnkOuter)
 {
-    Direct3DLogMethodValue(DEBUG, CreateMaterial, 2, (lplpDirect3DMaterial, pUnkOuter));
+    Direct3DLogMethodValue(TRACE, CreateMaterial, 2, (lplpDirect3DMaterial, pUnkOuter));
 
     CONST HRESULT result = this->State.Self->CreateMaterial(lplpDirect3DMaterial, pUnkOuter);
 
     if (SUCCEEDED(result)) { *lplpDirect3DMaterial = ActivateAgentDelegate(Direct3DMaterial, *lplpDirect3DMaterial); }
 
-    Direct3DLogMethodResultValue(DEBUGINFO, CreateMaterial, result, 2, (lplpDirect3DMaterial, pUnkOuter));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, CreateMaterial, result, 2, (lplpDirect3DMaterial, pUnkOuter));
 }
 
 // Creates a Direct3DViewport object.
 HRESULT Direct3D::CreateViewport(LPDIRECT3DVIEWPORT* lplpD3DViewport, LPUNKNOWN pUnkOuter)
 {
-    Direct3DLogMethodValue(DEBUG, CreateViewport, 2, (lplpD3DViewport, pUnkOuter));
+    Direct3DLogMethodValue(TRACE, CreateViewport, 2, (lplpD3DViewport, pUnkOuter));
 
     CONST HRESULT result = this->State.Self->CreateViewport(lplpD3DViewport, pUnkOuter);
 
     if (SUCCEEDED(result)) { *lplpD3DViewport = ActivateAgentDelegate(Direct3DViewport, *lplpD3DViewport); }
 
-    Direct3DLogMethodResultValue(DEBUGINFO, CreateViewport, result, 2, (lplpD3DViewport, pUnkOuter));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, CreateViewport, result, 2, (lplpD3DViewport, pUnkOuter));
 }
 
 // Finds a device with specified characteristics and retrieves a description of it.
 HRESULT Direct3D::FindDevice(LPD3DFINDDEVICESEARCH lpD3DFDS, LPD3DFINDDEVICERESULT lpD3DFDR)
 {
-    Direct3DLogMethodValue(DEBUG, FindDevice, 2, (lpD3DFDS, lpD3DFDR));
+    Direct3DLogMethodValue(TRACE, FindDevice, 2, (lpD3DFDS, lpD3DFDR));
 
     CONST HRESULT result = this->State.Self->FindDevice(lpD3DFDS, lpD3DFDR);
 
-    Direct3DLogMethodResultValue(DEBUGINFO, FindDevice, result, 2, (lpD3DFDS, lpD3DFDR));
+    Direct3DLogMethodResultValue(TRACEDEBUGINFO, FindDevice, result, 2, (lpD3DFDS, lpD3DFDR));
 }

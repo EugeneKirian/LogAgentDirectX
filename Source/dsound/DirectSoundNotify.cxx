@@ -41,18 +41,18 @@ SOFTWARE.
 DirectSoundNotify::DirectSoundNotify(AgentConstructorParameters(DirectSoundNotify))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundNotify);
+    AgentLogConstructor(TRACE, DirectSoundNotify);
 }
 
 DirectSoundNotify::~DirectSoundNotify()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundNotify);
+    AgentLogDestructor(TRACE, DirectSoundNotify);
 }
 
 HRESULT DirectSoundNotify::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundNotifyLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundNotifyLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -69,7 +69,7 @@ HRESULT DirectSoundNotify::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundNotifyLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundNotifyLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundNotify::AddRef()
@@ -89,9 +89,9 @@ ULONG DirectSoundNotify::Release()
 // the associated event is signaled.
 HRESULT DirectSoundNotify::SetNotificationPositions(DWORD dwPositionNotifies, LPCDSBPOSITIONNOTIFY pcPositionNotifies)
 {
-    DirectSoundNotifyLogMethodValue(DEBUG, SetNotificationPositions, 2, (dwPositionNotifies, pcPositionNotifies));
+    DirectSoundNotifyLogMethodValue(TRACE, SetNotificationPositions, 2, (dwPositionNotifies, pcPositionNotifies));
 
     CONST HRESULT result = this->State.Self->SetNotificationPositions(dwPositionNotifies, pcPositionNotifies);
 
-    DirectSoundNotifyLogMethodResultValue(DEBUGINFO, SetNotificationPositions, result, 2, (dwPositionNotifies, pcPositionNotifies));
+    DirectSoundNotifyLogMethodResultValue(TRACEDEBUGINFO, SetNotificationPositions, result, 2, (dwPositionNotifies, pcPositionNotifies));
 }

@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundCaptureFXNoiseSuppress::DirectSoundCaptureFXNoiseSuppress(AgentConstructorParameters(DirectSoundCaptureFXNoiseSuppress))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundCaptureFXNoiseSuppress);
+    AgentLogConstructor(TRACE, DirectSoundCaptureFXNoiseSuppress);
 }
 
 DirectSoundCaptureFXNoiseSuppress::~DirectSoundCaptureFXNoiseSuppress()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundCaptureFXNoiseSuppress);
+    AgentLogDestructor(TRACE, DirectSoundCaptureFXNoiseSuppress);
 }
 
 HRESULT DirectSoundCaptureFXNoiseSuppress::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundCaptureFXNoiseSuppressLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundCaptureFXNoiseSuppress::QueryInterface(REFIID riid, LPVOID FA
         }
     }
 
-    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundCaptureFXNoiseSuppress::AddRef()
@@ -82,22 +82,22 @@ ULONG DirectSoundCaptureFXNoiseSuppress::Release()
 // This method requires Microsoft Windows XP Home Edition or Windows XP Professional.
 HRESULT DirectSoundCaptureFXNoiseSuppress::SetAllParameters(LPCDSCFXNoiseSuppress pcDscFxNoiseSuppress)
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethodValue(DEBUG, SetAllParameters, 1, (pcDscFxNoiseSuppress));
+    DirectSoundCaptureFXNoiseSuppressLogMethodValue(TRACE, SetAllParameters, 1, (pcDscFxNoiseSuppress));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDscFxNoiseSuppress);
 
-    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDscFxNoiseSuppress));
+    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDscFxNoiseSuppress));
 }
 
 // Retrieves the acoustic echo cancellation parameters of a buffer.
 // This method requires Microsoft Windows XP Home Edition or Windows XP Professional.
 HRESULT DirectSoundCaptureFXNoiseSuppress::GetAllParameters(LPDSCFXNoiseSuppress pDscFxNoiseSuppress)
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethodValue(DEBUG, GetAllParameters, 1, (pDscFxNoiseSuppress));
+    DirectSoundCaptureFXNoiseSuppressLogMethodValue(TRACE, GetAllParameters, 1, (pDscFxNoiseSuppress));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDscFxNoiseSuppress);
 
-    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDscFxNoiseSuppress));
+    DirectSoundCaptureFXNoiseSuppressLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDscFxNoiseSuppress));
 }
 
 // Resets the effect to its initial state.

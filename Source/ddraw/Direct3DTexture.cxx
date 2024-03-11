@@ -45,18 +45,18 @@ SOFTWARE.
 Direct3DTexture::Direct3DTexture(AgentConstructorParameters(Direct3DTexture))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, Direct3DTexture);
+    AgentLogConstructor(TRACE, Direct3DTexture);
 }
 
 Direct3DTexture::~Direct3DTexture()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, Direct3DTexture);
+    AgentLogDestructor(TRACE, Direct3DTexture);
 }
 
 HRESULT Direct3DTexture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    Direct3DTextureLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    Direct3DTextureLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -76,7 +76,7 @@ HRESULT Direct3DTexture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    Direct3DTextureLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    Direct3DTextureLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG Direct3DTexture::AddRef()
@@ -93,47 +93,47 @@ ULONG Direct3DTexture::Release()
 
 HRESULT Direct3DTexture::Initialize(LPDIRECT3DDEVICE lpDirect3DDevice, LPDIRECTDRAWSURFACE lpDDS)
 {
-    Direct3DTextureLogMethodValue(DEBUG, Initialize, 2, (lpDirect3DDevice, lpDDS));
+    Direct3DTextureLogMethodValue(TRACE, Initialize, 2, (lpDirect3DDevice, lpDDS));
 
     AttemptAccessAgentValue(Direct3DDevice, lpDirect3DDevice);
     AttemptAccessAgentValue(DirectDrawSurface, lpDDS);
 
     CONST HRESULT result = this->State.Self->Initialize(lpDirect3DDevice, lpDDS);
 
-    Direct3DTextureLogMethodResultValue(DEBUGINFO, Initialize, result, 2, (ActivateAgent(Direct3DDevice, lpDirect3DDevice), ActivateAgent(DirectDrawSurface, lpDDS)));
+    Direct3DTextureLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 2, (ActivateAgent(Direct3DDevice, lpDirect3DDevice), ActivateAgent(DirectDrawSurface, lpDDS)));
 }
 
 // Obtains the texture handle to be used when rendering with the IDirect3DDevice interface.
 HRESULT Direct3DTexture::GetHandle(LPDIRECT3DDEVICE lpDirect3DDevice, LPD3DTEXTUREHANDLE lpHandle)
 {
-    Direct3DTextureLogMethodValue(DEBUG, GetHandle, 2, (lpDirect3DDevice, lpHandle));
+    Direct3DTextureLogMethodValue(TRACE, GetHandle, 2, (lpDirect3DDevice, lpHandle));
 
     AttemptAccessAgentValue(Direct3DDevice, lpDirect3DDevice);
 
     CONST HRESULT result = this->State.Self->GetHandle(lpDirect3DDevice, lpHandle);
 
-    Direct3DTextureLogMethodResultValue(DEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice, lpDirect3DDevice), lpHandle));
+    Direct3DTextureLogMethodResultValue(TRACEDEBUGINFO, GetHandle, result, 2, (ActivateAgent(Direct3DDevice, lpDirect3DDevice), lpHandle));
 }
 
 // Informs the driver that the palette has changed on a texture surface. 
 HRESULT Direct3DTexture::PaletteChanged(DWORD dwStart, DWORD dwCount)
 {
-    Direct3DTextureLogMethodValue(DEBUG, PaletteChanged, 2, (dwStart, dwCount));
+    Direct3DTextureLogMethodValue(TRACE, PaletteChanged, 2, (dwStart, dwCount));
 
     CONST HRESULT result = this->State.Self->PaletteChanged(dwStart, dwCount);
 
-    Direct3DTextureLogMethodResultValue(DEBUGINFO, PaletteChanged, result, 2, (dwStart, dwCount));
+    Direct3DTextureLogMethodResultValue(TRACEDEBUGINFO, PaletteChanged, result, 2, (dwStart, dwCount));
 }
 
 HRESULT Direct3DTexture::Load(LPDIRECT3DTEXTURE lpD3DTexture)
 {
-    Direct3DTextureLogMethodValue(DEBUG, Load, 1, (lpD3DTexture));
+    Direct3DTextureLogMethodValue(TRACE, Load, 1, (lpD3DTexture));
 
     AttemptAccessAgentValue(Direct3DTexture, lpD3DTexture);
 
     CONST HRESULT result = this->State.Self->Load(lpD3DTexture);
 
-    Direct3DTextureLogMethodResultValue(DEBUGINFO, Load, result, 1, (ActivateAgent(Direct3DTexture, lpD3DTexture)));
+    Direct3DTextureLogMethodResultValue(TRACEDEBUGINFO, Load, result, 1, (ActivateAgent(Direct3DTexture, lpD3DTexture)));
 }
 
 HRESULT Direct3DTexture::Unload()

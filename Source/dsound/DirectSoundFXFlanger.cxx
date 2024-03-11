@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXFlanger::DirectSoundFXFlanger(AgentConstructorParameters(DirectSoundFXFlanger))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXFlanger);
+    AgentLogConstructor(TRACE, DirectSoundFXFlanger);
 }
 
 DirectSoundFXFlanger::~DirectSoundFXFlanger()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXFlanger);
+    AgentLogDestructor(TRACE, DirectSoundFXFlanger);
 }
 
 HRESULT DirectSoundFXFlanger::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXFlangerLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXFlangerLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXFlanger::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXFlangerLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXFlangerLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXFlanger::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXFlanger::Release()
 // Sets the flange parameters of a buffer.
 HRESULT DirectSoundFXFlanger::SetAllParameters(LPCDSFXFlanger pcDsFxFlanger)
 {
-    DirectSoundFXFlangerLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxFlanger));
+    DirectSoundFXFlangerLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxFlanger));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxFlanger);
 
-    DirectSoundFXFlangerLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxFlanger));
+    DirectSoundFXFlangerLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxFlanger));
 }
 
 // Retrieves the flange parameters of a buffer.
 HRESULT DirectSoundFXFlanger::GetAllParameters(LPDSFXFlanger pDsFxFlanger)
 {
-    DirectSoundFXFlangerLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxFlanger));
+    DirectSoundFXFlangerLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxFlanger));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxFlanger);
 
-    DirectSoundFXFlangerLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxFlanger));
+    DirectSoundFXFlangerLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxFlanger));
 }

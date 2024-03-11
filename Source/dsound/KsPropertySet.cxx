@@ -39,18 +39,18 @@ SOFTWARE.
 KsPropertySet::KsPropertySet(AgentConstructorParameters(KsPropertySet))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, KsPropertySet);
+    AgentLogConstructor(TRACE, KsPropertySet);
 }
 
 KsPropertySet::~KsPropertySet()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, KsPropertySet);
+    AgentLogDestructor(TRACE, KsPropertySet);
 }
 
 HRESULT KsPropertySet::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    KsPropertySetLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    KsPropertySetLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -66,7 +66,7 @@ HRESULT KsPropertySet::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    KsPropertySetLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    KsPropertySetLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG KsPropertySet::AddRef()
@@ -84,29 +84,29 @@ ULONG KsPropertySet::Release()
 // Retrieves data for an item in a property set.
 HRESULT KsPropertySet::Get(REFGUID rguidPropSet, ULONG ulId, LPVOID pInstanceData, ULONG ulInstanceLength, LPVOID pPropertyData, ULONG ulDataLength, PULONG pulBytesReturned)
 {
-    KsPropertySetLogMethodValue(DEBUG, Get, 7, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength, pulBytesReturned));
+    KsPropertySetLogMethodValue(TRACE, Get, 7, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength, pulBytesReturned));
 
     CONST HRESULT result = this->State.Self->Get(rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength, pulBytesReturned);
 
-    KsPropertySetLogMethodResultValue(DEBUGINFO, Get, result, 7, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength, pulBytesReturned));
+    KsPropertySetLogMethodResultValue(TRACEDEBUGINFO, Get, result, 7, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength, pulBytesReturned));
 }
 
 // Sets the value of a property in a property set.
 HRESULT KsPropertySet::Set(REFGUID rguidPropSet, ULONG ulId, LPVOID pInstanceData, ULONG ulInstanceLength, LPVOID pPropertyData, ULONG ulDataLength)
 {
-    KsPropertySetLogMethodValue(DEBUG, Set, 6, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength));
+    KsPropertySetLogMethodValue(TRACE, Set, 6, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength));
 
     CONST HRESULT result = this->State.Self->Set(rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength);
 
-    KsPropertySetLogMethodResultValue(DEBUGINFO, Set, result, 6, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength));
+    KsPropertySetLogMethodResultValue(TRACEDEBUGINFO, Set, result, 6, (rguidPropSet, ulId, pInstanceData, ulInstanceLength, pPropertyData, ulDataLength));
 }
 
 // Ascertains whether a property in a property set is supported on the port or device.
 HRESULT KsPropertySet::QuerySupport(REFGUID rguidPropSet, ULONG ulId, PULONG pulTypeSupport)
 {
-    KsPropertySetLogMethodValue(DEBUG, QuerySupport, 3, (rguidPropSet, ulId, pulTypeSupport));
+    KsPropertySetLogMethodValue(TRACE, QuerySupport, 3, (rguidPropSet, ulId, pulTypeSupport));
 
     CONST HRESULT result = this->State.Self->QuerySupport(rguidPropSet, ulId, pulTypeSupport);
 
-    KsPropertySetLogMethodResultValue(DEBUGINFO, QuerySupport, result, 3, (rguidPropSet, ulId, pulTypeSupport));
+    KsPropertySetLogMethodResultValue(TRACEDEBUGINFO, QuerySupport, result, 3, (rguidPropSet, ulId, pulTypeSupport));
 }

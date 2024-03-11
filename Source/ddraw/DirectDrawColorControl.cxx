@@ -44,18 +44,18 @@ SOFTWARE.
 DirectDrawColorControl::DirectDrawColorControl(AgentConstructorParameters(DirectDrawColorControl))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectDrawColorControl);
+    AgentLogConstructor(TRACE, DirectDrawColorControl);
 }
 
 DirectDrawColorControl::~DirectDrawColorControl()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectDrawColorControl);
+    AgentLogDestructor(TRACE, DirectDrawColorControl);
 }
 
 HRESULT DirectDrawColorControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectDrawColorControlLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectDrawColorControlLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -76,7 +76,7 @@ HRESULT DirectDrawColorControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectDrawColorControlLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectDrawColorControlLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectDrawColorControl::AddRef()
@@ -94,19 +94,19 @@ ULONG DirectDrawColorControl::Release()
 // Retrieves the current color-control settings that are associated with an overlay or a primary surface.
 HRESULT DirectDrawColorControl::GetColorControls(LPDDCOLORCONTROL lpColorControl)
 {
-    DirectDrawColorControlLogMethodValue(DEBUG, GetColorControls, 1, (lpColorControl));
+    DirectDrawColorControlLogMethodValue(TRACE, GetColorControls, 1, (lpColorControl));
 
     CONST HRESULT result = this->State.Self->GetColorControls(lpColorControl);
 
-    DirectDrawColorControlLogMethodResultValue(DEBUGINFO, GetColorControls, result, 1, (lpColorControl));
+    DirectDrawColorControlLogMethodResultValue(TRACEDEBUGINFO, GetColorControls, result, 1, (lpColorControl));
 }
 
 // Sets the color-control options for an overlay or a primary surface.
 HRESULT DirectDrawColorControl::SetColorControls(LPDDCOLORCONTROL lpColorControl)
 {
-    DirectDrawColorControlLogMethodValue(DEBUG, SetColorControls, 1, (lpColorControl));
+    DirectDrawColorControlLogMethodValue(TRACE, SetColorControls, 1, (lpColorControl));
 
     CONST HRESULT result = this->State.Self->SetColorControls(lpColorControl);
 
-    DirectDrawColorControlLogMethodResultValue(DEBUGINFO, SetColorControls, result, 1, (lpColorControl));
+    DirectDrawColorControlLogMethodResultValue(TRACEDEBUGINFO, SetColorControls, result, 1, (lpColorControl));
 }

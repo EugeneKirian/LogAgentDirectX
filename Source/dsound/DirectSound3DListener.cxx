@@ -40,18 +40,18 @@ SOFTWARE.
 DirectSound3DListener::DirectSound3DListener(AgentConstructorParameters(DirectSound3DListener))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSound3DListener);
+    AgentLogConstructor(TRACE, DirectSound3DListener);
 }
 
 DirectSound3DListener::~DirectSound3DListener()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSound3DListener);
+    AgentLogDestructor(TRACE, DirectSound3DListener);
 }
 
 HRESULT DirectSound3DListener::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSound3DListenerLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -67,7 +67,7 @@ HRESULT DirectSound3DListener::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSound3DListener::AddRef()
@@ -85,143 +85,143 @@ ULONG DirectSound3DListener::Release()
 // Retrieves information that describes the current state of the 3-D world and listener.
 HRESULT DirectSound3DListener::GetAllParameters(LPDS3DLISTENER pListener)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetAllParameters, 1, (pListener));
+    DirectSound3DListenerLogMethodValue(TRACE, GetAllParameters, 1, (pListener));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pListener);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pListener));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pListener));
 }
 
 // Retrieves the current distance factor.
 HRESULT DirectSound3DListener::GetDistanceFactor(LPD3DVALUE pflDistanceFactor)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetDistanceFactor, 1, (pflDistanceFactor));
+    DirectSound3DListenerLogMethodValue(TRACE, GetDistanceFactor, 1, (pflDistanceFactor));
 
     CONST HRESULT result = this->State.Self->GetDistanceFactor(pflDistanceFactor);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetDistanceFactor, result, 1, (pflDistanceFactor));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetDistanceFactor, result, 1, (pflDistanceFactor));
 }
 
 // Retrieves the current Doppler effect factor.
 HRESULT DirectSound3DListener::GetDopplerFactor(LPD3DVALUE pflDopplerFactor)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetDopplerFactor, 1, (pflDopplerFactor));
+    DirectSound3DListenerLogMethodValue(TRACE, GetDopplerFactor, 1, (pflDopplerFactor));
 
     CONST HRESULT result = this->State.Self->GetDopplerFactor(pflDopplerFactor);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetDopplerFactor, result, 1, (pflDopplerFactor));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetDopplerFactor, result, 1, (pflDopplerFactor));
 }
 
 // Retrieves the listener's current orientation in vectors: a front vector and a top vector.
 HRESULT DirectSound3DListener::GetOrientation(LPD3DVECTOR pvOrientFront, LPD3DVECTOR pvOrientTop)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetOrientation, 2, (pvOrientFront, pvOrientTop));
+    DirectSound3DListenerLogMethodValue(TRACE, GetOrientation, 2, (pvOrientFront, pvOrientTop));
 
     CONST HRESULT result = this->State.Self->GetOrientation(pvOrientFront, pvOrientTop);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetOrientation, result, 2, (pvOrientFront, pvOrientTop));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetOrientation, result, 2, (pvOrientFront, pvOrientTop));
 }
 
 // Retrieves the listener's current position in distance units.
 // By default, these units are meters, but this can be changed by calling the IDirectSound3DListener::SetDistanceFactor method.
 HRESULT DirectSound3DListener::GetPosition(LPD3DVECTOR pvPosition)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetPosition, 1, (pvPosition));
+    DirectSound3DListenerLogMethodValue(TRACE, GetPosition, 1, (pvPosition));
 
     CONST HRESULT result = this->State.Self->GetPosition(pvPosition);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetPosition, result, 1, (pvPosition));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetPosition, result, 1, (pvPosition));
 }
 
 // Retrieves the current rolloff factor.
 HRESULT DirectSound3DListener::GetRolloffFactor(LPD3DVALUE pflRolloffFactor)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetRolloffFactor, 1, (pflRolloffFactor));
+    DirectSound3DListenerLogMethodValue(TRACE, GetRolloffFactor, 1, (pflRolloffFactor));
 
     CONST HRESULT result = this->State.Self->GetRolloffFactor(pflRolloffFactor);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetRolloffFactor, result, 1, (pflRolloffFactor));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetRolloffFactor, result, 1, (pflRolloffFactor));
 }
 
 // Retrieves the listener's current velocity.
 HRESULT DirectSound3DListener::GetVelocity(LPD3DVECTOR pvVelocity)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, GetVelocity, 1, (pvVelocity));
+    DirectSound3DListenerLogMethodValue(TRACE, GetVelocity, 1, (pvVelocity));
 
     CONST HRESULT result = this->State.Self->GetVelocity(pvVelocity);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, GetVelocity, result, 1, (pvVelocity));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, GetVelocity, result, 1, (pvVelocity));
 }
 
 // Sets all 3-D listener parameters from a given DS3DLISTENER structure that describes all aspects of the 3-D listener at a moment in time.
 HRESULT DirectSound3DListener::SetAllParameters(LPCDS3DLISTENER pcListener, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetAllParameters, 2, (pcListener, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetAllParameters, 2, (pcListener, dwApply));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcListener, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 2, (pcListener, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 2, (pcListener, dwApply));
 }
 
 // Sets the current distance factor.
 HRESULT DirectSound3DListener::SetDistanceFactor(D3DVALUE flDistanceFactor, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetDistanceFactor, 2, (flDistanceFactor, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetDistanceFactor, 2, (flDistanceFactor, dwApply));
 
     CONST HRESULT result = this->State.Self->SetDistanceFactor(flDistanceFactor, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetDistanceFactor, result, 2, (flDistanceFactor, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetDistanceFactor, result, 2, (flDistanceFactor, dwApply));
 }
 
 // Sets the current Doppler effect factor.
 HRESULT DirectSound3DListener::SetDopplerFactor(D3DVALUE flDopplerFactor, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetDopplerFactor, 2, (flDopplerFactor, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetDopplerFactor, 2, (flDopplerFactor, dwApply));
 
     CONST HRESULT result = this->State.Self->SetDopplerFactor(flDopplerFactor, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetDopplerFactor, result, 2, (flDopplerFactor, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetDopplerFactor, result, 2, (flDopplerFactor, dwApply));
 }
 
 // Sets the listener's current orientation in terms of two vectors: a front vector and a top vector.
 HRESULT DirectSound3DListener::SetOrientation(D3DVALUE xFront, D3DVALUE yFront, D3DVALUE zFront, D3DVALUE xTop, D3DVALUE yTop, D3DVALUE zTop, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetOrientation, 7, (xFront, yFront, zFront, xTop, yTop, zTop, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetOrientation, 7, (xFront, yFront, zFront, xTop, yTop, zTop, dwApply));
 
     CONST HRESULT result = this->State.Self->SetOrientation(xFront, yFront, zFront, xTop, yTop, zTop, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetOrientation, result, 7, (xFront, yFront, zFront, xTop, yTop, zTop, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetOrientation, result, 7, (xFront, yFront, zFront, xTop, yTop, zTop, dwApply));
 }
 
 // Sets the listener's current position, in distance units.
 // By default, these units are meters, but this can be changed by calling the IDirectSound3DListener::SetDistanceFactor method.
 HRESULT DirectSound3DListener::SetPosition(D3DVALUE x, D3DVALUE y, D3DVALUE z, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetPosition, 4, (x, y, z, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetPosition, 4, (x, y, z, dwApply));
 
     CONST HRESULT result = this->State.Self->SetPosition(x, y, z, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetPosition, result, 4, (x, y, z, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetPosition, result, 4, (x, y, z, dwApply));
 }
 
 // Sets the rolloff factor.
 HRESULT DirectSound3DListener::SetRolloffFactor(D3DVALUE flRolloffFactor, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetRolloffFactor, 2, (flRolloffFactor, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetRolloffFactor, 2, (flRolloffFactor, dwApply));
 
     CONST HRESULT result = this->State.Self->SetRolloffFactor(flRolloffFactor, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetRolloffFactor, result, 2, (flRolloffFactor, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetRolloffFactor, result, 2, (flRolloffFactor, dwApply));
 }
 
 // Sets the listener's velocity.
 HRESULT DirectSound3DListener::SetVelocity(D3DVALUE x, D3DVALUE y, D3DVALUE z, DWORD dwApply)
 {
-    DirectSound3DListenerLogMethodValue(DEBUG, SetVelocity, 4, (x, y, z, dwApply));
+    DirectSound3DListenerLogMethodValue(TRACE, SetVelocity, 4, (x, y, z, dwApply));
 
     CONST HRESULT result = this->State.Self->SetVelocity(x, y, z, dwApply);
 
-    DirectSound3DListenerLogMethodResultValue(DEBUGINFO, SetVelocity, result, 4, (x, y, z, dwApply));
+    DirectSound3DListenerLogMethodResultValue(TRACEDEBUGINFO, SetVelocity, result, 4, (x, y, z, dwApply));
 }
 
 // Commits any deferred settings made since the last call to this method.

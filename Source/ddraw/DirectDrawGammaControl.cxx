@@ -44,18 +44,18 @@ SOFTWARE.
 DirectDrawGammaControl::DirectDrawGammaControl(AgentConstructorParameters(DirectDrawGammaControl))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectDrawGammaControl);
+    AgentLogConstructor(TRACE, DirectDrawGammaControl);
 }
 
 DirectDrawGammaControl::~DirectDrawGammaControl()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectDrawGammaControl);
+    AgentLogDestructor(TRACE, DirectDrawGammaControl);
 }
 
 HRESULT DirectDrawGammaControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectDrawGammaControlLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectDrawGammaControlLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -76,7 +76,7 @@ HRESULT DirectDrawGammaControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectDrawGammaControlLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectDrawGammaControlLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectDrawGammaControl::AddRef()
@@ -94,19 +94,19 @@ ULONG DirectDrawGammaControl::Release()
 // Retrieves the red, green, and blue gamma ramps for the primary surface.
 HRESULT DirectDrawGammaControl::GetGammaRamp(DWORD dwFlags, LPDDGAMMARAMP lpRampData)
 {
-    DirectDrawGammaControlLogMethodValue(DEBUG, GetGammaRamp, 2, (dwFlags, lpRampData));
+    DirectDrawGammaControlLogMethodValue(TRACE, GetGammaRamp, 2, (dwFlags, lpRampData));
 
     CONST HRESULT result = this->State.Self->GetGammaRamp(dwFlags, lpRampData);
 
-    DirectDrawGammaControlLogMethodResultValue(DEBUGINFO, GetGammaRamp, result, 2, (dwFlags, lpRampData));
+    DirectDrawGammaControlLogMethodResultValue(TRACEDEBUGINFO, GetGammaRamp, result, 2, (dwFlags, lpRampData));
 }
 
 // Sets the red, green, and blue gamma ramps for the primary surface.
 HRESULT DirectDrawGammaControl::SetGammaRamp(DWORD dwFlags, LPDDGAMMARAMP lpRampData)
 {
-    DirectDrawGammaControlLogMethodValue(DEBUG, SetGammaRamp, 2, (dwFlags, lpRampData));
+    DirectDrawGammaControlLogMethodValue(TRACE, SetGammaRamp, 2, (dwFlags, lpRampData));
 
     CONST HRESULT result = this->State.Self->SetGammaRamp(dwFlags, lpRampData);
 
-    DirectDrawGammaControlLogMethodResultValue(DEBUGINFO, SetGammaRamp, result, 2, (dwFlags, lpRampData));
+    DirectDrawGammaControlLogMethodResultValue(TRACEDEBUGINFO, SetGammaRamp, result, 2, (dwFlags, lpRampData));
 }

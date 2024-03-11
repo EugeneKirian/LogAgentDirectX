@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXGargle::DirectSoundFXGargle(AgentConstructorParameters(DirectSoundFXGargle))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXGargle);
+    AgentLogConstructor(TRACE, DirectSoundFXGargle);
 }
 
 DirectSoundFXGargle::~DirectSoundFXGargle()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXGargle);
+    AgentLogDestructor(TRACE, DirectSoundFXGargle);
 }
 
 HRESULT DirectSoundFXGargle::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXGargleLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXGargleLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXGargle::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXGargleLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXGargleLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXGargle::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXGargle::Release()
 // Sets the amplitude modulation parameters of a buffer.
 HRESULT DirectSoundFXGargle::SetAllParameters(LPCDSFXGargle pcDsFxGargle)
 {
-    DirectSoundFXGargleLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxGargle));
+    DirectSoundFXGargleLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxGargle));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxGargle);
 
-    DirectSoundFXGargleLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxGargle));
+    DirectSoundFXGargleLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxGargle));
 }
 
 // Retrieves the amplitude modulation parameters of a buffer.
 HRESULT DirectSoundFXGargle::GetAllParameters(LPDSFXGargle pDsFxGargle)
 {
-    DirectSoundFXGargleLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxGargle));
+    DirectSoundFXGargleLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxGargle));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxGargle);
 
-    DirectSoundFXGargleLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxGargle));
+    DirectSoundFXGargleLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxGargle));
 }

@@ -38,18 +38,18 @@ SOFTWARE.
 DirectSoundFXChorus::DirectSoundFXChorus(AgentConstructorParameters(DirectSoundFXChorus))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSoundFXChorus);
+    AgentLogConstructor(TRACE, DirectSoundFXChorus);
 }
 
 DirectSoundFXChorus::~DirectSoundFXChorus()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSoundFXChorus);
+    AgentLogDestructor(TRACE, DirectSoundFXChorus);
 }
 
 HRESULT DirectSoundFXChorus::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSoundFXChorusLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSoundFXChorusLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -63,7 +63,7 @@ HRESULT DirectSoundFXChorus::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSoundFXChorusLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSoundFXChorusLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSoundFXChorus::AddRef()
@@ -81,19 +81,19 @@ ULONG DirectSoundFXChorus::Release()
 // Sets the chorus parameters of a buffer.
 HRESULT DirectSoundFXChorus::SetAllParameters(LPCDSFXChorus pcDsFxChorus)
 {
-    DirectSoundFXChorusLogMethodValue(DEBUG, SetAllParameters, 1, (pcDsFxChorus));
+    DirectSoundFXChorusLogMethodValue(TRACE, SetAllParameters, 1, (pcDsFxChorus));
 
     CONST HRESULT result = this->State.Self->SetAllParameters(pcDsFxChorus);
 
-    DirectSoundFXChorusLogMethodResultValue(DEBUGINFO, SetAllParameters, result, 1, (pcDsFxChorus));
+    DirectSoundFXChorusLogMethodResultValue(TRACEDEBUGINFO, SetAllParameters, result, 1, (pcDsFxChorus));
 }
 
 // Retrieves the chorus parameters of a buffer.
 HRESULT DirectSoundFXChorus::GetAllParameters(LPDSFXChorus pDsFxChorus)
 {
-    DirectSoundFXChorusLogMethodValue(DEBUG, GetAllParameters, 1, (pDsFxChorus));
+    DirectSoundFXChorusLogMethodValue(TRACE, GetAllParameters, 1, (pDsFxChorus));
 
     CONST HRESULT result = this->State.Self->GetAllParameters(pDsFxChorus);
 
-    DirectSoundFXChorusLogMethodResultValue(DEBUGINFO, GetAllParameters, result, 1, (pDsFxChorus));
+    DirectSoundFXChorusLogMethodResultValue(TRACEDEBUGINFO, GetAllParameters, result, 1, (pDsFxChorus));
 }

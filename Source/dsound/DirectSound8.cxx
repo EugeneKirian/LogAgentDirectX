@@ -41,18 +41,18 @@ SOFTWARE.
 DirectSound8::DirectSound8(AgentConstructorParameters(DirectSound8))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectSound8);
+    AgentLogConstructor(TRACE, DirectSound8);
 }
 
 DirectSound8::~DirectSound8()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectSound8);
+    AgentLogDestructor(TRACE, DirectSound8);
 }
 
 HRESULT DirectSound8::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectSound8LogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectSound8LogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -66,7 +66,7 @@ HRESULT DirectSound8::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectSound8::AddRef()
@@ -84,29 +84,29 @@ ULONG DirectSound8::Release()
 // Creates a DirectSoundBuffer object to hold a sequence of audio samples.
 HRESULT DirectSound8::CreateSoundBuffer(LPCDSBUFFERDESC pcDSBufferDesc, LPDIRECTSOUNDBUFFER* ppDSBuffer, LPUNKNOWN pUnkOuter)
 {
-    DirectSound8LogMethodValue(DEBUG, CreateSoundBuffer, 3, (pcDSBufferDesc, ppDSBuffer, pUnkOuter));
+    DirectSound8LogMethodValue(TRACE, CreateSoundBuffer, 3, (pcDSBufferDesc, ppDSBuffer, pUnkOuter));
 
     CONST HRESULT result = this->State.Self->CreateSoundBuffer(pcDSBufferDesc, ppDSBuffer, pUnkOuter);
 
     if (SUCCEEDED(result)) { *ppDSBuffer = ActivateAgentDelegate(DirectSoundBuffer8, *ppDSBuffer); }
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, CreateSoundBuffer, result, 3, (pcDSBufferDesc, ppDSBuffer, pUnkOuter));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, CreateSoundBuffer, result, 3, (pcDSBufferDesc, ppDSBuffer, pUnkOuter));
 }
 
 // Retrieves the capabilities of the hardware device that is represented by the DirectSound object.
 HRESULT DirectSound8::GetCaps(LPDSCAPS pDSCaps)
 {
-    DirectSound8LogMethodValue(DEBUG, GetCaps, 1, (pDSCaps));
+    DirectSound8LogMethodValue(TRACE, GetCaps, 1, (pDSCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(pDSCaps);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (pDSCaps));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (pDSCaps));
 }
 
 // Creates a new DirectSoundBuffer object that uses the same buffer memory as the original object.
 HRESULT DirectSound8::DuplicateSoundBuffer(LPDIRECTSOUNDBUFFER pDSBufferOriginal, LPDIRECTSOUNDBUFFER* ppDSBufferDuplicate)
 {
-    DirectSound8LogMethodValue(DEBUG, DuplicateSoundBuffer, 2, (pDSBufferOriginal, ppDSBufferDuplicate));
+    DirectSound8LogMethodValue(TRACE, DuplicateSoundBuffer, 2, (pDSBufferOriginal, ppDSBufferDuplicate));
 
     AttemptAccessAgentValue(DirectSoundBuffer, pDSBufferOriginal);
 
@@ -114,17 +114,17 @@ HRESULT DirectSound8::DuplicateSoundBuffer(LPDIRECTSOUNDBUFFER pDSBufferOriginal
 
     if (SUCCEEDED(result)) { *ppDSBufferDuplicate = ActivateAgentDelegate(DirectSoundBuffer8, *ppDSBufferDuplicate); }
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, DuplicateSoundBuffer, result, 2, (ActivateAgent(DirectSoundBuffer, pDSBufferOriginal), ppDSBufferDuplicate));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, DuplicateSoundBuffer, result, 2, (ActivateAgent(DirectSoundBuffer, pDSBufferOriginal), ppDSBufferDuplicate));
 }
 
 // Sets the cooperative level of the application for this sound device.
 HRESULT DirectSound8::SetCooperativeLevel(HWND hwnd, DWORD dwLevel)
 {
-    DirectSound8LogMethodValue(DEBUG, SetCooperativeLevel, 2, (hwnd, dwLevel));
+    DirectSound8LogMethodValue(TRACE, SetCooperativeLevel, 2, (hwnd, dwLevel));
 
     CONST HRESULT result = this->State.Self->SetCooperativeLevel(hwnd, dwLevel);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, SetCooperativeLevel, result, 2, (hwnd, dwLevel));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, SetCooperativeLevel, result, 2, (hwnd, dwLevel));
 }
 
 // Moves the unused portions of on-board sound memory, if any, to a contiguous block so that the largest portion of free memory will be available.
@@ -140,39 +140,39 @@ HRESULT DirectSound8::Compact()
 // Retrieves the speaker configuration.
 HRESULT DirectSound8::GetSpeakerConfig(LPDWORD pdwSpeakerConfig)
 {
-    DirectSound8LogMethodValue(DEBUG, GetSpeakerConfig, 1, (pdwSpeakerConfig));
+    DirectSound8LogMethodValue(TRACE, GetSpeakerConfig, 1, (pdwSpeakerConfig));
 
     CONST HRESULT result = this->State.Self->GetSpeakerConfig(pdwSpeakerConfig);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, GetSpeakerConfig, result, 1, (pdwSpeakerConfig));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, GetSpeakerConfig, result, 1, (pdwSpeakerConfig));
 }
 
 // Specifies the speaker configuration of the DirectSound object.
 HRESULT DirectSound8::SetSpeakerConfig(DWORD dwSpeakerConfig)
 {
-    DirectSound8LogMethodValue(DEBUG, SetSpeakerConfig, 1, (dwSpeakerConfig));
+    DirectSound8LogMethodValue(TRACE, SetSpeakerConfig, 1, (dwSpeakerConfig));
 
     CONST HRESULT result = this->State.Self->SetSpeakerConfig(dwSpeakerConfig);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, SetSpeakerConfig, result, 1, (dwSpeakerConfig));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, SetSpeakerConfig, result, 1, (dwSpeakerConfig));
 }
 
 // Initializes the DirectSound object that was created by using the CoCreateInstance function.
 HRESULT DirectSound8::Initialize(LPCGUID pcGuidDevice)
 {
-    DirectSound8LogMethodValue(DEBUG, Initialize, 1, (pcGuidDevice));
+    DirectSound8LogMethodValue(TRACE, Initialize, 1, (pcGuidDevice));
 
     CONST HRESULT result = this->State.Self->Initialize(pcGuidDevice);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, Initialize, result, 1, (pcGuidDevice));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 1, (pcGuidDevice));
 }
 
 // Ascertains whether the DirectSound device is certified for DirectX.
 HRESULT DirectSound8::VerifyCertification(LPDWORD pdwCertified)
 {
-    DirectSound8LogMethodValue(DEBUG, VerifyCertification, 1, (pdwCertified));
+    DirectSound8LogMethodValue(TRACE, VerifyCertification, 1, (pdwCertified));
 
     CONST HRESULT result = this->State.Self->VerifyCertification(pdwCertified);
 
-    DirectSound8LogMethodResultValue(DEBUGINFO, VerifyCertification, result, 1, (pdwCertified));
+    DirectSound8LogMethodResultValue(TRACEDEBUGINFO, VerifyCertification, result, 1, (pdwCertified));
 }

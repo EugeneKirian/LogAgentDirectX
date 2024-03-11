@@ -38,18 +38,18 @@ SOFTWARE.
 DirectDrawPalette::DirectDrawPalette(AgentConstructorParameters(DirectDrawPalette))
 {
     AgentConstructor();
-    AgentLogConstructor(DEBUG, DirectDrawPalette);
+    AgentLogConstructor(TRACE, DirectDrawPalette);
 }
 
 DirectDrawPalette::~DirectDrawPalette()
 {
     AgentDestructor();
-    AgentLogDestructor(DEBUG, DirectDrawPalette);
+    AgentLogDestructor(TRACE, DirectDrawPalette);
 }
 
 HRESULT DirectDrawPalette::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 {
-    DirectDrawPaletteLogMethodValue(DEBUG, QueryInterface, 2, (riid, ppvObj));
+    DirectDrawPaletteLogMethodValue(TRACE, QueryInterface, 2, (riid, ppvObj));
 
     CONST HRESULT result = this->State.Self->QueryInterface(riid, ppvObj);
 
@@ -62,7 +62,7 @@ HRESULT DirectDrawPalette::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
         }
     }
 
-    DirectDrawPaletteLogMethodResultValue(DEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
+    DirectDrawPaletteLogMethodResultValue(TRACEDEBUGINFO, QueryInterface, result, 2, (riid, ppvObj));
 }
 
 ULONG DirectDrawPalette::AddRef()
@@ -80,40 +80,40 @@ ULONG DirectDrawPalette::Release()
 // Retrieves the capabilities of the palette object.
 HRESULT DirectDrawPalette::GetCaps(LPDWORD lpdwCaps)
 {
-    DirectDrawPaletteLogMethodValue(DEBUG, GetCaps, 1, (lpdwCaps));
+    DirectDrawPaletteLogMethodValue(TRACE, GetCaps, 1, (lpdwCaps));
 
     CONST HRESULT result = this->State.Self->GetCaps(lpdwCaps);
 
-    DirectDrawPaletteLogMethodResultValue(DEBUGINFO, GetCaps, result, 1, (lpdwCaps));
+    DirectDrawPaletteLogMethodResultValue(TRACEDEBUGINFO, GetCaps, result, 1, (lpdwCaps));
 }
 
 // Retrieves palette values from a DirectDrawPalette object.
 HRESULT DirectDrawPalette::GetEntries(DWORD dwFlags, DWORD dwBase, DWORD dwNumEntries, LPPALETTEENTRY lpEntries)
 {
-    DirectDrawPaletteLogMethodValue(DEBUG, GetEntries, 4, (dwFlags, dwBase, dwNumEntries, lpEntries));
+    DirectDrawPaletteLogMethodValue(TRACE, GetEntries, 4, (dwFlags, dwBase, dwNumEntries, lpEntries));
 
     CONST HRESULT result = this->State.Self->GetEntries(dwFlags, dwBase, dwNumEntries, lpEntries);
 
-    DirectDrawPaletteLogMethodResultValue(DEBUGINFO, GetEntries, result, 4, (dwFlags, dwBase, dwNumEntries, lpEntries));
+    DirectDrawPaletteLogMethodResultValue(TRACEDEBUGINFO, GetEntries, result, 4, (dwFlags, dwBase, dwNumEntries, lpEntries));
 }
 
 // Initializes the DirectDrawPalette object.
 HRESULT DirectDrawPalette::Initialize(LPDIRECTDRAW lpDD, DWORD dwFlags, LPPALETTEENTRY lpDDColorTable)
 {
-    DirectDrawPaletteLogMethodValue(DEBUG, Initialize, 3, (lpDD, dwFlags, lpDDColorTable));
+    DirectDrawPaletteLogMethodValue(TRACE, Initialize, 3, (lpDD, dwFlags, lpDDColorTable));
 
     AttemptAccessAgentValue(DirectDraw, lpDD);
 
     CONST HRESULT result = this->State.Self->Initialize(lpDD, dwFlags, lpDDColorTable);
 
-    DirectDrawPaletteLogMethodResultValue(DEBUGINFO, Initialize, result, 3, (ActivateAgent(DirectDraw, lpDD), dwFlags, lpDDColorTable));
+    DirectDrawPaletteLogMethodResultValue(TRACEDEBUGINFO, Initialize, result, 3, (ActivateAgent(DirectDraw, lpDD), dwFlags, lpDDColorTable));
 }
 // Changes entries in a DirectDrawPalette object immediately.
 HRESULT DirectDrawPalette::SetEntries(DWORD dwFlags, DWORD dwStartingEntry, DWORD dwCount, LPPALETTEENTRY lpEntries)
 {
-    DirectDrawPaletteLogMethodValue(DEBUG, SetEntries, 4, (dwFlags, dwStartingEntry, dwCount, lpEntries));
+    DirectDrawPaletteLogMethodValue(TRACE, SetEntries, 4, (dwFlags, dwStartingEntry, dwCount, lpEntries));
 
     CONST HRESULT result = this->State.Self->SetEntries(dwFlags, dwStartingEntry, dwCount, lpEntries);
 
-    DirectDrawPaletteLogMethodResultValue(DEBUGINFO, SetEntries, result, 4, (dwFlags, dwStartingEntry, dwCount, lpEntries));
+    DirectDrawPaletteLogMethodResultValue(TRACEDEBUGINFO, SetEntries, result, 4, (dwFlags, dwStartingEntry, dwCount, lpEntries));
 }
