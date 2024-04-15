@@ -69,14 +69,14 @@ HRESULT Direct3DVertexBuffer7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DVertexBuffer7::AddRef()
 {
-    Direct3DVertexBuffer7LogMethod(DEBUG, AddRef);
-    Direct3DVertexBuffer7LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DVertexBuffer7LogMethod(TRACE, AddRef);
+    Direct3DVertexBuffer7LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DVertexBuffer7::Release()
 {
-    Direct3DVertexBuffer7LogMethod(DEBUG, Release);
-    Direct3DVertexBuffer7LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DVertexBuffer7LogMethod(TRACE, Release);
+    Direct3DVertexBuffer7LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Locks a vertex buffer and obtains a pointer to the vertex buffer memory.
@@ -92,11 +92,11 @@ HRESULT Direct3DVertexBuffer7::Lock(DWORD dwFlags, LPVOID* lplpData, LPDWORD lpd
 // Unlocks a previously locked vertex buffer.
 HRESULT Direct3DVertexBuffer7::Unlock()
 {
-    Direct3DVertexBuffer7LogMethod(DEBUG, Unlock);
+    Direct3DVertexBuffer7LogMethod(TRACE, Unlock);
 
     CONST HRESULT result = this->State.Self->Unlock();
 
-    Direct3DVertexBuffer7LogMethodResult(DEBUGINFO, Unlock, result);
+    Direct3DVertexBuffer7LogMethodResult(TRACEDEBUGINFO, Unlock, result);
 }
 
 // Processes untransformed vertices into a transformed or optimized vertex buffer.

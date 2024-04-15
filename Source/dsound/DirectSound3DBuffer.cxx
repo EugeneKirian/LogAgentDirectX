@@ -72,14 +72,14 @@ HRESULT DirectSound3DBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSound3DBuffer::AddRef()
 {
-    DirectSound3DBufferLogMethod(DEBUG, AddRef);
-    DirectSound3DBufferLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSound3DBufferLogMethod(TRACE, AddRef);
+    DirectSound3DBufferLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSound3DBuffer::Release()
 {
-    DirectSound3DBufferLogMethod(DEBUG, Release);
-    DirectSound3DBufferLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSound3DBufferLogMethod(TRACE, Release);
+    DirectSound3DBufferLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves information that describes the 3-D characteristics of a sound buffer at a given point in time.

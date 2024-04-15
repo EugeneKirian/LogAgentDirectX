@@ -68,14 +68,14 @@ HRESULT DirectSoundCaptureFXAec::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundCaptureFXAec::AddRef()
 {
-    DirectSoundCaptureFXAecLogMethod(DEBUG, AddRef);
-    DirectSoundCaptureFXAecLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundCaptureFXAecLogMethod(TRACE, AddRef);
+    DirectSoundCaptureFXAecLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundCaptureFXAec::Release()
 {
-    DirectSoundCaptureFXAecLogMethod(DEBUG, Release);
-    DirectSoundCaptureFXAecLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundCaptureFXAecLogMethod(TRACE, Release);
+    DirectSoundCaptureFXAecLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the acoustic echo cancellation parameters of a buffer.
@@ -113,9 +113,9 @@ HRESULT DirectSoundCaptureFXAec::GetStatus(LPDWORD pdwStatus)
 // Resets the effect to its initial state.
 HRESULT DirectSoundCaptureFXAec::Reset()
 {
-    DirectSoundCaptureFXAecLogMethod(DEBUG, Reset);
+    DirectSoundCaptureFXAecLogMethod(TRACE, Reset);
 
     CONST HRESULT result = this->State.Self->Reset();
 
-    DirectSoundCaptureFXAecLogMethodResult(DEBUGINFO, Reset, result);
+    DirectSoundCaptureFXAecLogMethodResult(TRACEDEBUGINFO, Reset, result);
 }

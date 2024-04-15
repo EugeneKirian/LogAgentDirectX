@@ -126,24 +126,24 @@ HRESULT DirectDraw::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDraw::AddRef()
 {
-    DirectDrawLogMethod(DEBUG, AddRef);
-    DirectDrawLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawLogMethod(TRACE, AddRef);
+    DirectDrawLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDraw::Release()
 {
-    DirectDrawLogMethod(DEBUG, Release);
-    DirectDrawLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawLogMethod(TRACE, Release);
+    DirectDrawLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
 HRESULT DirectDraw::Compact()
 {
-    DirectDrawLogMethod(DEBUG, Compact);
+    DirectDrawLogMethod(TRACE, Compact);
     
     CONST HRESULT result = this->State.Self->Compact();
 
-    DirectDrawLogMethodResult(DEBUGINFO, Compact, result);
+    DirectDrawLogMethodResult(TRACEDEBUGINFO, Compact, result);
 }
 
 // Creates a DirectDrawClipper object.
@@ -200,7 +200,7 @@ HRESULT DirectDraw::DuplicateSurface(LPDIRECTDRAWSURFACE lpDDSurface, LPDIRECTDR
 // and that are compatible with a provided surface description.
 HRESULT DirectDraw::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC lpDDSurfaceDesc, LPVOID lpContext, LPDDENUMMODESCALLBACK lpEnumModesCallback)
 {
-    DirectDrawLogMethodValue(DEBUGINFO, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
+    DirectDrawLogMethodValue(TRACEDEBUG, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
 
     if (lpEnumModesCallback == NULL) { DirectDrawLogMethodResultValue(TRACEDEBUGINFO, EnumDisplayModes, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback)); }
 
@@ -219,7 +219,7 @@ HRESULT DirectDraw::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC lpDDSurfaceD
 // Enumerates all the existing or possible surfaces that meet the specified surface description.
 HRESULT DirectDraw::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC lpDDSD, LPVOID lpContext, LPDDENUMSURFACESCALLBACK lpEnumSurfacesCallback)
 {
-    DirectDrawLogMethodValue(DEBUGINFO, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
+    DirectDrawLogMethodValue(TRACEDEBUG, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
 
     if (lpEnumSurfacesCallback == NULL) { DirectDrawLogMethodResultValue(TRACEDEBUGINFO, EnumSurfaces, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback)); }
 
@@ -238,11 +238,11 @@ HRESULT DirectDraw::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC lpDDSD, LPVOID l
 // Makes the surface that the GDI writes to the primary surface.
 HRESULT DirectDraw::FlipToGDISurface()
 {
-    DirectDrawLogMethod(DEBUG, FlipToGDISurface);
+    DirectDrawLogMethod(TRACE, FlipToGDISurface);
 
     CONST HRESULT result = this->State.Self->FlipToGDISurface();
 
-    DirectDrawLogMethodResult(DEBUGINFO, FlipToGDISurface, result);
+    DirectDrawLogMethodResult(TRACEDEBUGINFO, FlipToGDISurface, result);
 }
 
 // Retrieves the capabilities of the device driver for the hardware and the hardware emulation layer (HEL).
@@ -283,7 +283,7 @@ HRESULT DirectDraw::GetGDISurface(LPDIRECTDRAWSURFACE FAR* lplpGDIDDSSurface)
 
     CONST HRESULT result = this->State.Self->GetGDISurface(lplpGDIDDSSurface);
 
-    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgentDelegate(DirectDrawSurface, *lplpGDIDDSSurface); }
+    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgent(DirectDrawSurface, *lplpGDIDDSSurface); }
 
     DirectDrawLogMethodResultValue(TRACEDEBUGINFO, GetGDISurface, result, 1, (lplpGDIDDSSurface));
 }
@@ -332,11 +332,11 @@ HRESULT DirectDraw::Initialize(GUID FAR* lpGUID)
 // the IDirectDraw::SetDisplayMode method was called. Exclusive-level access is required to use this method.
 HRESULT DirectDraw::RestoreDisplayMode()
 {
-    DirectDrawLogMethod(DEBUG, RestoreDisplayMode);
+    DirectDrawLogMethod(TRACE, RestoreDisplayMode);
 
     CONST HRESULT result = this->State.Self->RestoreDisplayMode();
 
-    DirectDrawLogMethodResult(DEBUGINFO, RestoreDisplayMode, result);
+    DirectDrawLogMethodResult(TRACEDEBUGINFO, RestoreDisplayMode, result);
 }
 
 // Determines the top-level behavior of the application.

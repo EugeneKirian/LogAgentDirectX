@@ -68,14 +68,14 @@ HRESULT DirectSoundFXI3DL2Reverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj
 
 ULONG DirectSoundFXI3DL2Reverb::AddRef()
 {
-    DirectSoundFXI3DL2ReverbLogMethod(DEBUG, AddRef);
-    DirectSoundFXI3DL2ReverbLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXI3DL2ReverbLogMethod(TRACE, AddRef);
+    DirectSoundFXI3DL2ReverbLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXI3DL2Reverb::Release()
 {
-    DirectSoundFXI3DL2ReverbLogMethod(DEBUG, Release);
-    DirectSoundFXI3DL2ReverbLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXI3DL2ReverbLogMethod(TRACE, Release);
+    DirectSoundFXI3DL2ReverbLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the I3DL2 environmental reverberation parameters of a buffer.

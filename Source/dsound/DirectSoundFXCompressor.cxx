@@ -68,14 +68,14 @@ HRESULT DirectSoundFXCompressor::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXCompressor::AddRef()
 {
-    DirectSoundFXCompressorLogMethod(DEBUG, AddRef);
-    DirectSoundFXCompressorLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXCompressorLogMethod(TRACE, AddRef);
+    DirectSoundFXCompressorLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXCompressor::Release()
 {
-    DirectSoundFXCompressorLogMethod(DEBUG, Release);
-    DirectSoundFXCompressorLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXCompressorLogMethod(TRACE, Release);
+    DirectSoundFXCompressorLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the compression parameters of a buffer.

@@ -81,14 +81,14 @@ HRESULT Direct3DTexture2::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DTexture2::AddRef()
 {
-    Direct3DTexture2LogMethod(DEBUG, AddRef);
-    Direct3DTexture2LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DTexture2LogMethod(TRACE, AddRef);
+    Direct3DTexture2LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DTexture2::Release()
 {
-    Direct3DTexture2LogMethod(DEBUG, Release);
-    Direct3DTexture2LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DTexture2LogMethod(TRACE, Release);
+    Direct3DTexture2LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Obtains the texture handle to be used when rendering with the IDirect3DDevice2 or IDirect3DDevice interfaces.

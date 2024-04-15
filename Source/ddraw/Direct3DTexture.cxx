@@ -81,14 +81,14 @@ HRESULT Direct3DTexture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DTexture::AddRef()
 {
-    Direct3DTextureLogMethod(DEBUG, AddRef);
-    Direct3DTextureLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DTextureLogMethod(TRACE, AddRef);
+    Direct3DTextureLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DTexture::Release()
 {
-    Direct3DTextureLogMethod(DEBUG, Release);
-    Direct3DTextureLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DTextureLogMethod(TRACE, Release);
+    Direct3DTextureLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 HRESULT Direct3DTexture::Initialize(LPDIRECT3DDEVICE lpDirect3DDevice, LPDIRECTDRAWSURFACE lpDDS)
@@ -138,9 +138,9 @@ HRESULT Direct3DTexture::Load(LPDIRECT3DTEXTURE lpD3DTexture)
 
 HRESULT Direct3DTexture::Unload()
 {
-    Direct3DTextureLogMethod(DEBUG, Unload);
+    Direct3DTextureLogMethod(TRACE, Unload);
 
     CONST HRESULT result = this->State.Self->Unload();
 
-    Direct3DTextureLogMethodResult(DEBUGINFO, Unload, result);
+    Direct3DTextureLogMethodResult(TRACEDEBUGINFO, Unload, result);
 }

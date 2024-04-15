@@ -68,14 +68,14 @@ HRESULT DirectSoundFXWavesReverb::QueryInterface(REFIID riid, LPVOID FAR* ppvObj
 
 ULONG DirectSoundFXWavesReverb::AddRef()
 {
-    DirectSoundFXWavesReverbLogMethod(DEBUG, AddRef);
-    DirectSoundFXWavesReverbLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXWavesReverbLogMethod(TRACE, AddRef);
+    DirectSoundFXWavesReverbLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXWavesReverb::Release()
 {
-    DirectSoundFXWavesReverbLogMethod(DEBUG, Release);
-    DirectSoundFXWavesReverbLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXWavesReverbLogMethod(TRACE, Release);
+    DirectSoundFXWavesReverbLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the music reverberation parameters of a buffer.

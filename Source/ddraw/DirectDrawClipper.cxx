@@ -66,14 +66,14 @@ HRESULT DirectDrawClipper::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawClipper::AddRef()
 {
-    DirectDrawClipperLogMethod(DEBUG, AddRef);
-    DirectDrawClipperLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawClipperLogMethod(TRACE, AddRef);
+    DirectDrawClipperLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawClipper::Release()
 {
-    DirectDrawClipperLogMethod(DEBUG, Release);
-    DirectDrawClipperLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawClipperLogMethod(TRACE, Release);
+    DirectDrawClipperLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves a copy of the clip list that is associated with a DirectDrawClipper object.

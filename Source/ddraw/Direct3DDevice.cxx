@@ -115,14 +115,14 @@ HRESULT Direct3DDevice::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DDevice::AddRef()
 {
-    Direct3DDeviceLogMethod(DEBUG, AddRef);
-    Direct3DDeviceLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DDeviceLogMethod(TRACE, AddRef);
+    Direct3DDeviceLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DDevice::Release()
 {
-    Direct3DDeviceLogMethod(DEBUG, Release);
-    Direct3DDeviceLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DDeviceLogMethod(TRACE, Release);
+    Direct3DDeviceLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
@@ -230,7 +230,7 @@ HRESULT Direct3DDevice::NextViewport(LPDIRECT3DVIEWPORT lpDirect3DViewport, LPDI
 
     CONST HRESULT result = this->State.Self->NextViewport(lpDirect3DViewport, lplpAnotherViewport, dwFlags);
 
-    if (SUCCEEDED(result)) { *lplpAnotherViewport = ActivateAgentDelegate(Direct3DViewport, *lplpAnotherViewport); }
+    if (SUCCEEDED(result)) { *lplpAnotherViewport = ActivateAgent(Direct3DViewport, *lplpAnotherViewport); }
 
     Direct3DDeviceLogMethodResultValue(TRACEDEBUGINFO, NextViewport, result, 3, (ActivateAgent(Direct3DViewport, lpDirect3DViewport), lplpAnotherViewport, dwFlags));
 }
@@ -262,7 +262,7 @@ HRESULT Direct3DDevice::GetPickRecords(LPDWORD lpCount, LPD3DPICKRECORD lpD3DPic
 // Queries the current driver for a list of supported texture formats.
 HRESULT Direct3DDevice::EnumTextureFormats(LPD3DENUMTEXTUREFORMATSCALLBACK lpd3dEnumTextureProc, LPVOID lpContext)
 {
-    Direct3DDeviceLogMethodValue(DEBUGINFO, EnumTextureFormats, 2, (lpd3dEnumTextureProc, lpContext));
+    Direct3DDeviceLogMethodValue(TRACEDEBUG, EnumTextureFormats, 2, (lpd3dEnumTextureProc, lpContext));
 
     if (lpd3dEnumTextureProc == NULL) { Direct3DDeviceLogMethodResultValue(TRACEDEBUGINFO, EnumTextureFormats, DDERR_INVALIDPARAMS, 2, (lpd3dEnumTextureProc, lpContext)); }
 
@@ -321,21 +321,21 @@ HRESULT Direct3DDevice::DeleteMatrix(D3DMATRIXHANDLE d3dMatHandle)
 // Begins a scene.
 HRESULT Direct3DDevice::BeginScene()
 {
-    Direct3DDeviceLogMethod(DEBUG, BeginScene);
+    Direct3DDeviceLogMethod(TRACE, BeginScene);
 
     CONST HRESULT result = this->State.Self->BeginScene();
 
-    Direct3DDeviceLogMethodResult(DEBUGINFO, BeginScene, result);
+    Direct3DDeviceLogMethodResult(TRACEDEBUGINFO, BeginScene, result);
 }
 
 // Ends a scene.
 HRESULT Direct3DDevice::EndScene()
 {
-    Direct3DDeviceLogMethod(DEBUG, EndScene);
+    Direct3DDeviceLogMethod(TRACE, EndScene);
 
     CONST HRESULT result = this->State.Self->EndScene();
 
-    Direct3DDeviceLogMethodResult(DEBUGINFO, EndScene, result);
+    Direct3DDeviceLogMethodResult(TRACEDEBUGINFO, EndScene, result);
 }
 
 // Retrieves the Direct3D object for this device.
@@ -345,7 +345,7 @@ HRESULT Direct3DDevice::GetDirect3D(LPDIRECT3D* lplpD3D)
 
     CONST HRESULT result = this->State.Self->GetDirect3D(lplpD3D);
 
-    if (SUCCEEDED(result)) { *lplpD3D = ActivateAgentDelegate(Direct3D, *lplpD3D); }
+    if (SUCCEEDED(result)) { *lplpD3D = ActivateAgent(Direct3D, *lplpD3D); }
 
     Direct3DDeviceLogMethodResultValue(TRACEDEBUGINFO, GetDirect3D, result, 1, (lplpD3D));
 }

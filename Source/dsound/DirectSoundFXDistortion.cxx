@@ -68,14 +68,14 @@ HRESULT DirectSoundFXDistortion::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXDistortion::AddRef()
 {
-    DirectSoundFXDistortionLogMethod(DEBUG, AddRef);
-    DirectSoundFXDistortionLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXDistortionLogMethod(TRACE, AddRef);
+    DirectSoundFXDistortionLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXDistortion::Release()
 {
-    DirectSoundFXDistortionLogMethod(DEBUG, Release);
-    DirectSoundFXDistortionLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXDistortionLogMethod(TRACE, Release);
+    DirectSoundFXDistortionLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the distortion parameters of a buffer.

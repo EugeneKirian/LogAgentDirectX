@@ -74,14 +74,14 @@ HRESULT DirectSoundNotify::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundNotify::AddRef()
 {
-    DirectSoundNotifyLogMethod(DEBUG, AddRef);
-    DirectSoundNotifyLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundNotifyLogMethod(TRACE, AddRef);
+    DirectSoundNotifyLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundNotify::Release()
 {
-    DirectSoundNotifyLogMethod(DEBUG, Release);
-    DirectSoundNotifyLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundNotifyLogMethod(TRACE, Release);
+    DirectSoundNotifyLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the notification positions. During capture or playback,

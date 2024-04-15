@@ -126,24 +126,24 @@ HRESULT DirectDraw4::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDraw4::AddRef()
 {
-    DirectDraw4LogMethod(DEBUG, AddRef);
-    DirectDraw4LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDraw4LogMethod(TRACE, AddRef);
+    DirectDraw4LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDraw4::Release()
 {
-    DirectDraw4LogMethod(DEBUG, Release);
-    DirectDraw4LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDraw4LogMethod(TRACE, Release);
+    DirectDraw4LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
 HRESULT DirectDraw4::Compact()
 {
-    DirectDraw4LogMethod(DEBUG, Compact);
+    DirectDraw4LogMethod(TRACE, Compact);
 
     CONST HRESULT result = this->State.Self->Compact();
 
-    DirectDraw4LogMethodResult(DEBUGINFO, Compact, result);
+    DirectDraw4LogMethodResult(TRACEDEBUGINFO, Compact, result);
 }
 
 // Creates a DirectDrawClipper object.
@@ -200,7 +200,7 @@ HRESULT DirectDraw4::DuplicateSurface(LPDIRECTDRAWSURFACE4 lpDDSurface, LPDIRECT
 // and that are compatible with a provided surface description.
 HRESULT DirectDraw4::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSurfaceDesc, LPVOID lpContext, LPDDENUMMODESCALLBACK2 lpEnumModesCallback)
 {
-    DirectDraw4LogMethodValue(DEBUGINFO, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
+    DirectDraw4LogMethodValue(TRACEDEBUG, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
 
     if (lpEnumModesCallback == NULL) { DirectDraw4LogMethodResultValue(TRACEDEBUGINFO, EnumDisplayModes, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback)); }
 
@@ -219,7 +219,7 @@ HRESULT DirectDraw4::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSurfac
 // Enumerates all the existing or possible surfaces that meet the specified surface description.
 HRESULT DirectDraw4::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSD, LPVOID lpContext, LPDDENUMSURFACESCALLBACK2 lpEnumSurfacesCallback)
 {
-    DirectDraw4LogMethodValue(DEBUGINFO, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
+    DirectDraw4LogMethodValue(TRACEDEBUG, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
 
     if (lpEnumSurfacesCallback == NULL) { DirectDraw4LogMethodResultValue(TRACEDEBUGINFO, EnumSurfaces, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback)); }
 
@@ -238,11 +238,11 @@ HRESULT DirectDraw4::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSD, LPVOID
 // Makes the surface that the GDI writes to the primary surface.
 HRESULT DirectDraw4::FlipToGDISurface()
 {
-    DirectDraw4LogMethod(DEBUG, FlipToGDISurface);
+    DirectDraw4LogMethod(TRACE, FlipToGDISurface);
 
     CONST HRESULT result = this->State.Self->FlipToGDISurface();
 
-    DirectDraw4LogMethodResult(DEBUGINFO, FlipToGDISurface, result);
+    DirectDraw4LogMethodResult(TRACEDEBUGINFO, FlipToGDISurface, result);
 }
 
 // Retrieves the capabilities of the device driver for the hardware and the hardware emulation layer (HEL).
@@ -283,7 +283,7 @@ HRESULT DirectDraw4::GetGDISurface(LPDIRECTDRAWSURFACE4 FAR* lplpGDIDDSSurface)
 
     CONST HRESULT result = this->State.Self->GetGDISurface(lplpGDIDDSSurface);
 
-    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgentDelegate(DirectDrawSurface4, *lplpGDIDDSSurface); }
+    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgent(DirectDrawSurface4, *lplpGDIDDSSurface); }
 
     DirectDraw4LogMethodResultValue(TRACEDEBUGINFO, GetGDISurface, result, 1, (lplpGDIDDSSurface));
 }
@@ -332,11 +332,11 @@ HRESULT DirectDraw4::Initialize(GUID FAR* lpGUID)
 // the IDirectDraw::SetDisplayMode method was called. Exclusive-level access is required to use this method.
 HRESULT DirectDraw4::RestoreDisplayMode()
 {
-    DirectDraw4LogMethod(DEBUG, RestoreDisplayMode);
+    DirectDraw4LogMethod(TRACE, RestoreDisplayMode);
 
     CONST HRESULT result = this->State.Self->RestoreDisplayMode();
 
-    DirectDraw4LogMethodResult(DEBUGINFO, RestoreDisplayMode, result);
+    DirectDraw4LogMethodResult(TRACEDEBUGINFO, RestoreDisplayMode, result);
 }
 
 // Determines the top-level behavior of the application.
@@ -386,7 +386,7 @@ HRESULT DirectDraw4::GetSurfaceFromDC(HDC hDC, LPDIRECTDRAWSURFACE4* lpDDS)
 
     CONST HRESULT result = this->State.Self->GetSurfaceFromDC(hDC, lpDDS);
 
-    if (SUCCEEDED(result)) { *lpDDS = ActivateAgentDelegate(DirectDrawSurface4, *lpDDS); }
+    if (SUCCEEDED(result)) { *lpDDS = ActivateAgent(DirectDrawSurface4, *lpDDS); }
 
     DirectDraw4LogMethodResultValue(TRACEDEBUGINFO, GetSurfaceFromDC, result, 2, (hDC, lpDDS));
 }
@@ -394,21 +394,21 @@ HRESULT DirectDraw4::GetSurfaceFromDC(HDC hDC, LPDIRECTDRAWSURFACE4* lpDDS)
 // Restores all the surfaces that were created for the DirectDraw object, in the order that they were created.
 HRESULT DirectDraw4::RestoreAllSurfaces()
 {
-    DirectDraw4LogMethod(DEBUG, RestoreAllSurfaces);
+    DirectDraw4LogMethod(TRACE, RestoreAllSurfaces);
 
     CONST HRESULT result = this->State.Self->RestoreAllSurfaces();
 
-    DirectDraw4LogMethodResult(DEBUGINFO, RestoreAllSurfaces, result);
+    DirectDraw4LogMethodResult(TRACEDEBUGINFO, RestoreAllSurfaces, result);
 }
 
 // Reports the current cooperative-level status of the DirectDraw device for a windowed or full-screen application.
 HRESULT DirectDraw4::TestCooperativeLevel()
 {
-    DirectDraw4LogMethod(DEBUG, TestCooperativeLevel);
+    DirectDraw4LogMethod(TRACE, TestCooperativeLevel);
 
     CONST HRESULT result = this->State.Self->TestCooperativeLevel();
 
-    DirectDraw4LogMethodResult(DEBUGINFO, TestCooperativeLevel, result);
+    DirectDraw4LogMethodResult(TRACEDEBUGINFO, TestCooperativeLevel, result);
 }
 
 // Obtains information about the device driver. This method can be used, with caution,

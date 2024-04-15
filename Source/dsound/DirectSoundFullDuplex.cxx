@@ -75,14 +75,14 @@ HRESULT DirectSoundFullDuplex::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFullDuplex::AddRef()
 {
-    DirectSoundFullDuplexLogMethod(DEBUG, AddRef);
-    DirectSoundFullDuplexLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFullDuplexLogMethod(TRACE, AddRef);
+    DirectSoundFullDuplexLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFullDuplex::Release()
 {
-    DirectSoundFullDuplexLogMethod(DEBUG, Release);
-    DirectSoundFullDuplexLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFullDuplexLogMethod(TRACE, Release);
+    DirectSoundFullDuplexLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 HRESULT DirectSoundFullDuplex::Initialize(LPCGUID pCaptureGuid, LPCGUID pRenderGuid, LPCDSCBUFFERDESC lpDscBufferDesc, LPCDSBUFFERDESC lpDsBufferDesc, HWND hWnd, DWORD dwLevel, LPLPDIRECTSOUNDCAPTUREBUFFER8 lplpDirectSoundFullDuplexCaptureBuffer8, LPLPDIRECTSOUNDBUFFER8 lplpDirectSoundFullDuplexBuffer8)

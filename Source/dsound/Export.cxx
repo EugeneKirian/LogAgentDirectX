@@ -150,7 +150,7 @@ extern "C" HRESULT WINAPI DirectSoundCaptureCreate8(LPCGUID lpcGUID, LPDIRECTSOU
 // The DirectSoundCaptureEnumerate function enumerates the DirectSoundCapture objects installed in the system.
 extern "C" HRESULT WINAPI DirectSoundCaptureEnumerateA(LPDSENUMCALLBACKA lpDSEnumCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectSoundCaptureEnumerateA, 2, (lpDSEnumCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectSoundCaptureEnumerateA, 2, (lpDSEnumCallback, lpContext));
 
     if (lpDSEnumCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectSoundCaptureEnumerateA, TRUE, HRESULT, DSERR_INVALIDPARAM, 2, (lpDSEnumCallback, lpContext)); }
 
@@ -167,7 +167,7 @@ extern "C" HRESULT WINAPI DirectSoundCaptureEnumerateA(LPDSENUMCALLBACKA lpDSEnu
 // The DirectSoundCaptureEnumerate function enumerates the DirectSoundCapture objects installed in the system.
 extern "C" HRESULT WINAPI DirectSoundCaptureEnumerateW(LPDSENUMCALLBACKW lpDSEnumCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectSoundCaptureEnumerateW, 2, (lpDSEnumCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectSoundCaptureEnumerateW, 2, (lpDSEnumCallback, lpContext));
 
     if (lpDSEnumCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectSoundCaptureEnumerateW, TRUE, HRESULT, DSERR_INVALIDPARAM, 2, (lpDSEnumCallback, lpContext)); }
 
@@ -210,7 +210,7 @@ extern "C" HRESULT WINAPI DirectSoundCreate8(LPCGUID lpcGuidDevice, LPDIRECTSOUN
 // The DirectSoundEnumerate function enumerates the DirectSound drivers installed in the system.
 extern "C" HRESULT WINAPI DirectSoundEnumerateA(LPDSENUMCALLBACKA lpDSEnumCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectSoundEnumerateA, 2, (lpDSEnumCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectSoundEnumerateA, 2, (lpDSEnumCallback, lpContext));
 
     if (lpDSEnumCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectSoundEnumerateA, TRUE, HRESULT, DSERR_INVALIDPARAM, 2, (lpDSEnumCallback, lpContext)); }
 
@@ -227,7 +227,7 @@ extern "C" HRESULT WINAPI DirectSoundEnumerateA(LPDSENUMCALLBACKA lpDSEnumCallba
 // The DirectSoundEnumerate function enumerates the DirectSound drivers installed in the system.
 extern "C" HRESULT WINAPI DirectSoundEnumerateW(LPDSENUMCALLBACKW lpDSEnumCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectSoundEnumerateW, 2, (lpDSEnumCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectSoundEnumerateW, 2, (lpDSEnumCallback, lpContext));
 
     if (lpDSEnumCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectSoundEnumerateW, TRUE, HRESULT, DSERR_INVALIDPARAM, 2, (lpDSEnumCallback, lpContext)); }
 
@@ -265,11 +265,11 @@ extern "C" HRESULT WINAPI DirectSoundFullDuplexCreate(LPCGUID pcGuidCaptureDevic
 
 extern "C" HRESULT WINAPI DllCanUnloadNow(VOID)
 {
-    ModuleLogMethod(DEBUG, DllCanUnloadNow);
+    ModuleLogMethod(TRACE, DllCanUnloadNow);
 
     CONST HRESULT result = Module.DllCanUnloadNow();
 
-    ModuleLogMethodResult(DEBUG, DllCanUnloadNow, FAILED(result), HRESULT, result);
+    ModuleLogMethodResult(TRACE, DllCanUnloadNow, FAILED(result), HRESULT, result);
 }
 
 extern "C" HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID * ppv)
@@ -278,7 +278,7 @@ extern "C" HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID
 
     CONST HRESULT result = Module.DllGetClassObject(rclsid, riid, ppv);
 
-    ModuleLogMethodResultValue(DEBUG, DllGetClassObject, FAILED(result), HRESULT, result, 3, (rclsid, riid, ppv));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, DllGetClassObject, FAILED(result), HRESULT, result, 3, (rclsid, riid, ppv));
 }
 
 // The GetDeviceID function retrieves the unique device identifier of the default playback and capture devices selected by the user in Control Panel.
@@ -288,5 +288,5 @@ extern "C" HRESULT WINAPI GetDeviceID(LPCGUID pGuidSrc, LPGUID pGuidDest)
 
     CONST HRESULT result = Module.GetDeviceID(pGuidSrc, pGuidDest);
 
-    ModuleLogMethodResultValue(DEBUG, GetDeviceID, FAILED(result), HRESULT, result, 2, (pGuidSrc, pGuidDest));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, GetDeviceID, FAILED(result), HRESULT, result, 2, (pGuidSrc, pGuidDest));
 }

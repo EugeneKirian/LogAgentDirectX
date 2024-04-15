@@ -71,14 +71,14 @@ HRESULT KsPropertySet::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG KsPropertySet::AddRef()
 {
-    KsPropertySetLogMethod(DEBUG, AddRef);
-    KsPropertySetLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    KsPropertySetLogMethod(TRACE, AddRef);
+    KsPropertySetLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG KsPropertySet::Release()
 {
-    KsPropertySetLogMethod(DEBUG, Release);
-    KsPropertySetLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    KsPropertySetLogMethod(TRACE, Release);
+    KsPropertySetLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves data for an item in a property set.

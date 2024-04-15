@@ -128,14 +128,14 @@ HRESULT DirectDrawSurface3::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawSurface3::AddRef()
 {
-    DirectDrawSurface3LogMethod(DEBUG, AddRef);
-    DirectDrawSurface3LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawSurface3LogMethod(TRACE, AddRef);
+    DirectDrawSurface3LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawSurface3::Release()
 {
-    DirectDrawSurface3LogMethod(DEBUG, Release);
-    DirectDrawSurface3LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawSurface3LogMethod(TRACE, Release);
+    DirectDrawSurface3LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Attaches the specified z-buffer surface to this surface.
@@ -240,7 +240,7 @@ HRESULT DirectDrawSurface3::DeleteAttachedSurface(DWORD dwFlags, LPDIRECTDRAWSUR
 // Enumerates all the surfaces that are attached to this surface.
 HRESULT DirectDrawSurface3::EnumAttachedSurfaces(LPVOID lpContext, LPDDENUMSURFACESCALLBACK lpEnumSurfacesCallback)
 {
-    DirectDrawSurface3LogMethodValue(DEBUGINFO, EnumAttachedSurfaces, 2, (lpContext, lpEnumSurfacesCallback));
+    DirectDrawSurface3LogMethodValue(TRACEDEBUG, EnumAttachedSurfaces, 2, (lpContext, lpEnumSurfacesCallback));
 
     if (lpEnumSurfacesCallback == NULL) { DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, EnumAttachedSurfaces, DDERR_INVALIDPARAMS, 2, (lpContext, lpEnumSurfacesCallback)); }
 
@@ -260,7 +260,7 @@ HRESULT DirectDrawSurface3::EnumAttachedSurfaces(LPVOID lpContext, LPDDENUMSURFA
 // You can enumerate the overlays in front-to-back or back-to-front order.
 HRESULT DirectDrawSurface3::EnumOverlayZOrders(DWORD dwFlags, LPVOID lpContext, LPDDENUMSURFACESCALLBACK lpfnCallback)
 {
-    DirectDrawSurface3LogMethodValue(DEBUGINFO, EnumOverlayZOrders, 3, (dwFlags, lpContext, lpfnCallback));
+    DirectDrawSurface3LogMethodValue(TRACEDEBUG, EnumOverlayZOrders, 3, (dwFlags, lpContext, lpfnCallback));
 
     if (lpfnCallback == NULL) { DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, EnumOverlayZOrders, DDERR_INVALIDPARAMS, 3, (dwFlags, lpContext, lpfnCallback)); }
 
@@ -296,7 +296,7 @@ HRESULT DirectDrawSurface3::GetAttachedSurface(LPDDSCAPS lpDDSCaps, LPDIRECTDRAW
 
     CONST HRESULT result = this->State.Self->GetAttachedSurface(lpDDSCaps, lplpDDAttachedSurface);
 
-    if (SUCCEEDED(result)) { *lplpDDAttachedSurface = ActivateAgentDelegate(DirectDrawSurface3, *lplpDDAttachedSurface); }
+    if (SUCCEEDED(result)) { *lplpDDAttachedSurface = ActivateAgent(DirectDrawSurface3, *lplpDDAttachedSurface); }
 
     DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, GetAttachedSurface, result, 2, (lpDDSCaps, lplpDDAttachedSurface));
 }
@@ -330,7 +330,7 @@ HRESULT DirectDrawSurface3::GetClipper(LPDIRECTDRAWCLIPPER FAR* lplpDDClipper)
 
     CONST HRESULT result = this->State.Self->GetClipper(lplpDDClipper);
 
-    if (SUCCEEDED(result)) { *lplpDDClipper = ActivateAgentDelegate(DirectDrawClipper, *lplpDDClipper); }
+    if (SUCCEEDED(result)) { *lplpDDClipper = ActivateAgent(DirectDrawClipper, *lplpDDClipper); }
 
     DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, GetClipper, result, 1, (lplpDDClipper));
 }
@@ -385,7 +385,7 @@ HRESULT DirectDrawSurface3::GetPalette(LPDIRECTDRAWPALETTE FAR* lplpDDPalette)
 
     CONST HRESULT result = this->State.Self->GetPalette(lplpDDPalette);
 
-    if (SUCCEEDED(result)) { *lplpDDPalette = ActivateAgentDelegate(DirectDrawPalette, *lplpDDPalette); }
+    if (SUCCEEDED(result)) { *lplpDDPalette = ActivateAgent(DirectDrawPalette, *lplpDDPalette); }
 
     DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, GetPalette, result, 1, (lplpDDPalette));
 }
@@ -425,11 +425,11 @@ HRESULT DirectDrawSurface3::Initialize(LPDIRECTDRAW lpDD, LPDDSURFACEDESC lpDDSu
 // Determines whether the surface memory that is associated with a DirectDrawSurface3 object has been freed.
 HRESULT DirectDrawSurface3::IsLost()
 {
-    DirectDrawSurface3LogMethod(DEBUG, IsLost);
+    DirectDrawSurface3LogMethod(TRACE, IsLost);
 
     CONST HRESULT result = this->State.Self->IsLost();
 
-    DirectDrawSurface3LogMethodResult(DEBUGINFO, IsLost, result);
+    DirectDrawSurface3LogMethodResult(TRACEDEBUGINFO, IsLost, result);
 }
 
 // Obtains a pointer to the surface memory.
@@ -456,11 +456,11 @@ HRESULT DirectDrawSurface3::ReleaseDC(HDC hDC)
 // This occurs when the surface memory that is associated with the DirectDrawSurface3 object has been freed.
 HRESULT DirectDrawSurface3::Restore()
 {
-    DirectDrawSurface3LogMethod(DEBUG, Restore);
+    DirectDrawSurface3LogMethod(TRACE, Restore);
 
     CONST HRESULT result = this->State.Self->Restore();
 
-    DirectDrawSurface3LogMethodResult(DEBUGINFO, Restore, result);
+    DirectDrawSurface3LogMethodResult(TRACEDEBUGINFO, Restore, result);
 }
 
 // Attaches a clipper object to, or deletes one from, this surface.
@@ -575,7 +575,7 @@ HRESULT DirectDrawSurface3::GetDDInterface(LPVOID FAR* lplpDD)
 
     CONST HRESULT result = this->State.Self->GetDDInterface(lplpDD);
 
-    if (SUCCEEDED(result)) { *lplpDD = ActivateAgentDelegate(DirectDraw4, *lplpDD); }
+    if (SUCCEEDED(result)) { *lplpDD = ActivateAgentBase(DirectDraw4, *lplpDD); }
 
     DirectDrawSurface3LogMethodResultValue(TRACEDEBUGINFO, GetDDInterface, result, 1, (lplpDD));
 }

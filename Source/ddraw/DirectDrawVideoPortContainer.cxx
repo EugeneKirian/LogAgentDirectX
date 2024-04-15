@@ -105,14 +105,14 @@ HRESULT DirectDrawVideoPortContainer::QueryInterface(REFIID riid, LPVOID FAR* pp
 
 ULONG DirectDrawVideoPortContainer::AddRef()
 {
-    DirectDrawVideoPortContainerLogMethod(DEBUG, AddRef);
-    DirectDrawVideoPortContainerLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawVideoPortContainerLogMethod(TRACE, AddRef);
+    DirectDrawVideoPortContainerLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawVideoPortContainer::Release()
 {
-    DirectDrawVideoPortContainerLogMethod(DEBUG, Release);
-    DirectDrawVideoPortContainerLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawVideoPortContainerLogMethod(TRACE, Release);
+    DirectDrawVideoPortContainerLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Creates a DirectDrawVideoPort object.
@@ -130,7 +130,7 @@ HRESULT DirectDrawVideoPortContainer::CreateVideoPort(DWORD dwFlags, LPDDVIDEOPO
 // Enumerates all the video ports that the hardware exposes that are compatible with a provided video-port description.
 HRESULT DirectDrawVideoPortContainer::EnumVideoPorts(DWORD dwFlags, LPDDVIDEOPORTCAPS lpDDVideoPortCaps, LPVOID lpContext, LPDDENUMVIDEOCALLBACK lpEnumVideoCallback)
 {
-    DirectDrawVideoPortContainerLogMethodValue(DEBUGINFO, EnumVideoPorts, 4, (dwFlags, lpDDVideoPortCaps, lpContext, lpEnumVideoCallback));
+    DirectDrawVideoPortContainerLogMethodValue(TRACEDEBUG, EnumVideoPorts, 4, (dwFlags, lpDDVideoPortCaps, lpContext, lpEnumVideoCallback));
 
     if (lpEnumVideoCallback == NULL) { DirectDrawVideoPortContainerLogMethodResultValue(TRACEDEBUGINFO, EnumVideoPorts, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDVideoPortCaps, lpContext, lpEnumVideoCallback)); }
 

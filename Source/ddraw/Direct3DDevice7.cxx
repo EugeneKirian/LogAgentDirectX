@@ -97,14 +97,14 @@ HRESULT Direct3DDevice7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DDevice7::AddRef()
 {
-    Direct3DDevice7LogMethod(DEBUG, AddRef);
-    Direct3DDevice7LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DDevice7LogMethod(TRACE, AddRef);
+    Direct3DDevice7LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DDevice7::Release()
 {
-    Direct3DDevice7LogMethod(DEBUG, Release);
-    Direct3DDevice7LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DDevice7LogMethod(TRACE, Release);
+    Direct3DDevice7LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the capabilities of the Direct3D device.
@@ -120,7 +120,7 @@ HRESULT Direct3DDevice7::GetCaps(LPD3DDEVICEDESC7 lpD3DDevDesc)
 // Queries the current driver for a list of supported texture formats.
 HRESULT Direct3DDevice7::EnumTextureFormats(LPD3DENUMPIXELFORMATSCALLBACK lpd3dEnumPixelProc, LPVOID lpContext)
 {
-    Direct3DDevice7LogMethodValue(DEBUGINFO, EnumTextureFormats, 2, (lpd3dEnumPixelProc, lpContext));
+    Direct3DDevice7LogMethodValue(TRACEDEBUG, EnumTextureFormats, 2, (lpd3dEnumPixelProc, lpContext));
 
     if (lpd3dEnumPixelProc == NULL) { Direct3DDevice7LogMethodResultValue(TRACEDEBUGINFO, EnumTextureFormats, DDERR_INVALIDPARAMS, 2, (lpd3dEnumPixelProc, lpContext)); }
 
@@ -139,21 +139,21 @@ HRESULT Direct3DDevice7::EnumTextureFormats(LPD3DENUMPIXELFORMATSCALLBACK lpd3dE
 // Begins a scene.
 HRESULT Direct3DDevice7::BeginScene()
 {
-    Direct3DDevice7LogMethod(DEBUG, BeginScene);
+    Direct3DDevice7LogMethod(TRACE, BeginScene);
 
     CONST HRESULT result = this->State.Self->BeginScene();
 
-    Direct3DDevice7LogMethodResult(DEBUGINFO, BeginScene, result);
+    Direct3DDevice7LogMethodResult(TRACEDEBUGINFO, BeginScene, result);
 }
 
 // Ends a scene.
 HRESULT Direct3DDevice7::EndScene()
 {
-    Direct3DDevice7LogMethod(DEBUG, EndScene);
+    Direct3DDevice7LogMethod(TRACE, EndScene);
 
     CONST HRESULT result = this->State.Self->EndScene();
 
-    Direct3DDevice7LogMethodResult(DEBUGINFO, EndScene, result);
+    Direct3DDevice7LogMethodResult(TRACEDEBUGINFO, EndScene, result);
 }
 
 // Retrieves the Direct3D object for this device.
@@ -163,7 +163,7 @@ HRESULT Direct3DDevice7::GetDirect3D(LPDIRECT3D7* lplpD3D)
 
     CONST HRESULT result = this->State.Self->GetDirect3D(lplpD3D);
 
-    if (SUCCEEDED(result)) { *lplpD3D = ActivateAgentDelegate(Direct3D7, *lplpD3D); }
+    if (SUCCEEDED(result)) { *lplpD3D = ActivateAgent(Direct3D7, *lplpD3D); }
 
     Direct3DDevice7LogMethodResultValue(TRACEDEBUGINFO, GetDirect3D, result, 1, (lplpD3D));
 }
@@ -187,7 +187,7 @@ HRESULT Direct3DDevice7::GetRenderTarget(LPDIRECTDRAWSURFACE7* lplpRenderTarget)
 
     CONST HRESULT result = this->State.Self->GetRenderTarget(lplpRenderTarget);
 
-    if (SUCCEEDED(result)) { *lplpRenderTarget = ActivateAgentDelegate(DirectDrawSurface7, *lplpRenderTarget); }
+    if (SUCCEEDED(result)) { *lplpRenderTarget = ActivateAgent(DirectDrawSurface7, *lplpRenderTarget); }
 
     Direct3DDevice7LogMethodResultValue(TRACEDEBUGINFO, GetRenderTarget, result, 1, (lplpRenderTarget));
 }
@@ -317,11 +317,11 @@ HRESULT Direct3DDevice7::GetRenderState(D3DRENDERSTATETYPE dwRenderStateType, LP
 // Signals Direct3D to begin recording a device state block.
 HRESULT Direct3DDevice7::BeginStateBlock()
 {
-    Direct3DDevice7LogMethod(DEBUG, BeginStateBlock);
+    Direct3DDevice7LogMethod(TRACE, BeginStateBlock);
 
     CONST HRESULT result = this->State.Self->BeginStateBlock();
 
-    Direct3DDevice7LogMethodResult(DEBUGINFO, BeginStateBlock, result);
+    Direct3DDevice7LogMethodResult(TRACEDEBUGINFO, BeginStateBlock, result);
 }
 
 // Signals Direct3D to stop recording a device state block and retrieve a handle to the state block.
@@ -449,7 +449,7 @@ HRESULT Direct3DDevice7::GetTexture(DWORD dwStage, LPDIRECTDRAWSURFACE7* lplpTex
 
     CONST HRESULT result = this->State.Self->GetTexture(dwStage, lplpTexture);
 
-    if (SUCCEEDED(result)) { *lplpTexture = ActivateAgentDelegate(DirectDrawSurface7, *lplpTexture); }
+    if (SUCCEEDED(result)) { *lplpTexture = ActivateAgent(DirectDrawSurface7, *lplpTexture); }
 
     Direct3DDevice7LogMethodResultValue(TRACEDEBUGINFO, GetTexture, result, 2, (dwStage, lplpTexture));
 }

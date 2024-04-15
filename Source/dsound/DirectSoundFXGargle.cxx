@@ -68,14 +68,14 @@ HRESULT DirectSoundFXGargle::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXGargle::AddRef()
 {
-    DirectSoundFXGargleLogMethod(DEBUG, AddRef);
-    DirectSoundFXGargleLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXGargleLogMethod(TRACE, AddRef);
+    DirectSoundFXGargleLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXGargle::Release()
 {
-    DirectSoundFXGargleLogMethod(DEBUG, Release);
-    DirectSoundFXGargleLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXGargleLogMethod(TRACE, Release);
+    DirectSoundFXGargleLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the amplitude modulation parameters of a buffer.

@@ -72,14 +72,14 @@ HRESULT Direct3DMaterial3::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DMaterial3::AddRef()
 {
-    Direct3DMaterial3LogMethod(DEBUG, AddRef);
-    Direct3DMaterial3LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DMaterial3LogMethod(TRACE, AddRef);
+    Direct3DMaterial3LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DMaterial3::Release()
 {
-    Direct3DMaterial3LogMethod(DEBUG, Release);
-    Direct3DMaterial3LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DMaterial3LogMethod(TRACE, Release);
+    Direct3DMaterial3LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the material data for a material object.

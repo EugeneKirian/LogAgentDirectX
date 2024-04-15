@@ -73,14 +73,14 @@ HRESULT Direct3DViewport2::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DViewport2::AddRef()
 {
-    Direct3DViewport2LogMethod(DEBUG, AddRef);
-    Direct3DViewport2LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DViewport2LogMethod(TRACE, AddRef);
+    Direct3DViewport2LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DViewport2::Release()
 {
-    Direct3DViewport2LogMethod(DEBUG, Release);
-    Direct3DViewport2LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DViewport2LogMethod(TRACE, Release);
+    Direct3DViewport2LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
@@ -178,7 +178,7 @@ HRESULT Direct3DViewport2::GetBackgroundDepth(LPDIRECTDRAWSURFACE* lplpDDSurface
 
     CONST HRESULT result = this->State.Self->GetBackgroundDepth(lplpDDSurface, lpValid);
 
-    if (SUCCEEDED(result)) { *lplpDDSurface = ActivateAgentDelegate(DirectDrawSurface, *lplpDDSurface); }
+    if (SUCCEEDED(result)) { *lplpDDSurface = ActivateAgent(DirectDrawSurface, *lplpDDSurface); }
 
     Direct3DViewport2LogMethodResultValue(TRACEDEBUGINFO, GetBackgroundDepth, result, 2, (lplpDDSurface, lpValid));
 }
@@ -228,7 +228,7 @@ HRESULT Direct3DViewport2::NextLight(LPDIRECT3DLIGHT lpDirect3DLight, LPDIRECT3D
 
     CONST HRESULT result = this->State.Self->NextLight(lpDirect3DLight, lplpDirect3DLight, dwFlags);
 
-    if (SUCCEEDED(result)) { *lplpDirect3DLight = ActivateAgentDelegate(Direct3DLight, *lplpDirect3DLight); }
+    if (SUCCEEDED(result)) { *lplpDirect3DLight = ActivateAgent(Direct3DLight, *lplpDirect3DLight); }
 
     Direct3DViewport2LogMethodResultValue(TRACEDEBUGINFO, NextLight, result, 3, (ActivateAgent(Direct3DLight, lpDirect3DLight), lplpDirect3DLight, dwFlags));
 }

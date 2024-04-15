@@ -72,14 +72,14 @@ HRESULT DirectSound3DListener::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSound3DListener::AddRef()
 {
-    DirectSound3DListenerLogMethod(DEBUG, AddRef);
-    DirectSound3DListenerLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSound3DListenerLogMethod(TRACE, AddRef);
+    DirectSound3DListenerLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSound3DListener::Release()
 {
-    DirectSound3DListenerLogMethod(DEBUG, Release);
-    DirectSound3DListenerLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSound3DListenerLogMethod(TRACE, Release);
+    DirectSound3DListenerLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves information that describes the current state of the 3-D world and listener.
@@ -227,9 +227,9 @@ HRESULT DirectSound3DListener::SetVelocity(D3DVALUE x, D3DVALUE y, D3DVALUE z, D
 // Commits any deferred settings made since the last call to this method.
 HRESULT DirectSound3DListener::CommitDeferredSettings()
 {
-    DirectSound3DListenerLogMethod(DEBUG, CommitDeferredSettings);
+    DirectSound3DListenerLogMethod(TRACEDEBUGINFO, CommitDeferredSettings);
 
     CONST HRESULT result = this->State.Self->CommitDeferredSettings();
 
-    DirectSound3DListenerLogMethodResult(DEBUGINFO, CommitDeferredSettings, result);
+    DirectSound3DListenerLogMethodResult(TRACEDEBUGINFO, CommitDeferredSettings, result);
 }

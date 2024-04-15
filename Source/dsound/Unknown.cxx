@@ -111,12 +111,12 @@ HRESULT Unknown::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Unknown::AddRef()
 {
-    UnknownLogMethod(DEBUG, AddRef);
-    UnknownLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    UnknownLogMethod(TRACE, AddRef);
+    UnknownLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Unknown::Release()
 {
-    UnknownLogMethod(DEBUG, Release);
-    UnknownLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    UnknownLogMethod(TRACE, Release);
+    UnknownLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }

@@ -67,14 +67,14 @@ HRESULT DirectDrawVideoPort::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawVideoPort::AddRef()
 {
-    DirectDrawVideoPortLogMethod(DEBUG, AddRef);
-    DirectDrawVideoPortLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawVideoPortLogMethod(TRACE, AddRef);
+    DirectDrawVideoPortLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawVideoPort::Release()
 {
-    DirectDrawVideoPortLogMethod(DEBUG, Release);
-    DirectDrawVideoPortLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawVideoPortLogMethod(TRACE, Release);
+    DirectDrawVideoPortLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Instructs the DirectDrawVideoPort object to write the next frame of video to a new surface.
@@ -194,11 +194,11 @@ HRESULT DirectDrawVideoPort::StartVideo(LPDDVIDEOPORTINFO lpVideoInfo)
 // Stops the flow of video-port data into the frame buffer.
 HRESULT DirectDrawVideoPort::StopVideo()
 {
-    DirectDrawVideoPortLogMethod(DEBUG, StopVideo);
+    DirectDrawVideoPortLogMethod(TRACE, StopVideo);
 
     CONST HRESULT result = this->State.Self->StopVideo();
 
-    DirectDrawVideoPortLogMethodResult(DEBUGINFO, StopVideo, result);
+    DirectDrawVideoPortLogMethodResult(TRACEDEBUGINFO, StopVideo, result);
 }
 
 // Updates parameters that govern the flow of video data from the video port to the DirectDrawSurface object.

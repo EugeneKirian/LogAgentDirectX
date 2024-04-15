@@ -109,20 +109,20 @@ HRESULT Direct3D2::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3D2::AddRef()
 {
-    Direct3D2LogMethod(DEBUG, AddRef);
-    Direct3D2LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3D2LogMethod(TRACE, AddRef);
+    Direct3D2LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3D2::Release()
 {
-    Direct3D2LogMethod(DEBUG, Release);
-    Direct3D2LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3D2LogMethod(TRACE, Release);
+    Direct3D2LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Enumerates all Direct3D device drivers installed on the system.
 HRESULT Direct3D2::EnumDevices(LPD3DENUMDEVICESCALLBACK lpEnumDevicesCallback, LPVOID lpContext)
 {
-    Direct3D2LogMethodValue(DEBUGINFO, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
+    Direct3D2LogMethodValue(TRACEDEBUG, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
 
     if (lpEnumDevicesCallback == NULL) { Direct3D2LogMethodResultValue(TRACEDEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
 

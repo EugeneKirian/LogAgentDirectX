@@ -83,14 +83,14 @@ HRESULT DirectSoundCaptureBuffer8::QueryInterface(REFIID riid, LPVOID FAR* ppvOb
 
 ULONG DirectSoundCaptureBuffer8::AddRef()
 {
-    DirectSoundCaptureBuffer8LogMethod(DEBUG, AddRef);
-    DirectSoundCaptureBuffer8LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundCaptureBuffer8LogMethod(TRACE, AddRef);
+    DirectSoundCaptureBuffer8LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundCaptureBuffer8::Release()
 {
-    DirectSoundCaptureBuffer8LogMethod(DEBUG, Release);
-    DirectSoundCaptureBuffer8LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundCaptureBuffer8LogMethod(TRACE, Release);
+    DirectSoundCaptureBuffer8LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the capabilities of the buffer.
@@ -176,11 +176,11 @@ HRESULT DirectSoundCaptureBuffer8::Start(DWORD dwFlags)
 // If the buffer is not capturing, the method has no effect.
 HRESULT DirectSoundCaptureBuffer8::Stop()
 {
-    DirectSoundCaptureBuffer8LogMethod(DEBUG, Stop);
+    DirectSoundCaptureBuffer8LogMethod(TRACE, Stop);
 
     CONST HRESULT result = this->State.Self->Stop();
 
-    DirectSoundCaptureBuffer8LogMethodResult(DEBUGINFO, Stop, result);
+    DirectSoundCaptureBuffer8LogMethodResult(TRACEDEBUGINFO, Stop, result);
 }
 
 // Unlocks the buffer.

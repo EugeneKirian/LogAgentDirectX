@@ -68,14 +68,14 @@ HRESULT DirectSoundCaptureFXNoiseSuppress::QueryInterface(REFIID riid, LPVOID FA
 
 ULONG DirectSoundCaptureFXNoiseSuppress::AddRef()
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethod(DEBUG, AddRef);
-    DirectSoundCaptureFXNoiseSuppressLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundCaptureFXNoiseSuppressLogMethod(TRACE, AddRef);
+    DirectSoundCaptureFXNoiseSuppressLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundCaptureFXNoiseSuppress::Release()
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethod(DEBUG, Release);
-    DirectSoundCaptureFXNoiseSuppressLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundCaptureFXNoiseSuppressLogMethod(TRACE, Release);
+    DirectSoundCaptureFXNoiseSuppressLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the acoustic echo cancellation parameters of a buffer.
@@ -103,9 +103,9 @@ HRESULT DirectSoundCaptureFXNoiseSuppress::GetAllParameters(LPDSCFXNoiseSuppress
 // Resets the effect to its initial state.
 HRESULT DirectSoundCaptureFXNoiseSuppress::Reset()
 {
-    DirectSoundCaptureFXNoiseSuppressLogMethod(DEBUG, Reset);
+    DirectSoundCaptureFXNoiseSuppressLogMethod(TRACE, Reset);
 
     CONST HRESULT result = this->State.Self->Reset();
 
-    DirectSoundCaptureFXNoiseSuppressLogMethodResult(DEBUGINFO, Reset, result);
+    DirectSoundCaptureFXNoiseSuppressLogMethodResult(TRACEDEBUGINFO, Reset, result);
 }

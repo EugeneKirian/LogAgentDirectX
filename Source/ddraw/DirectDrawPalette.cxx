@@ -67,14 +67,14 @@ HRESULT DirectDrawPalette::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawPalette::AddRef()
 {
-    DirectDrawPaletteLogMethod(DEBUG, AddRef);
-    DirectDrawPaletteLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawPaletteLogMethod(TRACE, AddRef);
+    DirectDrawPaletteLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawPalette::Release()
 {
-    DirectDrawPaletteLogMethod(DEBUG, Release);
-    DirectDrawPaletteLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawPaletteLogMethod(TRACE, Release);
+    DirectDrawPaletteLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the capabilities of the palette object.

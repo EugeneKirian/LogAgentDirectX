@@ -69,14 +69,14 @@ HRESULT DirectSoundCapture::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundCapture::AddRef()
 {
-    DirectSoundCaptureLogMethod(DEBUG, AddRef);
-    DirectSoundCaptureLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundCaptureLogMethod(TRACE, AddRef);
+    DirectSoundCaptureLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundCapture::Release()
 {
-    DirectSoundCaptureLogMethod(DEBUG, Release);
-    DirectSoundCaptureLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundCaptureLogMethod(TRACE, Release);
+    DirectSoundCaptureLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Creates a capture buffer.

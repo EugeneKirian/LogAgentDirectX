@@ -110,7 +110,6 @@ HRESULT DirectDraw7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
             else if (IsEqualIID(IID_IDirectDraw2, riid)) { *ppvObj = ActivateAgent(DirectDraw2, *ppvObj); }
             else if (IsEqualIID(IID_IDirectDraw4, riid)) { *ppvObj = ActivateAgent(DirectDraw4, *ppvObj); }
             else if (IsEqualIID(IID_IDirectDraw7, riid)) { *ppvObj = ActivateAgent(DirectDraw7, *ppvObj); }
-            else if (IsEqualIID(IID_IDirectDraw7, riid)) { *ppvObj = ActivateAgent(DirectDraw7, *ppvObj); }
             else if (IsEqualIID(IID_IDirectDrawVideoPortContainer, riid)) { *ppvObj = ActivateAgent(DirectDrawVideoPortContainer, *ppvObj); }
             /* else { HANDLE UNKNOWN IDENTIFIER } */
         }
@@ -121,24 +120,24 @@ HRESULT DirectDraw7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDraw7::AddRef()
 {
-    DirectDraw7LogMethod(DEBUG, AddRef);
-    DirectDraw7LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDraw7LogMethod(TRACE, AddRef);
+    DirectDraw7LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDraw7::Release()
 {
-    DirectDraw7LogMethod(DEBUG, Release);
-    DirectDraw7LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDraw7LogMethod(TRACE, Release);
+    DirectDraw7LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
 HRESULT DirectDraw7::Compact()
 {
-    DirectDraw7LogMethod(DEBUG, Compact);
+    DirectDraw7LogMethod(TRACE, Compact);
 
     CONST HRESULT result = this->State.Self->Compact();
 
-    DirectDraw7LogMethodResult(DEBUGINFO, Compact, result);
+    DirectDraw7LogMethodResult(TRACEDEBUGINFO, Compact, result);
 }
 
 // Creates a DirectDrawClipper object.
@@ -195,7 +194,7 @@ HRESULT DirectDraw7::DuplicateSurface(LPDIRECTDRAWSURFACE7 lpDDSurface, LPDIRECT
 // and that are compatible with a provided surface description.
 HRESULT DirectDraw7::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSurfaceDesc, LPVOID lpContext, LPDDENUMMODESCALLBACK2 lpEnumModesCallback)
 {
-    DirectDraw7LogMethodValue(DEBUGINFO, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
+    DirectDraw7LogMethodValue(TRACEDEBUG, EnumDisplayModes, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback));
 
     if (lpEnumModesCallback == NULL) { DirectDraw7LogMethodResultValue(TRACEDEBUGINFO, EnumDisplayModes, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSurfaceDesc, lpContext, lpEnumModesCallback)); }
 
@@ -214,7 +213,7 @@ HRESULT DirectDraw7::EnumDisplayModes(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSurfac
 // Enumerates all the existing or possible surfaces that meet the specified surface description.
 HRESULT DirectDraw7::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSD, LPVOID lpContext, LPDDENUMSURFACESCALLBACK7 lpEnumSurfacesCallback)
 {
-    DirectDraw7LogMethodValue(DEBUGINFO, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
+    DirectDraw7LogMethodValue(TRACEDEBUG, EnumSurfaces, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback));
 
     if (lpEnumSurfacesCallback == NULL) { DirectDraw7LogMethodResultValue(TRACEDEBUGINFO, EnumSurfaces, DDERR_INVALIDPARAMS, 4, (dwFlags, lpDDSD, lpContext, lpEnumSurfacesCallback)); }
 
@@ -233,11 +232,11 @@ HRESULT DirectDraw7::EnumSurfaces(DWORD dwFlags, LPDDSURFACEDESC2 lpDDSD, LPVOID
 // Makes the surface that the GDI writes to the primary surface.
 HRESULT DirectDraw7::FlipToGDISurface()
 {
-    DirectDraw7LogMethod(DEBUG, FlipToGDISurface);
+    DirectDraw7LogMethod(TRACE, FlipToGDISurface);
 
     CONST HRESULT result = this->State.Self->FlipToGDISurface();
 
-    DirectDraw7LogMethodResult(DEBUGINFO, FlipToGDISurface, result);
+    DirectDraw7LogMethodResult(TRACEDEBUGINFO, FlipToGDISurface, result);
 }
 
 // Retrieves the capabilities of the device driver for the hardware and the hardware emulation layer (HEL).
@@ -278,7 +277,7 @@ HRESULT DirectDraw7::GetGDISurface(LPDIRECTDRAWSURFACE7 FAR* lplpGDIDDSSurface)
 
     CONST HRESULT result = this->State.Self->GetGDISurface(lplpGDIDDSSurface);
 
-    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgentDelegate(DirectDrawSurface7, *lplpGDIDDSSurface); }
+    if (SUCCEEDED(result)) { *lplpGDIDDSSurface = ActivateAgent(DirectDrawSurface7, *lplpGDIDDSSurface); }
 
     DirectDraw7LogMethodResultValue(TRACEDEBUGINFO, GetGDISurface, result, 1, (lplpGDIDDSSurface));
 }
@@ -327,11 +326,11 @@ HRESULT DirectDraw7::Initialize(GUID FAR* lpGUID)
 // the IDirectDraw::SetDisplayMode method was called. Exclusive-level access is required to use this method.
 HRESULT DirectDraw7::RestoreDisplayMode()
 {
-    DirectDraw7LogMethod(DEBUG, RestoreDisplayMode);
+    DirectDraw7LogMethod(TRACE, RestoreDisplayMode);
 
     CONST HRESULT result = this->State.Self->RestoreDisplayMode();
 
-    DirectDraw7LogMethodResult(DEBUGINFO, RestoreDisplayMode, result);
+    DirectDraw7LogMethodResult(TRACEDEBUGINFO, RestoreDisplayMode, result);
 }
 
 // Determines the top-level behavior of the application.
@@ -381,7 +380,7 @@ HRESULT DirectDraw7::GetSurfaceFromDC(HDC hDC, LPDIRECTDRAWSURFACE7* lpDDS)
 
     CONST HRESULT result = this->State.Self->GetSurfaceFromDC(hDC, lpDDS);
 
-    if (SUCCEEDED(result)) { *lpDDS = ActivateAgentDelegate(DirectDrawSurface7, *lpDDS); }
+    if (SUCCEEDED(result)) { *lpDDS = ActivateAgent(DirectDrawSurface7, *lpDDS); }
 
     DirectDraw7LogMethodResultValue(TRACEDEBUGINFO, GetSurfaceFromDC, result, 2, (hDC, lpDDS));
 }
@@ -389,21 +388,21 @@ HRESULT DirectDraw7::GetSurfaceFromDC(HDC hDC, LPDIRECTDRAWSURFACE7* lpDDS)
 // Restores all the surfaces that were created for the DirectDraw object, in the order that they were created.
 HRESULT DirectDraw7::RestoreAllSurfaces()
 {
-    DirectDraw7LogMethod(DEBUG, RestoreAllSurfaces);
+    DirectDraw7LogMethod(TRACE, RestoreAllSurfaces);
 
     CONST HRESULT result = this->State.Self->RestoreAllSurfaces();
 
-    DirectDraw7LogMethodResult(DEBUGINFO, RestoreAllSurfaces, result);
+    DirectDraw7LogMethodResult(TRACEDEBUGINFO, RestoreAllSurfaces, result);
 }
 
 // Reports the current cooperative-level status of the DirectDraw device for a windowed or full-screen application.
 HRESULT DirectDraw7::TestCooperativeLevel()
 {
-    DirectDraw7LogMethod(DEBUG, TestCooperativeLevel);
+    DirectDraw7LogMethod(TRACE, TestCooperativeLevel);
 
     CONST HRESULT result = this->State.Self->TestCooperativeLevel();
 
-    DirectDraw7LogMethodResult(DEBUGINFO, TestCooperativeLevel, result);
+    DirectDraw7LogMethodResult(TRACEDEBUGINFO, TestCooperativeLevel, result);
 }
 
 // Obtains information about the device driver. This method can be used, with caution,

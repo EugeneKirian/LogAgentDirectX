@@ -68,14 +68,14 @@ HRESULT DirectSoundFXChorus::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXChorus::AddRef()
 {
-    DirectSoundFXChorusLogMethod(DEBUG, AddRef);
-    DirectSoundFXChorusLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXChorusLogMethod(TRACE, AddRef);
+    DirectSoundFXChorusLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXChorus::Release()
 {
-    DirectSoundFXChorusLogMethod(DEBUG, Release);
-    DirectSoundFXChorusLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXChorusLogMethod(TRACE, Release);
+    DirectSoundFXChorusLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the chorus parameters of a buffer.

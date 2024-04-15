@@ -71,14 +71,14 @@ HRESULT DirectSound8::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSound8::AddRef()
 {
-    DirectSound8LogMethod(DEBUG, AddRef);
-    DirectSound8LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSound8LogMethod(TRACE, AddRef);
+    DirectSound8LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSound8::Release()
 {
-    DirectSound8LogMethod(DEBUG, Release);
-    DirectSound8LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSound8LogMethod(TRACE, Release);
+    DirectSound8LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Creates a DirectSoundBuffer object to hold a sequence of audio samples.
@@ -130,11 +130,11 @@ HRESULT DirectSound8::SetCooperativeLevel(HWND hwnd, DWORD dwLevel)
 // Moves the unused portions of on-board sound memory, if any, to a contiguous block so that the largest portion of free memory will be available.
 HRESULT DirectSound8::Compact()
 {
-    DirectSound8LogMethod(DEBUG, Compact);
+    DirectSound8LogMethod(TRACE, Compact);
 
     CONST HRESULT result = this->State.Self->Compact();
 
-    DirectSound8LogMethodResult(DEBUGINFO, Compact, result);
+    DirectSound8LogMethodResult(TRACEDEBUGINFO, Compact, result);
 }
 
 // Retrieves the speaker configuration.

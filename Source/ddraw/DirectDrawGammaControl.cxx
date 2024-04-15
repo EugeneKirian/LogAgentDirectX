@@ -81,14 +81,14 @@ HRESULT DirectDrawGammaControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawGammaControl::AddRef()
 {
-    DirectDrawGammaControlLogMethod(DEBUG, AddRef);
-    DirectDrawGammaControlLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawGammaControlLogMethod(TRACE, AddRef);
+    DirectDrawGammaControlLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawGammaControl::Release()
 {
-    DirectDrawGammaControlLogMethod(DEBUG, Release);
-    DirectDrawGammaControlLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawGammaControlLogMethod(TRACE, Release);
+    DirectDrawGammaControlLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the red, green, and blue gamma ramps for the primary surface.

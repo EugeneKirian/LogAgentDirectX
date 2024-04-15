@@ -89,14 +89,14 @@ HRESULT DirectSoundBuffer8::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundBuffer8::AddRef()
 {
-    DirectSoundBuffer8LogMethod(DEBUG, AddRef);
-    DirectSoundBuffer8LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundBuffer8LogMethod(TRACE, AddRef);
+    DirectSoundBuffer8LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundBuffer8::Release()
 {
-    DirectSoundBuffer8LogMethod(DEBUG, Release);
-    DirectSoundBuffer8LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundBuffer8LogMethod(TRACE, Release);
+    DirectSoundBuffer8LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the capabilities of the DirectSoundBuffer8 object.
@@ -255,11 +255,11 @@ HRESULT DirectSoundBuffer8::SetFrequency(DWORD dwFrequency)
 // Causes the sound buffer to stop playing.
 HRESULT DirectSoundBuffer8::Stop()
 {
-    DirectSoundBuffer8LogMethod(DEBUG, Stop);
+    DirectSoundBuffer8LogMethod(TRACE, Stop);
 
     CONST HRESULT result = this->State.Self->Stop();
 
-    DirectSoundBuffer8LogMethodResult(DEBUGINFO, Stop, result);
+    DirectSoundBuffer8LogMethodResult(TRACEDEBUGINFO, Stop, result);
 }
 
 // Releases a locked sound buffer.
@@ -275,11 +275,11 @@ HRESULT DirectSoundBuffer8::Unlock(LPVOID pvAudioPtr1, DWORD dwAudioBytes1, LPVO
 // Restores the memory allocation for a lost sound buffer for the specified DirectSoundBuffer8 object.
 HRESULT DirectSoundBuffer8::Restore()
 {
-    DirectSoundBuffer8LogMethod(DEBUG, Restore);
+    DirectSoundBuffer8LogMethod(TRACE, Restore);
 
     CONST HRESULT result = this->State.Self->Restore();
 
-    DirectSoundBuffer8LogMethodResult(DEBUGINFO, Restore, result);
+    DirectSoundBuffer8LogMethodResult(TRACEDEBUGINFO, Restore, result);
 }
 
 // Enables effects on a buffer. The buffer must not be playing or locked.

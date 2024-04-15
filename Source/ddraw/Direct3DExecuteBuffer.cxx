@@ -89,14 +89,14 @@ HRESULT Direct3DExecuteBuffer::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DExecuteBuffer::AddRef()
 {
-     Direct3DExecuteBufferLogMethod(DEBUG, AddRef);
-     Direct3DExecuteBufferLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+     Direct3DExecuteBufferLogMethod(TRACE, AddRef);
+     Direct3DExecuteBufferLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DExecuteBuffer::Release()
 {
-     Direct3DExecuteBufferLogMethod(DEBUG, Release);
-     Direct3DExecuteBufferLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+     Direct3DExecuteBufferLogMethod(TRACE, Release);
+     Direct3DExecuteBufferLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 HRESULT Direct3DExecuteBuffer::Initialize(LPDIRECT3DDEVICE lpDirect3DDevice, LPD3DEXECUTEBUFFERDESC lpDesc)
@@ -123,11 +123,11 @@ HRESULT Direct3DExecuteBuffer::Lock(LPD3DEXECUTEBUFFERDESC lpDesc)
 // Releases the direct pointer to the commands in the execute buffer.
 HRESULT Direct3DExecuteBuffer::Unlock()
 {
-    Direct3DExecuteBufferLogMethod(DEBUG, Lock);
+    Direct3DExecuteBufferLogMethod(TRACE, Lock);
 
     CONST HRESULT result = this->State.Self->Unlock();
 
-    Direct3DExecuteBufferLogMethodResult(DEBUGINFO, Unlock, result);
+    Direct3DExecuteBufferLogMethodResult(TRACEDEBUGINFO, Unlock, result);
 }
 
 // Sets the execute data state of the Direct3DExecuteBuffer object.
@@ -155,7 +155,7 @@ HRESULT Direct3DExecuteBuffer::GetExecuteData(LPD3DEXECUTEDATA lpData)
 // This method is not currently implemented.
 HRESULT Direct3DExecuteBuffer::Validate(LPDWORD lpdwOffset, LPD3DVALIDATECALLBACK lpFunc, LPVOID lpContext, DWORD dwReserved)
 {
-    Direct3DExecuteBufferLogMethodValue(DEBUGINFO, Validate, 4, (lpdwOffset, lpFunc, lpContext, dwReserved));
+    Direct3DExecuteBufferLogMethodValue(TRACEDEBUG, Validate, 4, (lpdwOffset, lpFunc, lpContext, dwReserved));
 
     if (lpContext == NULL) { Direct3DExecuteBufferLogMethodResultValue(TRACEDEBUGINFO, Validate, DDERR_INVALIDPARAMS, 4, (lpdwOffset, lpFunc, lpContext, dwReserved)); }
 

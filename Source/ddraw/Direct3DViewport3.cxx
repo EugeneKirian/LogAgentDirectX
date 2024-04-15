@@ -74,14 +74,14 @@ HRESULT Direct3DViewport3::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DViewport3::AddRef()
 {
-    Direct3DViewport3LogMethod(DEBUG, AddRef);
-    Direct3DViewport3LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DViewport3LogMethod(TRACE, AddRef);
+    Direct3DViewport3LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DViewport3::Release()
 {
-    Direct3DViewport3LogMethod(DEBUG, Release);
-    Direct3DViewport3LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DViewport3LogMethod(TRACE, Release);
+    Direct3DViewport3LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
@@ -180,7 +180,7 @@ HRESULT Direct3DViewport3::GetBackgroundDepth(LPDIRECTDRAWSURFACE* lplpDDSurface
 
     CONST HRESULT result = this->State.Self->GetBackgroundDepth(lplpDDSurface, lpValid);
 
-    if (SUCCEEDED(result)) { *lplpDDSurface = ActivateAgentDelegate(DirectDrawSurface, *lplpDDSurface); }
+    if (SUCCEEDED(result)) { *lplpDDSurface = ActivateAgent(DirectDrawSurface, *lplpDDSurface); }
 
     Direct3DViewport3LogMethodResultValue(TRACEDEBUGINFO, GetBackgroundDepth, result, 2, (lplpDDSurface, lpValid));
 }
@@ -230,7 +230,7 @@ HRESULT Direct3DViewport3::NextLight(LPDIRECT3DLIGHT lpDirect3DLight, LPDIRECT3D
 
     CONST HRESULT result = this->State.Self->NextLight(lpDirect3DLight, lplpDirect3DLight, dwFlags);
 
-    if (SUCCEEDED(result)) { *lplpDirect3DLight = ActivateAgentDelegate(Direct3DLight, *lplpDirect3DLight); }
+    if (SUCCEEDED(result)) { *lplpDirect3DLight = ActivateAgent(Direct3DLight, *lplpDirect3DLight); }
 
     Direct3DViewport3LogMethodResultValue(TRACEDEBUGINFO, NextLight, result, 3, (ActivateAgent(Direct3DLight, lpDirect3DLight), lplpDirect3DLight, dwFlags));
 }
@@ -274,7 +274,7 @@ HRESULT Direct3DViewport3::GetBackgroundDepth2(LPDIRECTDRAWSURFACE4* lplpDDS, LP
 
     CONST HRESULT result = this->State.Self->GetBackgroundDepth2(lplpDDS, lpValid);
 
-    if (SUCCEEDED(result)) { *lplpDDS = ActivateAgentDelegate(DirectDrawSurface4, *lplpDDS); }
+    if (SUCCEEDED(result)) { *lplpDDS = ActivateAgent(DirectDrawSurface4, *lplpDDS); }
 
     Direct3DViewport3LogMethodResultValue(TRACEDEBUGINFO, GetBackgroundDepth2, result, 2, (lplpDDS, lpValid));
 }

@@ -119,7 +119,7 @@ static BOOL CALLBACK DirectDrawEnumerateCallbackW(LPGUID lpGUID, LPWSTR lpDriver
 
 extern "C" VOID WINAPI AcquireDDThreadLock(VOID)
 {
-    ModuleLogMethod(DEBUG, AcquireDDThreadLock);
+    ModuleLogMethod(TRACE, AcquireDDThreadLock);
 
     Module.AcquireInternalLock();
 
@@ -132,7 +132,7 @@ extern "C" BOOL WINAPI CompleteCreateSysmemSurface(LPDDRAWI_DDRAWSURFACE_LCL lpS
 
     CONST BOOL result = Module.CompleteCreateSysmemSurface(lpSurfLcl);
 
-    ModuleLogMethodResultValue(DEBUG, CompleteCreateSysmemSurface, result != TRUE, BOOL, result, 1, (lpSurfLcl));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, CompleteCreateSysmemSurface, result != TRUE, BOOL, result, 1, (lpSurfLcl));
 }
 
 extern "C" HRESULT WINAPI D3DParseUnknownCommand(LPVOID lpvCommands, LPVOID * lplpvReturnedCommand)
@@ -141,7 +141,7 @@ extern "C" HRESULT WINAPI D3DParseUnknownCommand(LPVOID lpvCommands, LPVOID * lp
     
     CONST HRESULT result = Module.ParseUnknownCommand(lpvCommands, lplpvReturnedCommand);
 
-    ModuleLogMethodResultValue(DEBUG, D3DParseUnknownCommand, FAILED(result), HRESULT, result, 2, (lpvCommands, lplpvReturnedCommand));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, D3DParseUnknownCommand, FAILED(result), HRESULT, result, 2, (lpvCommands, lplpvReturnedCommand));
 }
 
 extern "C" HRESULT WINAPI DDGetAttachedSurfaceLcl(LPDDRAWI_DDRAWSURFACE_LCL this_lcl, LPDDSCAPS2 lpDDSCaps, LPDDRAWI_DDRAWSURFACE_LCL * lplpDDAttachedSurfaceLcl)
@@ -150,7 +150,7 @@ extern "C" HRESULT WINAPI DDGetAttachedSurfaceLcl(LPDDRAWI_DDRAWSURFACE_LCL this
 
     CONST HRESULT result = Module.GetAttachedSurfaceLocal(this_lcl, lpDDSCaps, lplpDDAttachedSurfaceLcl);
 
-    ModuleLogMethodResultValue(DEBUG, DDGetAttachedSurfaceLcl, FAILED(result), HRESULT, result, 3, (this_lcl, lpDDSCaps, lplpDDAttachedSurfaceLcl));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, DDGetAttachedSurfaceLcl, FAILED(result), HRESULT, result, 3, (this_lcl, lpDDSCaps, lplpDDAttachedSurfaceLcl));
 }
 
 extern "C" HRESULT WINAPI DDInternalLock(LPDDRAWI_DDRAWSURFACE_LCL this_lcl, LPVOID * lpBits)
@@ -159,7 +159,7 @@ extern "C" HRESULT WINAPI DDInternalLock(LPDDRAWI_DDRAWSURFACE_LCL this_lcl, LPV
 
     CONST HRESULT result = Module.InternalLock(this_lcl, lpBits);
 
-    ModuleLogMethodResultValue(DEBUG, DDInternalLock, FAILED(result), HRESULT, result, 2, (this_lcl, lpBits));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, DDInternalLock, FAILED(result), HRESULT, result, 2, (this_lcl, lpBits));
 }
 
 extern "C" HRESULT WINAPI DDInternalUnlock(LPDDRAWI_DDRAWSURFACE_LCL this_lcl)
@@ -168,7 +168,7 @@ extern "C" HRESULT WINAPI DDInternalUnlock(LPDDRAWI_DDRAWSURFACE_LCL this_lcl)
 
     CONST HRESULT result = Module.InternalUnlock(this_lcl);
 
-    ModuleLogMethodResultValue(DEBUG, DDInternalUnlock, FAILED(result), HRESULT, result, 1, (this_lcl));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, DDInternalUnlock, FAILED(result), HRESULT, result, 1, (this_lcl));
 }
 
 extern "C" HRESULT WINAPI DSoundHelp(HWND hWnd, WNDPROC lpWndProc, DWORD pid)
@@ -177,7 +177,7 @@ extern "C" HRESULT WINAPI DSoundHelp(HWND hWnd, WNDPROC lpWndProc, DWORD pid)
 
     CONST HRESULT result = Module.DirectSoundHelp(hWnd, lpWndProc, pid);
 
-    ModuleLogMethodResultValue(DEBUG, DSoundHelp, FAILED(result), HRESULT, result, 3, (hWnd, lpWndProc, pid));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, DSoundHelp, FAILED(result), HRESULT, result, 3, (hWnd, lpWndProc, pid));
 }
 
 // Creates an instance of a DirectDraw object.
@@ -221,7 +221,7 @@ extern "C" HRESULT WINAPI DirectDrawCreateEx(LPGUID lpGuid, LPVOID * lplpDD, REF
 // The NULL entry always identifies the primary display device shared with GDI.
 extern "C" HRESULT WINAPI DirectDrawEnumerateA(LPDDENUMCALLBACKA lpCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectDrawEnumerateA, 2, (lpCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectDrawEnumerateA, 2, (lpCallback, lpContext));
 
     if (lpCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectDrawEnumerateA, TRUE, HRESULT, DDERR_INVALIDPARAMS, 2, (lpCallback, lpContext)); }
 
@@ -239,7 +239,7 @@ extern "C" HRESULT WINAPI DirectDrawEnumerateA(LPDDENUMCALLBACKA lpCallback, LPV
 // The NULL entry always identifies the primary display device shared with GDI.
 extern "C" HRESULT WINAPI DirectDrawEnumerateExA(LPDDENUMCALLBACKEXA lpCallback, LPVOID lpContext, DWORD dwFlags)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectDrawEnumerateExA, 3, (lpCallback, lpContext, dwFlags));
+    ModuleLogMethodValue(TRACEDEBUG, DirectDrawEnumerateExA, 3, (lpCallback, lpContext, dwFlags));
 
     if (lpCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectDrawEnumerateExA, TRUE, HRESULT, DDERR_INVALIDPARAMS, 3, (lpCallback, lpContext, dwFlags)); }
 
@@ -257,7 +257,7 @@ extern "C" HRESULT WINAPI DirectDrawEnumerateExA(LPDDENUMCALLBACKEXA lpCallback,
 // The NULL entry always identifies the primary display device shared with GDI.
 extern "C" HRESULT WINAPI DirectDrawEnumerateExW(LPDDENUMCALLBACKEXW lpCallback, LPVOID lpContext, DWORD dwFlags)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectDrawEnumerateExW, 3, (lpCallback, lpContext, dwFlags));
+    ModuleLogMethodValue(TRACEDEBUG, DirectDrawEnumerateExW, 3, (lpCallback, lpContext, dwFlags));
 
     if (lpCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectDrawEnumerateExW, TRUE, HRESULT, DDERR_INVALIDPARAMS, 3, (lpCallback, lpContext, dwFlags)); }
 
@@ -276,7 +276,7 @@ extern "C" HRESULT WINAPI DirectDrawEnumerateExW(LPDDENUMCALLBACKEXW lpCallback,
 // The NULL entry always identifies the primary display device shared with GDI.
 extern "C" HRESULT WINAPI DirectDrawEnumerateW(LPDDENUMCALLBACKW lpCallback, LPVOID lpContext)
 {
-    ModuleLogMethodValue(DEBUGINFO, DirectDrawEnumerateW, 2, (lpCallback, lpContext));
+    ModuleLogMethodValue(TRACEDEBUG, DirectDrawEnumerateW, 2, (lpCallback, lpContext));
 
     if (lpCallback == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, DirectDrawEnumerateW, TRUE, HRESULT, DDERR_INVALIDPARAMS, 2, (lpCallback, lpContext)); }
 
@@ -292,11 +292,11 @@ extern "C" HRESULT WINAPI DirectDrawEnumerateW(LPDDENUMCALLBACKW lpCallback, LPV
 
 extern "C" HRESULT WINAPI DllCanUnloadNow(VOID)
 {
-    ModuleLogMethod(DEBUG, DllCanUnloadNow);
+    ModuleLogMethod(TRACE, DllCanUnloadNow);
 
     CONST HRESULT result = Module.DllCanUnloadNow();
 
-    ModuleLogMethodResult(DEBUG, DllCanUnloadNow, FAILED(result), HRESULT, result);
+    ModuleLogMethodResult(TRACEDEBUG, DllCanUnloadNow, FAILED(result), HRESULT, result);
 }
 
 extern "C" HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID * ppv)
@@ -305,7 +305,7 @@ extern "C" HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID
     
     CONST HRESULT result = Module.DllGetClassObject(rclsid, riid, ppv);
 
-    ModuleLogMethodResultValue(DEBUG, DllGetClassObject, FAILED(result), HRESULT, result, 3, (rclsid, riid, ppv));
+    ModuleLogMethodResultValue(TRACEDEBUG, DllGetClassObject, FAILED(result), HRESULT, result, 3, (rclsid, riid, ppv));
 }
 
 extern "C" LPDDRAWI_DDRAWSURFACE_LCL WINAPI GetDDSurfaceLocal(LPDDRAWI_DIRECTDRAW_LCL this_lcl, DWORD handle, BOOL * isnew)
@@ -314,7 +314,7 @@ extern "C" LPDDRAWI_DDRAWSURFACE_LCL WINAPI GetDDSurfaceLocal(LPDDRAWI_DIRECTDRA
 
     CONST LPDDRAWI_DDRAWSURFACE_LCL result = Module.GetDirectDrawSurfaceLocal(this_lcl, handle, isnew);
 
-    ModuleLogMethodResultValue(DEBUG, GetDDSurfaceLocal, result == NULL, LPDDRAWI_DDRAWSURFACE_LCL, result, 3, (this_lcl, handle, isnew));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, GetDDSurfaceLocal, result == NULL, LPDDRAWI_DDRAWSURFACE_LCL, result, 3, (this_lcl, handle, isnew));
 }
 
 extern "C" ULONG_PTR WINAPI GetOLEThunkData(ULONG_PTR dwOrdinal)
@@ -323,7 +323,7 @@ extern "C" ULONG_PTR WINAPI GetOLEThunkData(ULONG_PTR dwOrdinal)
     
     CONST ULONG_PTR result = Module.GetOLEThunkData(dwOrdinal);
 
-    ModuleLogMethodResultValue(DEBUG, GetOLEThunkData, FALSE, ULONG_PTR, result, 1, (dwOrdinal));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, GetOLEThunkData, FALSE, ULONG_PTR, result, 1, (dwOrdinal));
 }
 
 extern "C" HRESULT WINAPI GetSurfaceFromDC(HDC hDC, LPDIRECTDRAWSURFACE * ppdds, HDC * phdcDriver)
@@ -343,25 +343,25 @@ extern "C" HRESULT WINAPI RegisterSpecialCase(DWORD dwParam1, DWORD dwParam2, DW
     
     CONST HRESULT result = Module.RegisterSpecialCase(dwParam1, dwParam2, dwParam3, dwParam4);
 
-    ModuleLogMethodResultValue(DEBUG, RegisterSpecialCase, FAILED(result), HRESULT, result, 4, (dwParam1, dwParam2, dwParam3, dwParam4));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, RegisterSpecialCase, FAILED(result), HRESULT, result, 4, (dwParam1, dwParam2, dwParam3, dwParam4));
 }
 
 extern "C" VOID WINAPI ReleaseDDThreadLock(VOID)
 {
-    ModuleLogMethod(DEBUG, ReleaseDDThreadLock);
+    ModuleLogMethod(TRACE, ReleaseDDThreadLock);
 
     Module.ReleaseThreadLock();
 
-    ModuleLogMethodVoidResult(DEBUG, ReleaseDDThreadLock);
+    ModuleLogMethodVoidResult(TRACE, ReleaseDDThreadLock);
 }
 
 extern "C" HRESULT WINAPI SetAppCompatData(DWORD dwType, DWORD dwValue)
 {
     ModuleLogMethodValue(TRACE, SetAppCompatData, 2, (dwType, dwValue));
 
-    if (Module.SetApplicationCompatibilityData == NULL) { ModuleLogMethodResultValue(DEBUG, SetAppCompatData, TRUE, HRESULT, DDERR_UNSUPPORTED, 2, (dwType, dwValue)); }
+    if (Module.SetApplicationCompatibilityData == NULL) { ModuleLogMethodResultValue(TRACEDEBUGINFO, SetAppCompatData, TRUE, HRESULT, DDERR_UNSUPPORTED, 2, (dwType, dwValue)); }
 
     CONST HRESULT result = Module.SetApplicationCompatibilityData(dwType, dwValue);
 
-    ModuleLogMethodResultValue(DEBUG, SetAppCompatData, FAILED(result), HRESULT, result, 2, (dwType, dwValue));
+    ModuleLogMethodResultValue(TRACEDEBUGINFO, SetAppCompatData, FAILED(result), HRESULT, result, 2, (dwType, dwValue));
 }

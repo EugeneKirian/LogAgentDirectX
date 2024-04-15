@@ -68,14 +68,14 @@ HRESULT DirectSoundFXParamEq::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXParamEq::AddRef()
 {
-    DirectSoundFXParamEqLogMethod(DEBUG, AddRef);
-    DirectSoundFXParamEqLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXParamEqLogMethod(TRACE, AddRef);
+    DirectSoundFXParamEqLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXParamEq::Release()
 {
-    DirectSoundFXParamEqLogMethod(DEBUG, Release);
-    DirectSoundFXParamEqLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXParamEqLogMethod(TRACE, Release);
+    DirectSoundFXParamEqLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the parametric equalizer parameters of a buffer.

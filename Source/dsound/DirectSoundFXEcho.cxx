@@ -68,14 +68,14 @@ HRESULT DirectSoundFXEcho::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXEcho::AddRef()
 {
-    DirectSoundFXEchoLogMethod(DEBUG, AddRef);
-    DirectSoundFXEchoLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXEchoLogMethod(TRACE, AddRef);
+    DirectSoundFXEchoLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXEcho::Release()
 {
-    DirectSoundFXEchoLogMethod(DEBUG, Release);
-    DirectSoundFXEchoLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXEchoLogMethod(TRACE, Release);
+    DirectSoundFXEchoLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the echo parameters of a buffer.

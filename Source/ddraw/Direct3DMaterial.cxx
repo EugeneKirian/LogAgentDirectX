@@ -72,14 +72,14 @@ HRESULT Direct3DMaterial::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DMaterial::AddRef()
 {
-    Direct3DMaterialLogMethod(DEBUG, AddRef);
-    Direct3DMaterialLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DMaterialLogMethod(TRACE, AddRef);
+    Direct3DMaterialLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DMaterial::Release()
 {
-     Direct3DMaterialLogMethod(DEBUG, Release);
-     Direct3DMaterialLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+     Direct3DMaterialLogMethod(TRACE, Release);
+     Direct3DMaterialLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.
@@ -129,18 +129,18 @@ HRESULT Direct3DMaterial::GetHandle(LPDIRECT3DDEVICE lpDirect3DDevice, LPD3DMATE
 
 HRESULT Direct3DMaterial::Reserve()
 {
-    Direct3DMaterialLogMethod(DEBUG, Reserve);
+    Direct3DMaterialLogMethod(TRACE, Reserve);
 
     CONST HRESULT result = this->State.Self->Reserve();
 
-    Direct3DMaterialLogMethodResult(DEBUGINFO, Reserve, result);
+    Direct3DMaterialLogMethodResult(TRACEDEBUGINFO, Reserve, result);
 }
 
 HRESULT Direct3DMaterial::Unreserve()
 {
-    Direct3DMaterialLogMethod(DEBUG, Unreserve);
+    Direct3DMaterialLogMethod(TRACE, Unreserve);
 
     CONST HRESULT result = this->State.Self->Unreserve();
 
-    Direct3DMaterialLogMethodResult(DEBUGINFO, Unreserve, result);
+    Direct3DMaterialLogMethodResult(TRACEDEBUGINFO, Unreserve, result);
 }

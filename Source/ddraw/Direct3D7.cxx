@@ -122,20 +122,20 @@ HRESULT Direct3D7::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3D7::AddRef()
 {
-    Direct3D7LogMethod(DEBUG, AddRef);
-    Direct3D7LogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3D7LogMethod(TRACE, AddRef);
+    Direct3D7LogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3D7::Release()
 {
-    Direct3D7LogMethod(DEBUG, Release);
-    Direct3D7LogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3D7LogMethod(TRACE, Release);
+    Direct3D7LogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Enumerates all Direct3D device drivers installed on the system.
 HRESULT Direct3D7::EnumDevices(LPD3DENUMDEVICESCALLBACK7 lpEnumDevicesCallback, LPVOID lpContext)
 {
-    Direct3D7LogMethodValue(DEBUGINFO, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
+    Direct3D7LogMethodValue(TRACEDEBUG, EnumDevices, 2, (lpEnumDevicesCallback, lpContext));
 
     if (lpEnumDevicesCallback == NULL) { Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumDevices, DDERR_INVALIDPARAMS, 2, (lpEnumDevicesCallback, lpContext)); }
 
@@ -180,7 +180,7 @@ HRESULT Direct3D7::CreateVertexBuffer(LPD3DVERTEXBUFFERDESC lpVBDesc, LPDIRECT3D
 // Enumerates the supported depth-buffer formats for a specified device.
 HRESULT Direct3D7::EnumZBufferFormats(REFCLSID riidDevice, LPD3DENUMPIXELFORMATSCALLBACK lpEnumCallback, LPVOID lpContext)
 {
-    Direct3D7LogMethodValue(DEBUGINFO, EnumZBufferFormats, 3, (riidDevice, lpEnumCallback, lpContext));
+    Direct3D7LogMethodValue(TRACEDEBUG, EnumZBufferFormats, 3, (riidDevice, lpEnumCallback, lpContext));
 
     if (lpEnumCallback == NULL) { Direct3D7LogMethodResultValue(TRACEDEBUGINFO, EnumZBufferFormats, DDERR_INVALIDPARAMS, 3, (riidDevice, lpEnumCallback, lpContext)); }
 
@@ -199,9 +199,9 @@ HRESULT Direct3D7::EnumZBufferFormats(REFCLSID riidDevice, LPD3DENUMPIXELFORMATS
 // Evicts all managed textures from local or nonlocal video memory.
 HRESULT Direct3D7::EvictManagedTextures()
 {
-    Direct3D7LogMethod(DEBUG, EvictManagedTextures);
+    Direct3D7LogMethod(TRACE, EvictManagedTextures);
 
     CONST HRESULT result = this->State.Self->EvictManagedTextures();
 
-    Direct3D7LogMethodResult(DEBUGINFO, EvictManagedTextures, result);
+    Direct3D7LogMethodResult(TRACEDEBUGINFO, EvictManagedTextures, result);
 }

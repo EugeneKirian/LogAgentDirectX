@@ -70,14 +70,14 @@ HRESULT Direct3DLight::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG Direct3DLight::AddRef()
 {
-    Direct3DLightLogMethod(DEBUG, AddRef);
-    Direct3DLightLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    Direct3DLightLogMethod(TRACE, AddRef);
+    Direct3DLightLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG Direct3DLight::Release()
 {
-    Direct3DLightLogMethod(DEBUG, Release);
-    Direct3DLightLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    Direct3DLightLogMethod(TRACE, Release);
+    Direct3DLightLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // This method is not currently implemented.

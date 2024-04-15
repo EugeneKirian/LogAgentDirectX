@@ -68,14 +68,14 @@ HRESULT DirectSoundFXFlanger::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectSoundFXFlanger::AddRef()
 {
-    DirectSoundFXFlangerLogMethod(DEBUG, AddRef);
-    DirectSoundFXFlangerLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectSoundFXFlangerLogMethod(TRACE, AddRef);
+    DirectSoundFXFlangerLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectSoundFXFlanger::Release()
 {
-    DirectSoundFXFlangerLogMethod(DEBUG, Release);
-    DirectSoundFXFlangerLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectSoundFXFlangerLogMethod(TRACE, Release);
+    DirectSoundFXFlangerLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Sets the flange parameters of a buffer.

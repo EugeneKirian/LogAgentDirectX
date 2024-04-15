@@ -81,14 +81,14 @@ HRESULT DirectDrawColorControl::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
 
 ULONG DirectDrawColorControl::AddRef()
 {
-    DirectDrawColorControlLogMethod(DEBUG, AddRef);
-    DirectDrawColorControlLogAddRefMethodResult(DEBUG, this->State.Self->AddRef());
+    DirectDrawColorControlLogMethod(TRACE, AddRef);
+    DirectDrawColorControlLogAddRefMethodResult(TRACE, this->State.Self->AddRef());
 }
 
 ULONG DirectDrawColorControl::Release()
 {
-    DirectDrawColorControlLogMethod(DEBUG, Release);
-    DirectDrawColorControlLogReleaseMethodResult(DEBUG, this->State.Self->Release());
+    DirectDrawColorControlLogMethod(TRACE, Release);
+    DirectDrawColorControlLogReleaseMethodResult(TRACE, this->State.Self->Release());
 }
 
 // Retrieves the current color-control settings that are associated with an overlay or a primary surface.
