@@ -47,8 +47,8 @@ typedef struct AssemblerItem
 class AssemblerState
 {
 public:
-	AssemblerState();
-	virtual ~AssemblerState();
+    AssemblerState();
+    virtual ~AssemblerState();
 
     Array<ASSEMBLERITEM> Items;
 
@@ -66,15 +66,15 @@ public:
 
     BOOL Initialize(LPVOID agent, LPASSEMBLERDELEGATE delegate, LPVOID value);
 
-    BOOL IsAgent(LPVOID agent, REFIID riid);
-    BOOL IsValue(LPVOID value, REFIID riid);
+    BOOL IsAgent(LPVOID agent, REFIID riid, CONST BOOL base);
+    BOOL IsValue(LPVOID value, REFIID riid, CONST BOOL base);
 
     BOOL RemoveAgent(LPVOID agent, REFIID riid);
     BOOL RemoveDelegate(LPASSEMBLERDELEGATE delegate);
     BOOL RemoveValue(LPVOID value, REFIID riid);
 
-    BOOL Value(LPVOID agent, REFIID riid, LPVOID* value);
-    LPVOID Value(LPVOID agent, REFIID riid);
+    BOOL Value(LPVOID agent, REFIID riid, CONST BOOL base, LPVOID* value);
+    LPVOID Value(LPVOID agent, REFIID riid, CONST BOOL base);
 
 protected:
     LPASSEMBLERSTATE State;
@@ -90,10 +90,10 @@ typedef struct AssemblerDelegateItem
 class AssemblerDelegateState
 {
 public:
-	AssemblerDelegateState(LPASSEMBLER assembler);
-	virtual ~AssemblerDelegateState();
+    AssemblerDelegateState(LPASSEMBLER assembler);
+    virtual ~AssemblerDelegateState();
 
-	LPASSEMBLER Assembler;
+    LPASSEMBLER Assembler;
 
     Array<ASSEMBLERDELEGATEITEM> Items;
 
@@ -111,34 +111,43 @@ public:
 
     BOOL Initialize(LPVOID value, REFIID riid, LPVOID agent);
 
-    BOOL IsAgent(LPVOID agent, REFIID riid);
-    BOOL IsValue(LPVOID value, REFIID riid);
+    BOOL IsAgent(LPVOID agent, REFIID riid, CONST BOOL base);
+    BOOL IsValue(LPVOID value, REFIID riid, CONST BOOL base);
 
     BOOL Remove(LPVOID agent, REFIID riid, LPVOID value);
     BOOL RemoveAgent(LPVOID agent, REFIID riid);
     BOOL RemoveValue(LPVOID value, REFIID riid);
 
-    BOOL Value(LPVOID agent, REFIID riid, LPVOID* value);
-    LPVOID Value(LPVOID agent, REFIID riid);
+    BOOL Value(LPVOID agent, REFIID riid, CONST BOOL base, LPVOID* value);
+    LPVOID Value(LPVOID agent, REFIID riid, CONST BOOL base);
 
 protected:
     LPASSEMBLERDELEGATESTATE State;
 };
 
 template<typename T, typename TT>
-inline TT Assemble(LPASSEMBLER assembler, LPASSEMBLERDELEGATE delegate, LPLOGGER logger, REFIID riid, TT value)
+inline TT Assemble(LPASSEMBLER assembler, LPASSEMBLERDELEGATE delegate, LPLOGGER logger, REFIID riid, TT value, CONST BOOL base)
 {
-    return delegate->IsAgent(value, riid) ? (TT)delegate->Agent(value, riid) : (new T(assembler, delegate, logger, riid, (TT)value));
+    return delegate->IsAgent(value, riid, base) ? (TT)value
+        : delegate->IsValue(value, riid, base) ? (TT)delegate->Agent(value, riid) : (new T(assembler, delegate, logger, riid, (TT)value));
 }
 
-#define AssembleAgent(T, A, D, L, V)((I##T*)(Assemble<T, I##T*>(A, D, L, IID_I##T, (I##T*)V)))
+#define AssembleAgent(T, A, D, L, V)((I##T*)(Assemble<T, I##T*>(A, D, L, IID_I##T, (I##T*)V, FALSE)))
+#define AssembleAgentBase(T, A, D, L, V)((I##T*)(Assemble<T, I##T*>(A, D, L, IID_I##T, (I##T*)V, TRUE)))
 
 #define AcquireAgent(ID, V)(this->State.Delegate->Agent(*V, ID, V))
-#define ActivateAgent(T, V) AssembleAgent(T, this->State.Assembler, this->State.Delegate, this->State.Logger, V)
-#define ActivateAgentDelegate(T, V) AssembleAgent(T, this->State.Assembler, (new AssemblerDelegate(this->State.Assembler)), this->State.Logger, V)
 
-#define AccessAgentValue(T, V)((I##T*)this->State.Assembler->Value(V, IID_I##T))
-#define AttemptAccessAgentValue(T, V) if (this->State.Assembler->IsAgent(V, IID_I##T)) { V = AccessAgentValue(T, V); }
+#define ActivateAgent(T, V) AssembleAgent(T, this->State.Assembler, this->State.Delegate, this->State.Logger, V)
+#define ActivateAgentBase(T, V) AssembleAgentBase(T, this->State.Assembler, this->State.Delegate, this->State.Logger, V);
+
+#define ActivateAgentDelegate(T, V) AssembleAgent(T, this->State.Assembler, (new AssemblerDelegate(this->State.Assembler)), this->State.Logger, V)
+#define ActivateAgentBaseDelegate(T, V) AssembleAgentBase(T, this->State.Assembler, (new AssemblerDelegate(this->State.Assembler)), this->State.Logger, V);
+
+#define AccessAgentValue(T, V)((I##T*)this->State.Assembler->Value(V, IID_I##T, FALSE))
+#define AccessAgentBaseValue(T, V)((I##T*)this->State.Assembler->Value(V, IID_I##T, TRUE))
+
+#define AttemptAccessAgentValue(T, V) if (this->State.Assembler->IsAgent(V, IID_I##T, FALSE)) { V = AccessAgentValue(T, V); }
+#define AttemptAccessAgentBaseValue(T, V) if (this->State.Assembler->IsAgent(V, IID_I##T, TRUE)) { V = AccessAgentBaseValue(T, V); }
 
 #define AgentConstructorParameters(T)   \
     LPASSEMBLER assembler, LPASSEMBLERDELEGATE delegate, LPLOGGER logger, REFIID riid, I##T* value

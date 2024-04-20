@@ -24,7 +24,7 @@ SOFTWARE.
 
 AssemblerState::AssemblerState()
 {
-	ZeroMemory(&this->Mutex, sizeof(CRITICAL_SECTION));
+    ZeroMemory(&this->Mutex, sizeof(CRITICAL_SECTION));
 
     InitializeCriticalSection(&this->Mutex);
 }
@@ -36,12 +36,12 @@ AssemblerState::~AssemblerState()
 
 Assembler::Assembler()
 {
-	this->State = new AssemblerState();
+    this->State = new AssemblerState();
 }
 
 Assembler::~Assembler()
 {
-	delete this->State;
+    delete this->State;
 }
 
 BOOL Assembler::Agent(LPVOID value, REFIID riid, LPVOID* agent)
@@ -109,7 +109,7 @@ BOOL Assembler::Initialize(LPVOID agent, LPASSEMBLERDELEGATE delegate, LPVOID va
     return result;
 }
 
-BOOL Assembler::IsAgent(LPVOID agent, REFIID riid)
+BOOL Assembler::IsAgent(LPVOID agent, REFIID riid, CONST BOOL base)
 {
     BOOL result = FALSE;
 
@@ -123,7 +123,7 @@ BOOL Assembler::IsAgent(LPVOID agent, REFIID riid)
 
         if (item.Agent == agent)
         {
-            if (item.Delegate->IsAgent(agent, riid)) { result = TRUE; break; }
+            if (item.Delegate->IsAgent(agent, riid, base)) { result = TRUE; break; }
         }
     }
 
@@ -132,7 +132,7 @@ BOOL Assembler::IsAgent(LPVOID agent, REFIID riid)
     return result;
 }
 
-BOOL Assembler::IsValue(LPVOID value, REFIID riid)
+BOOL Assembler::IsValue(LPVOID value, REFIID riid, CONST BOOL base)
 {
     BOOL result = FALSE;
 
@@ -146,7 +146,7 @@ BOOL Assembler::IsValue(LPVOID value, REFIID riid)
 
         if (item.Value == value)
         {
-            if (item.Delegate->IsValue(value, riid)) { result = TRUE; break; }
+            if (item.Delegate->IsValue(value, riid, base)) { result = TRUE; break; }
         }
     }
 
@@ -209,7 +209,7 @@ BOOL Assembler::RemoveValue(LPVOID value, REFIID /*riid*/)
     return result;
 }
 
-BOOL Assembler::Value(LPVOID agent, REFIID riid, LPVOID* value)
+BOOL Assembler::Value(LPVOID agent, REFIID riid, CONST BOOL base, LPVOID* value)
 {
     BOOL result = FALSE;
 
@@ -225,7 +225,7 @@ BOOL Assembler::Value(LPVOID agent, REFIID riid, LPVOID* value)
 
         if (item.Agent == agent)
         {
-            if (item.Delegate->Value(agent, riid, value)) { result = TRUE; break; }
+            if (item.Delegate->Value(agent, riid, base, value)) { result = TRUE; break; }
         }
     }
 
@@ -234,7 +234,7 @@ BOOL Assembler::Value(LPVOID agent, REFIID riid, LPVOID* value)
     return result;
 }
 
-LPVOID Assembler::Value(LPVOID agent, REFIID riid)
+LPVOID Assembler::Value(LPVOID agent, REFIID riid, CONST BOOL base)
 {
     LPVOID result = NULL;
 
@@ -248,7 +248,7 @@ LPVOID Assembler::Value(LPVOID agent, REFIID riid)
 
         if (item.Agent == agent)
         {
-            if (item.Delegate->Value(agent, riid, &result)) { break; }
+            if (item.Delegate->Value(agent, riid, base, &result)) { break; }
         }
     }
 

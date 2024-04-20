@@ -401,6 +401,19 @@ protected:
     }                                                                                                                       \
     return __result__;
 
+#define LogMethodNoResultMacro(LOG, LEVEL, O, M, V)                                                                         \
+    if (LOG->IsAcceptable(LOGGER_LEVEL_##LEVEL))                                                                           \
+    {                                                                                                                       \
+        LogMethodResult(LOG, LOGGER_LEVEL_##LEVEL, OBJECT_ID_##O, V, METHOD_ID_##O##_##M, NO_ERROR, NULL);                  \
+    }
+
+#define LogMethodNoResultValueMacro(LOG, LEVEL, O, M, V, C, PARAMS)                                                         \
+    if (LOG->IsAcceptable(LOGGER_LEVEL_##LEVEL))                                                                            \
+    {                                                                                                                       \
+        LogMethodStructureMacro(O, M, __value__, C, PARAMS)                                                                 \
+        LogMethodResult(LOG, LOGGER_LEVEL_##LEVEL, OBJECT_ID_##O, V, METHOD_ID_##O##_##M, NO_ERROR, &__value__);            \
+    }
+
 #define LogMethodCallbackStructureMacro(O, M, MC, N, C, PARAMS) O##MC##MethodCallbackValue N = { LogStructureArgument##C##Macro PARAMS };
 
 #define LogMethodCallbackValueMacro(LOG, LEVEL, O, M, MC, V, C, PARAMS)                                                                 \

@@ -27,6 +27,7 @@ AssemblerDelegateState::AssemblerDelegateState(LPASSEMBLER assembler)
     this->Assembler = assembler;
 
     ZeroMemory(&this->Mutex, sizeof(CRITICAL_SECTION));
+
     InitializeCriticalSection(&this->Mutex);
 }
 
@@ -37,14 +38,14 @@ AssemblerDelegateState::~AssemblerDelegateState()
 
 AssemblerDelegate::AssemblerDelegate(LPASSEMBLER assembler)
 {
-	this->State = new AssemblerDelegateState(assembler);
+    this->State = new AssemblerDelegateState(assembler);
 }
 
 AssemblerDelegate::~AssemblerDelegate()
 {
-	this->State->Assembler->RemoveDelegate(this);
+    this->State->Assembler->RemoveDelegate(this);
 
-	delete this->State;
+    delete this->State;
 }
 
 BOOL AssemblerDelegate::Agent(LPVOID value, REFIID riid, LPVOID* agent)
@@ -65,7 +66,7 @@ BOOL AssemblerDelegate::Agent(LPVOID value, REFIID riid, LPVOID* agent)
         {
             *agent = item.Agent;
 
-            if (item.IID != riid) { item.IID = riid; }
+            if (!IsEqualIID(item.IID, riid)) { item.IID = riid; }
 
             result = TRUE;
 
@@ -94,7 +95,7 @@ LPVOID AssemblerDelegate::Agent(LPVOID value, REFIID riid)
         {
             result = item.Agent;
 
-            if (item.IID != riid) { item.IID = riid; }
+            if (!IsEqualIID(item.IID, riid)) { item.IID = riid; }
 
             break;
         }
@@ -122,7 +123,7 @@ BOOL AssemblerDelegate::Initialize(LPVOID value, REFIID riid, LPVOID agent)
     return result;
 }
 
-BOOL AssemblerDelegate::IsAgent(LPVOID agent, REFIID riid)
+BOOL AssemblerDelegate::IsAgent(LPVOID agent, REFIID riid, CONST BOOL base)
 {
     BOOL result = FALSE;
 
@@ -134,7 +135,7 @@ BOOL AssemblerDelegate::IsAgent(LPVOID agent, REFIID riid)
     {
         AssemblerDelegateItem item = this->State->Items[x];
 
-        if (item.Agent == agent && item.IID == riid) { result = TRUE; break; }
+        if (item.Agent == agent && (IsEqualIID(item.IID, riid) || base)) { result = TRUE; break; }
     }
 
     LeaveCriticalSection(&this->State->Mutex);
@@ -142,7 +143,7 @@ BOOL AssemblerDelegate::IsAgent(LPVOID agent, REFIID riid)
     return result;
 }
 
-BOOL AssemblerDelegate::IsValue(LPVOID value, REFIID riid)
+BOOL AssemblerDelegate::IsValue(LPVOID value, REFIID riid, CONST BOOL base)
 {
     BOOL result = FALSE;
 
@@ -154,7 +155,7 @@ BOOL AssemblerDelegate::IsValue(LPVOID value, REFIID riid)
     {
         AssemblerDelegateItem item = this->State->Items[x];
 
-        if (item.Value == value && item.IID == riid) { result = TRUE; break; }
+        if (item.Value == value && (IsEqualIID(item.IID, riid) || base)) { result = TRUE; break; }
     }
 
     LeaveCriticalSection(&this->State->Mutex);
@@ -239,7 +240,7 @@ BOOL AssemblerDelegate::RemoveValue(LPVOID value, REFIID /*riid*/)
     return result;
 }
 
-BOOL AssemblerDelegate::Value(LPVOID agent, REFIID riid, LPVOID* value)
+BOOL AssemblerDelegate::Value(LPVOID agent, REFIID riid, CONST BOOL base, LPVOID* value)
 {
     BOOL result = FALSE;
 
@@ -253,7 +254,7 @@ BOOL AssemblerDelegate::Value(LPVOID agent, REFIID riid, LPVOID* value)
     {
         AssemblerDelegateItem item = this->State->Items[x];
 
-        if (item.Agent == agent && item.IID == riid) { *value = item.Value; result = TRUE; break; }
+        if (item.Agent == agent && (IsEqualIID(item.IID, riid) || base)) { *value = item.Value; result = TRUE; break; }
     }
 
     LeaveCriticalSection(&this->State->Mutex);
@@ -261,7 +262,7 @@ BOOL AssemblerDelegate::Value(LPVOID agent, REFIID riid, LPVOID* value)
     return result;
 }
 
-LPVOID AssemblerDelegate::Value(LPVOID agent, REFIID riid)
+LPVOID AssemblerDelegate::Value(LPVOID agent, REFIID riid, CONST BOOL base)
 {
     EnterCriticalSection(&this->State->Mutex);
 
@@ -273,7 +274,7 @@ LPVOID AssemblerDelegate::Value(LPVOID agent, REFIID riid)
     {
         AssemblerDelegateItem item = this->State->Items[x];
 
-        if (item.Agent == agent && item.IID == riid) { result = item.Value; break; }
+        if (item.Agent == agent && (IsEqualIID(item.IID, riid) || base)) { result = item.Value; break; }
     }
 
     LeaveCriticalSection(&this->State->Mutex);
