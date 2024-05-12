@@ -49,6 +49,7 @@
     <ClInclude Include="DirectDrawSurface7.hxx" />
     <ClInclude Include="DirectDrawVideoPort.hxx" />
     <ClInclude Include="DirectDrawVideoPortContainer.hxx" />
+    <ClInclude Include="DllGetClassObject.hxx" />
     <ClInclude Include="Module.hxx" />
     <ClInclude Include="Window.hxx" />
   </ItemGroup>
@@ -82,6 +83,7 @@
     <ClCompile Include="DirectDrawSurface7.cxx" />
     <ClCompile Include="DirectDrawVideoPort.cxx" />
     <ClCompile Include="DirectDrawVideoPortContainer.cxx" />
+    <ClCompile Include="DllGetClassObject.cxx" />
     <ClCompile Include="Main.cxx" />
     <ClCompile Include="Module.cxx" />
     <ClCompile Include="Window.cxx" />

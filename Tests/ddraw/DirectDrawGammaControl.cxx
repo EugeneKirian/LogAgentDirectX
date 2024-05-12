@@ -1072,6 +1072,7 @@ VOID DirectDrawGammaControlQuery(LPDIRECTDRAWGAMMACONTROL gamma, const BOOL seve
     DIRECTRELEASE(dds7);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddvp = NULL;
     result = gamma->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddvp);
     IsNotEqual(result, DD_OK);
@@ -1088,6 +1089,42 @@ VOID DirectDrawGammaControlQuery(LPDIRECTDRAWGAMMACONTROL gamma, const BOOL seve
 
     LPDDVIDEOPORTNOTIFY ddvpn = NULL;
     result = gamma->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddvpn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceNew */
+
+    LPUNKNOWN ddsn = NULL;
+    result = gamma->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddsn);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */

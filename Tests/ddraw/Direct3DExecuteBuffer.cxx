@@ -268,6 +268,7 @@ VOID DirectDrawDirect3DExecuteBufferQuery(LPDIRECT3DEXECUTEBUFFER buffer)
     IsEqual((LPVOID)d3deb, (LPVOID)buffer);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = buffer->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -409,6 +410,7 @@ VOID DirectDrawDirect3DExecuteBufferQuery(LPDIRECT3DEXECUTEBUFFER buffer)
     IsEqual((LPVOID)dds1, NULL);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddvp = NULL;
     result = buffer->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddvp);
     IsNotEqual(result, DD_OK);
@@ -425,6 +427,42 @@ VOID DirectDrawDirect3DExecuteBufferQuery(LPDIRECT3DEXECUTEBUFFER buffer)
 
     LPDDVIDEOPORTNOTIFY ddvpn = NULL;
     result = buffer->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddvpn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceNew */
+
+    LPUNKNOWN ddsn = NULL;
+    result = buffer->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddsn);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */

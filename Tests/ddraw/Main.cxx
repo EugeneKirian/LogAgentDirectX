@@ -50,6 +50,8 @@ SOFTWARE.
 #include "DirectDrawVideoPort.hxx"
 #include "DirectDrawVideoPortContainer.hxx"
 
+#include "DllGetClassObject.hxx"
+
 #include "Window.hxx"
 
 #include <stdio.h>
@@ -474,6 +476,11 @@ VOID ExecuteDirectDrawVideoPortContainer(LPMODULE module)
     Invoke(DirectDraw7VideoPortContainerQueryInterfaceAll);
 }
 
+VOID ExecuteDllGetClassObject(LPMODULE module)
+{
+    Invoke(DllGetClassObject);
+}
+
 VOID Execute(LPMODULE module)
 {
     Invoke(ExecuteDirect3D);
@@ -505,6 +512,8 @@ VOID Execute(LPMODULE module)
     Invoke(ExecuteDirectDrawSurface7);
     Invoke(ExecuteDirectDrawVideoPort);
     Invoke(ExecuteDirectDrawVideoPortContainer);
+
+    Invoke(ExecuteDllGetClassObject);
 }
 
 BOOL AcquirePath(LPSTR lpBuffer, LPCSTR lpPath, const UINT uSize)

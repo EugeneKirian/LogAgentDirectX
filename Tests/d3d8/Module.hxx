@@ -31,7 +31,7 @@ SOFTWARE.
 
 #define DIRECT3D_DEBUG_SET_MUTE_NAME "DebugSetMute"
 #define DIRECT3D_DIRECT3DCREATE8_NAME "Direct3DCreate8"
-#define DIRECT3D_CHECK_FULL_SCREEN_NAME "Direct3D8EnableMaximizedWindowedModeShim"
+#define DIRECT3D_ENABLE_MAXIMIZED_WINDOWED_MODE_NAME "Direct3D8EnableMaximizedWindowedModeShim"
 #define DIRECT3D_VALIDATE_PIXEL_SHADER_NAME "ValidatePixelShader"
 #define DIRECT3D_VALIDATE_VERTEX_SHADER_NAME "ValidateVertexShader"
 

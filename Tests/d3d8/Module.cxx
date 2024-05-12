@@ -42,7 +42,7 @@ LPMODULE InitializeModule(LPCSTR path)
     result->ValidatePixelShader = (LPVALIDATEPIXELSHADER)GetProcAddress(result->Module, DIRECT3D_VALIDATE_PIXEL_SHADER_NAME);
     if (result->ValidatePixelShader == NULL) { ReleaseModule(result); return NULL; }
 
-    result->EnableMaximizedWindowedMode = (LPENABLEMAXIMIZEDWINDOWEDMODE)GetProcAddress(result->Module, DIRECT3D_CHECK_FULL_SCREEN_NAME);
+    result->EnableMaximizedWindowedMode = (LPENABLEMAXIMIZEDWINDOWEDMODE)GetProcAddress(result->Module, DIRECT3D_ENABLE_MAXIMIZED_WINDOWED_MODE_NAME);
 
     return result;
 }

@@ -493,6 +493,7 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER vb)
     IsEqual((LPVOID)dd3dd1, NULL);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = vb->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -628,6 +629,7 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER vb)
     IsEqual((LPVOID)dds7, NULL);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddvb = NULL;
     result = vb->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddvb);
     IsNotEqual(result, DD_OK);
@@ -644,6 +646,42 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER vb)
 
     LPDDVIDEOPORTNOTIFY ddvbn = NULL;
     result = vb->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddvbn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceNew */
+
+    LPUNKNOWN ddsn = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddsn);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */
@@ -744,6 +782,7 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER7 vb)
     IsEqual((LPVOID)dd3dd1, NULL);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = vb->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -881,6 +920,7 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER7 vb)
     IsEqual((LPVOID)dds7, NULL);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddvb = NULL;
     result = vb->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddvb);
     IsNotEqual(result, DD_OK);
@@ -897,6 +937,36 @@ VOID DirectDrawVertexBufferQuery(LPDIRECT3DVERTEXBUFFER7 vb)
 
     LPDDVIDEOPORTNOTIFY ddvbn = NULL;
     result = vb->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddvbn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = vb->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */

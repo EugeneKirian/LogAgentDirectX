@@ -109,6 +109,7 @@ VOID DirectDrawDirect3DQuery(LPDIRECT3D7 d3d)
     IsEqual((LPVOID)dd3dd1, NULL);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = d3d->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -171,6 +172,7 @@ VOID DirectDrawDirect3DQuery(LPDIRECT3D7 d3d)
     result = d3d->QueryInterface(IID_IDirect3DViewport3, (LPVOID*)&d3dvp3);
     IsNotEqual(result, DD_OK);
     IsEqual((LPVOID)d3dvp3, NULL);
+
     /* DirectDraw */
 
     LPDIRECTDRAW dd = NULL;
@@ -270,6 +272,36 @@ VOID DirectDrawDirect3DQuery(LPDIRECT3D7 d3d)
 
     LPDDVIDEOPORTNOTIFY ddvpn = NULL;
     result = d3d->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddvpn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = d3d->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = d3d->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = d3d->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = d3d->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = d3d->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */

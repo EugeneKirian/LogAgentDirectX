@@ -257,7 +257,7 @@ BOOL AcquireAgentPath(LPSTR lpBuffer, const UINT uSize)
 
 int main()
 {
-    if (!RegisterWindowClass()) { printf("Unable to register window class.\r\n."); return 0; }
+    if (!RegisterWindowClass()) { printf("Unable to register window class.\r\n."); return EXIT_FAILURE; }
 
     // Original
     {
@@ -268,14 +268,14 @@ int main()
         {
             LPMODULE module = InitializeModule(path);
 
-            if (module == NULL) { printf("Unable to load the original module %s.\r\n", path); return 0; }
+            if (module == NULL) { printf("Unable to load the original module %s.\r\n", path); return EXIT_FAILURE; }
 
             printf("Executing tests on %s ...\r\n", path);
 
             Execute(module);
             ReleaseModule(module);
         }
-        else { printf("Unable to load the original module %s.\r\n", path); return 0; }
+        else { printf("Unable to load the original module %s.\r\n", path); return EXIT_FAILURE; }
     }
 
     // Agent
@@ -287,17 +287,17 @@ int main()
         {
             LPMODULE module = InitializeModule(path);
 
-            if (module == NULL) { printf("Unable to load the agent module %s.\r\n", path); return 0; }
+            if (module == NULL) { printf("Unable to load the agent module %s.\r\n", path); return EXIT_FAILURE; }
 
             printf("Executing tests on %s ...\r\n", path);
 
             Execute(module);
             ReleaseModule(module);
         }
-        else { printf("Unable to load the agent module %s.\r\n", path); return 0; }
+        else { printf("Unable to load the agent module %s.\r\n", path); return EXIT_FAILURE; }
     }
 
     ReleaseWindowClass();
 
-    return 0;
+    return EXIT_SUCCESS;
 }

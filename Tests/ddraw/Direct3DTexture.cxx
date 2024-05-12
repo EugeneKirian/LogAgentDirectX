@@ -1382,6 +1382,7 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE tex)
     IsEqual((LPVOID)dd3dd1, NULL);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = tex->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -1533,6 +1534,7 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE tex)
     DIRECTRELEASE(dds7);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddtex = NULL;
     result = tex->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddtex);
     IsNotEqual(result, DD_OK);
@@ -1549,6 +1551,42 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE tex)
 
     LPDDVIDEOPORTNOTIFY ddtexn = NULL;
     result = tex->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddtexn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceNew */
+
+    LPUNKNOWN ddsn = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddsn);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */
@@ -1649,6 +1687,7 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE2 tex)
     IsEqual((LPVOID)dd3dd1, NULL);
 
     /* Direct3DLight */
+
     LPDIRECT3DLIGHT d3dl = NULL;
     result = tex->QueryInterface(IID_IDirect3DLight, (LPVOID*)&d3dl);
     IsNotEqual(result, DD_OK);
@@ -1800,6 +1839,7 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE2 tex)
     DIRECTRELEASE(dds7);
 
     /* DirectDrawVideoPort */
+
     LPDIRECTDRAWVIDEOPORT ddtex = NULL;
     result = tex->QueryInterface(IID_IDirectDrawVideoPort, (LPVOID*)&ddtex);
     IsNotEqual(result, DD_OK);
@@ -1816,6 +1856,36 @@ VOID DirectDrawSurfaceTextureQuery(LPDIRECT3DTEXTURE2 tex)
 
     LPDDVIDEOPORTNOTIFY ddtexn = NULL;
     result = tex->QueryInterface(IID_IDirectDrawVideoPortNotify, (LPVOID*)&ddtexn);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawFactory2 */
+
+    LPUNKNOWN ddf2 = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawFactory2, (LPVOID*)&ddf2);
+    IsNotEqual(result, DD_OK);
+
+    /* IDirectDrawPalette2 */
+
+    LPUNKNOWN ddp2 = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawPalette2, (LPVOID*)&ddp2);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawKernel */
+
+    LPUNKNOWN ddk = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawKernel, (LPVOID*)&ddk);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawOptSurface */
+
+    LPUNKNOWN ddos = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawOptSurface, (LPVOID*)&ddos);
+    IsNotEqual(result, DD_OK);
+
+    /* DirectDrawSurfaceKernel */
+
+    LPUNKNOWN ddsk = NULL;
+    result = tex->QueryInterface(IID_IDirectDrawSurfaceKernel, (LPVOID*)&ddsk);
     IsNotEqual(result, DD_OK);
 
     /* Unknown */
