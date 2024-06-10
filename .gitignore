@@ -397,7 +397,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Americus Maximus Custom Settings
+# Eugene Kirian Custom Settings
 .vs
 .vscode
 SDK
